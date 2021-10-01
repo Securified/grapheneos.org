@@ -1,6 +1,6 @@
 // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt MIT
 
-import * as fastboot from "./fastboot/dist/fastboot.min.mjs?1.0.8";
+import * as fastboot from "./fastboot/v1.0.9/fastboot.min.mjs";
 
 const RELEASES_URL = "https://releases.grapheneos.org";
 
@@ -140,8 +140,13 @@ async function unlockBootloader(setProgress) {
     return "Bootloader unlocked.";
 }
 
+const supportedDevices = ["barbet", "redfin", "bramble", "sunfish", "coral", "flame", "bonito", "sargo", "crosshatch", "blueline"];
+
 async function getLatestRelease() {
     let product = await device.getVariable("product");
+    if (!supportedDevices.includes(product)) {
+        throw new Error(`device model (${product}) is not supported by the GrapheneOS web installer`);
+    }
 
     let metadataResp = await fetch(`${RELEASES_URL}/${product}-stable`);
     let metadata = await metadataResp.text();
@@ -212,6 +217,10 @@ async function flashRelease(setProgress) {
                 setProgress(`${userAction} ${userItem}...`, progress);
             }
         );
+        setProgress("Disabling UART...");
+        // See https://android.googlesource.com/platform/system/core/+/eclair-release/fastboot/fastboot.c#532
+        // for context as to why the trailing space is needed.
+        await device.runCommand("oem uart disable ");
     } finally {
         safeToLeave = true;
     }
@@ -295,7 +304,7 @@ fastboot.setDebugLevel(2);
 
 fastboot.configureZip({
     workerScripts: {
-        inflate: ["/js/fastboot/dist/vendor/z-worker-pako.js", "pako_inflate.min.js"],
+        inflate: ["/js/fastboot/v1.0.9/vendor/z-worker-pako.js", "pako_inflate.min.js"],
     },
 });
 

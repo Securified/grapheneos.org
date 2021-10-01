@@ -5,6 +5,7 @@
         <title>Frequently Asked Questions | GrapheneOS</title>
         <meta name="description" content="Answers to frequently asked questions about GrapheneOS."/>
         <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
@@ -19,11 +20,11 @@
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/faq"/>
         <link rel="canonical" href="https://grapheneos.org/faq"/>
-        <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <link rel="icon" sizes="any" type="image/svg+xml" href="/mask-icon.svg"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
         <link rel="mask-icon" href="/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        <link rel="stylesheet" href="/grapheneos.css"/>
+        <link rel="stylesheet" href="/main.css"/>
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
         <script type="module" src="/js/redirect.js"></script>
@@ -32,7 +33,7 @@
         <header>
             <nav id="site-menu">
                 <ul>
-                    <li><a href="/">GrapheneOS</a></li>
+                    <li><a href="/"><img src="/mask-icon.svg" alt=""/>GrapheneOS</a></li>
                     <li><a href="/features">Features</a></li>
                     <li><a href="/install/">Install</a></li>
                     <li><a href="/build">Build</a></li>
@@ -111,8 +112,10 @@
                             <li><a href="#updates-sideloading">How do I update without connecting the
                             device to the internet?</a></li>
                             <li><a href="#notifications">Do notifications properly work on GrapheneOS?</a></li>
+                            <li><a href="#file-transfer">How do I transfer files to another device?</a></li>
                         </ul>
                     </li>
+                    <li><a href="#google-services">Will GrapheneOS include support for Google services?</a></li>
                     <li><a href="#features">What features does GrapheneOS implement?</a></li>
                     <li><a href="#anti-theft">Does GrapheneOS provide Factory Reset Protection?</a></li>
                     <li><a href="#bundled-apps">Why aren't my favorite apps bundled with GrapheneOS?</a></li>
@@ -122,6 +125,7 @@
                     <li><a href="#donate">How can I donate to GrapheneOS?</a></li>
                     <li><a href="#upstream">Does GrapheneOS make upstream contributions?</a></li>
                     <li><a href="#founding">When was the GrapheneOS project founded?</a></li>
+                    <li><a href="#copperheados">How is CopperheadOS related to GrapheneOS?</a></li>
                     <li><a href="#company">Will GrapheneOS create a company?</a></li>
                     <li><a href="#copyright-and-licensing">Who owns the GrapheneOS code and how is it licensed?</a></li>
                     <li><a href="#trademark">What about the GrapheneOS name and logo?</a></li>
@@ -137,15 +141,16 @@
                     <p>GrapheneOS has official production support for the following devices:</p>
 
                     <ul>
-                        <li>Pixel 5</li>
-                        <li>Pixel 4a (5G)</li>
-                        <li>Pixel 4a</li>
-                        <li>Pixel 4 XL</li>
-                        <li>Pixel 4</li>
-                        <li>Pixel 3a XL</li>
-                        <li>Pixel 3a</li>
-                        <li>Pixel 3 XL</li>
-                        <li>Pixel 3</li>
+                        <li>Pixel 5a (barbet)</li>
+                        <li>Pixel 5 (redfin)</li>
+                        <li>Pixel 4a (5G) (bramble)</li>
+                        <li>Pixel 4a (sunfish)</li>
+                        <li>Pixel 4 XL (coral)</li>
+                        <li>Pixel 4 (flame)</li>
+                        <li>Pixel 3a XL (bonito)</li>
+                        <li>Pixel 3a (sargo)</li>
+                        <li>Pixel 3 XL (crosshatch)</li>
+                        <li>Pixel 3 (blueline)</li>
                     </ul>
 
                     <p>The release tags for these devices have official builds and updates
@@ -192,27 +197,20 @@
                     recommended:</p>
 
                     <ul>
-                        <li>Pixel 5</li>
-                        <li>Pixel 4a (5G)</li>
-                        <li>Pixel 4a</li>
+                        <li>Pixel 5a (barbet)</li>
+                        <li>Pixel 5 (redfin)</li>
+                        <li>Pixel 4a (5G) (bramble)</li>
+                        <li>Pixel 4a (sunfish)</li>
                     </ul>
 
-                    <p>The Pixel 5 and Pixel 4a (5G) will likely be supported for at least a bit
-                    longer than the Pixel 4a. We strongly recommend against purchasing older
-                    devices.</p>
+                    <p>The Pixel 5a, Pixel 5 and Pixel 4a (5G) will likely be supported longer
+                    than the Pixel 4a. We strongly recommend against purchasing devices older than
+                    the Pixel 4a.</p>
 
                     <p>The Pixel 4a is a budget device meeting the same security standards as the more
                     expensive flagship devices. You can read more on the differences between the hardware
                     elsewhere. Unlike the Pixel 3a, the Pixel 4a has a proper SSD which provides a much
                     better experience with the GrapheneOS exec-based spawning security feature.</p>
-
-                    <p>The Pixel 4 and Pixel 4 XL have comparable security but won't be supported
-                    as long. On the Pixel 4 and Pixel 4 XL, support for fingerprint unlock as a
-                    secondary unlock mechanism was replaced with IR-based 3D facial scanning.
-                    GrapheneOS plans to extend secondary unlock support with the option of
-                    2-factor authentication using a secondary PIN or passphrase required for
-                    fingerprint / face unlock. The Pixel 4a, Pixel 4a (5G) and Pixel 5 moved back
-                    to using a fingerprint scanner instead of face unlock.</p>
                 </article>
 
                 <article id="future-devices">
@@ -310,21 +308,23 @@
                 <article id="which-legacy-devices">
                     <h3><a href="#which-legacy-devices">Which devices did GrapheneOS support in the past?</a></h3>
 
+                    <!--
+
                     <p>The following devices are end-of-life, no longer receive full security
                     updates and are supported only via extended support releases of GrapheneOS
                     separate from the official GrapheneOS releases:</p>
 
-                    <ul>
-                        <li>Pixel 2 XL (taimen)</li>
-                        <li>Pixel 2 (walleye)</li>
-                    </ul>
+                    -->
 
                     <p>We provide extended support releases as a stopgap for users to transition
-                    to the far more secure current generation devices.</p>
+                    to the far more secure current generation devices. There are currently no
+                    devices in the extended support phase.</p>
 
                     <p>The following devices are no longer supported at all:</p>
 
                     <ul>
+                        <li>Pixel 2 XL (taimen)</li>
+                        <li>Pixel 2 (walleye)</li>
                         <li>Pixel XL (marlin)</li>
                         <li>Pixel (sailfish)</li>
                         <li>Nexus 6P (angler)</li>
@@ -500,7 +500,7 @@
                     around for compatibility. It used to need more extensive changes such as disallowing
                     access to the serial number but those restrictions are now standard.</p>
 
-                    <p>Apps can determine the model of the device (such as it being a Pixel 4) either
+                    <p>Apps can determine the model of the device (such as it being a Pixel 5) either
                     directly or indirectly through the properties of the hardware and software. There
                     isn't a way to avoid this short of the OS supporting running apps in a virtual machine
                     with limited functionality and hardware acceleration. Hiding the CPU/SoC model would
@@ -734,23 +734,31 @@
                             <p>No query / data is sent to the servers and the response is unused beyond
                             checking the response code.</p>
 
-                            <p>By default, the GrapheneOS connectivity check server is used via the
+                            <p>Connectivity checks are performed for each network connection and
+                            for VPN connections on top of those. This allows the OS to choose the
+                            right underlying network for a VPN and to handle many types of captive
+                            portals without the user turning off their VPN.</p>
+
+                            <p>You can change the connectivity check URLs via the Settings ➔
+                            Network &amp; internet ➔ Advanced ➔ Internet connectivity check
+                            setting. At the moment, it can be toggled between the GrapheneOS
+                            servers (default), the standard Google servers used by billions of
+                            other Android devices or disabled.</p>
+
+                            <p>By default, the GrapheneOS connectivity check servers are used via the
                             following URLs:</p>
 
                             <ul>
                                 <li>HTTPS: https://connectivitycheck.grapheneos.network/generate_204</li>
                                 <li>HTTP: http://connectivitycheck.grapheneos.network/generate_204</li>
-                                <li>HTTP fallback: http://grapheneos.network/gen_204</li>
-                                <li>HTTP other fallback: http://grapheneos.network/generate_204</li>
+                                <li>HTTP fallback: http://grapheneos.online/gen_204</li>
+                                <li>HTTP other fallback: http://grapheneos.online/generate_204</li>
                             </ul>
 
-                            <p>You can change the connectivity check URLs via the Settings ➔ Network &amp;
-                            internet ➔ Advanced ➔ Internet connectivity check setting. At the moment, it
-                            can be toggled between the GrapheneOS server and the standard Google servers
-                            used by billions of other Android devices. This can be used to blend in with
-                            other Android devices, both with and without Play services. Changing this to
-                            the Standard (Google) mode will use the same URLs used by AOSP and the stock
-                            OS along with the vast majority of other devices:</p>
+                            <p>Changing this to the Standard (Google) mode will use the same URLs
+                            used by AOSP and the stock OS along with the vast majority of other
+                            devices, blending in with billions of other Android devices both with
+                            and without Play services:</p>
 
                             <ul>
                                 <li>HTTPS: https://www.google.com/generate_204</li>
@@ -758,6 +766,12 @@
                                 <li>HTTP fallback: http://www.google.com/gen_204</li>
                                 <li>HTTP other fallback: http://play.googleapis.com/generate_204</li>
                             </ul>
+
+                            <p>GrapheneOS also adds the ability to fully disable the connectivity
+                            checks. This results in the OS no longer handling captive portals
+                            itself, not falling back to other networks when some don't have
+                            internet access and not being able to delay scheduled jobs depending
+                            on internet access until it becomes available.</p>
                         </li>
                         <li>
                             <p>DNS connectivity and functionality tests</p>
@@ -829,7 +843,7 @@
                     provide DNS servers in order to fingerprint clients based on what they use as
                     the fallback so it's important for it to be consistent across each install.
                     GrapheneOS replaces Google Public DNS with
-                    <a href="https://developers.cloudflare.com/1.1.1.1/what-is-1.1.1.1/">Cloudflare
+                    <a href="https://developers.cloudflare.com/1.1.1.1/faq">Cloudflare
                     DNS</a> for the fallback DNS servers due to the superior privacy policy and
                     widespread usage including as the fallback DNS servers in other Android-based
                     operating systems. We're considering hosting our own servers and offering a
@@ -964,22 +978,20 @@
                 <article id="ad-blocking">
                     <h3><a href="#ad-blocking">How can I set up system-wide ad-blocking?</a></h3>
 
-                    <p>The recommended approach to system-wide ad-blocking is setting up domain-based
-                    ad-blocking as part of DNS resolution. You can do this by
-                    <a href="#custom-dns">choosing a Private DNS (DNS-over-TLS) server</a> with support
-                    for blocking ad domains. As an example, AdGuard DNS can be used by setting
-                    <code>dns.adguard.com</code> as the Private DNS domain. In the future, GrapheneOS
-                    plans on adding back <a
-                    href="https://github.com/GrapheneOS/os_issue_tracker/issues/184">an efficient
-                    user-defined blacklist for the local DNS resolver</a>. This feature used to be
-                    included by the project many years ago, but it needs to be reimplemented, and it's a
-                    low priority feature depending on contributors stepping up to work on it.</p>
+                    <p>The recommended approach to system-wide ad-blocking is setting up
+                    domain-based ad-blocking as part of DNS resolution. You can do this by
+                    <a href="#custom-dns">choosing a Private DNS (DNS-over-TLS) server</a> with
+                    support for blocking ad domains. As an example, AdGuard DNS can be used by
+                    setting <code>dns.adguard.com</code> as the Private DNS domain. This feature
+                    used to be included by the project many years ago, but it needs to be
+                    reimplemented, and it's a low priority feature depending on contributors
+                    stepping up to work on it.</p>
 
-                    <p>Apps and web sites can detect that ad-blocking is being used and can determine
-                    what's being blocked. This can be used as part of fingerprinting users. Using a widely
-                    used service like AdGuard with a standard block list is much less of an issue than a
-                    custom set of subscriptions / rules, but it still stands out compared to the default
-                    of not doing it.</p>
+                    <p>Apps and web sites can detect that ad-blocking is being used and can
+                    determine what's being blocked. This can be used as part of fingerprinting
+                    users. Using a widely used service like AdGuard with a standard block list is
+                    much less of an issue than a custom set of subscriptions / rules, but it still
+                    stands out compared to the default of not doing it.</p>
                 </article>
 
                 <article id="ad-blocking-apps">
@@ -1073,10 +1085,10 @@
                     Android implementations often lack support for background notifications due to
                     only bothering to implement support for it via Google Play services.</p>
 
-                    <p>Most apps that able to run without Google Play services will have working
-                    notifications when they're in the foreground. Unfortunately, many apps don't
-                    implement a service to continue receiving events from their server in the
-                    background. On the stock OS, they rely on receiving events through Google
+                    <p>Most apps that are able to run without Google Play services will have
+                    working notifications when they're in the foreground. Unfortunately, many apps
+                    don't implement a service to continue receiving events from their server in
+                    the background. On the stock OS, they rely on receiving events through Google
                     servers via Firebase Cloud Messaging (FCM) in the background and sometimes
                     even in the foreground, although it doesn't have good reliability/latency.</p>
 
@@ -1118,7 +1130,59 @@
                     place, and the only way for an email app to provide push via FCM would be to
                     give the user's credentials to their own server to act as a middleman.</p>
                 </article>
+
+                <article id="file-transfer">
+                    <h3><a href="#file-transfer">How do I transfer files to another device?</a></h3>
+
+                    <p>Files can be transferred to another device using an external drive, USB
+                    file transfer via MTP / PTP or an app-based mechanism.</p>
+
+                    <p>To use an external drive, plug it into the phone and use the system file
+                    manager to copy files to and from it. The only difference on GrapheneOS is USB
+                    peripherals such as USB flash drives will be ignored unless they're plugged in
+                    at boot or when the device is unlocked. You can configure this in Settings ➔
+                    Security.</p>
+
+                    <p>Transferring files to an attached computer is done with MTP / PTP. After
+                    plugging in the phone to the computer, there will be a notification showing
+                    the current USB mode with charging as the default. Pressing the notification
+                    acts as a shortcut to Settings ➔ Connected devices ➔ USB. You can enable file
+                    transfer (MTP) or PTP with this menu. It will provide read/write access to the
+                    entire profile home directory, i.e. the top-level directory named after the
+                    device in the system file manager. Due to needing to trust the computer with
+                    coarse-grained access, we recommend transferring files with a flash drive or
+                    an app with end-to-end encryption such sending the files to yourself via an
+                    end-to-end encrypted messaging app like Element (Matrix).</p>
+                </article>
             </section>
+
+            <article id="google-services">
+                <h2><a href="#google-services">Will GrapheneOS include support for Google services?</a></h2>
+
+                <p>Like the Android Open Source Project, GrapheneOS doesn't include Google apps
+                and services. They won't ever be bundled with the OS. GrapheneOS includes an
+                experimental sandboxed Play services compatibility layer to make user installed
+                Play services apps able to run as fully sandboxed, unprivileged apps. This is
+                <a href="https://grapheneos.org/usage#sandboxed-play-services">documented as part
+                of the usage guide</a>. Many apps work perfectly without Play services and many
+                others only depend on it for a subset of their functionality. Users can choose to
+                install Play services in specific profile(s) to control which apps can use it.</p>
+
+                <p>AOSP APIs not tied to Google but that are typically provided via Play services
+                will continue to be implemented using open source providers like the Seedvault
+                backup app. Text-to-speech, speech-to-text, geocoding, accessibility services,
+                etc. are examples of other open Android APIs where we need to develop/bundle an
+                implementation based on existing open source projects. GrapheneOS is not going to
+                be implementing these via a Google service compatibility layer because these APIs
+                are in no way inherently tied to Google services.</p>
+
+                <p>Ideally, Google themselves would support installing the official Play services
+                as regular apps rather than taking the monopolistic approach of forcing it to be
+                bundled into the OS in a deeply integrated way with special privileged permissions
+                and capabilities unavailable to other service providers competing with them. Until
+                that happens, if ever, GrapheneOS can continue teaching it to function that way to
+                the extent possible without any special privileges.</p>
+            </article>
 
             <article id="features">
                 <h2><a href="#features">What features does GrapheneOS implement?</a></h2>
@@ -1240,7 +1304,7 @@
                 <p>We strongly recommend using one of the official installation methods. Third
                 party installation guides tend to be out-of-date and often contain misguided
                 advice and errors. If you have trouble with the installation process, ask for help
-                from the <a href="/contact#community">#grapheneos Matrix / IRC channel</a>.</p>
+                from the <a href="/contact#community">GrapheneOS chat room</a>.</p>
 
                 <p>The command-line approach offers a way to install GrapheneOS without trusting
                 our server infrastructure. This requires being on an OS with proper fastboot and
@@ -1256,7 +1320,7 @@
                 <p>Follow the <a href="/build">official GrapheneOS building guide</a>. Third party
                 build guides tend to be out-of-date and often contain misguided advice and errors.
                 If you have trouble with the build process, ask for help from the
-                <a href="/contact#community">#grapheneos Matrix / IRC channel</a>.</p>
+                <a href="/contact#community">GrapheneOS chat room</a>.</p>
             </article>
 
             <article id="donate">
@@ -1291,6 +1355,15 @@
                 <p>GrapheneOS was founded as an open source project in 2014. It has been through
                 multiple renames and wasn't initially known as GrapheneOS. See the
                 <a href="/history/">history page</a> for more details.</p>
+            </article>
+
+            <article id="copperheados">
+                <h2><a href="#copperheados">How is CopperheadOS related to GrapheneOS?</a></h2>
+
+                <p>GrapheneOS was previously known as CopperheadOS. There's a new closed source
+                product using our legacy CopperheadOS branding and code that's not associated with
+                the original project. See <a href="/history/copperheados">our page on the legacy
+                CopperheadOS branding</a> for more details.</p>
             </article>
 
             <article id="company">

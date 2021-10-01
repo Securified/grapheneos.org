@@ -2,9 +2,10 @@
 <html lang="en" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="utf-8"/>
-        <title>Feature overview | GrapheneOS</title>
+        <title>Features overview | GrapheneOS</title>
         <meta name="description" content="Overview of GrapheneOS features differentiating it from the Android Open Source Project (AOSP)."/>
         <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
@@ -19,11 +20,11 @@
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/features"/>
         <link rel="canonical" href="https://grapheneos.org/features"/>
-        <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <link rel="icon" sizes="any" type="image/svg+xml" href="/mask-icon.svg"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
         <link rel="mask-icon" href="/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        <link rel="stylesheet" href="/grapheneos.css"/>
+        <link rel="stylesheet" href="/main.css"/>
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
     </head>
@@ -31,7 +32,7 @@
         <header>
             <nav id="site-menu">
                 <ul>
-                    <li><a href="/">GrapheneOS</a></li>
+                    <li><a href="/"><img src="/mask-icon.svg" alt=""/>GrapheneOS</a></li>
                     <li aria-current="page"><a href="/features">Features</a></li>
                     <li><a href="/install/">Install</a></li>
                     <li><a href="/build">Build</a></li>
@@ -101,19 +102,80 @@
                     <li><a href="https://github.com/GrapheneOS/platform_bionic">Hardened libc</a>
                     providing defenses against the most common classes of vulnerabilities (memory
                     corruption)</li>
-                    <li>Our own <a href="https://github.com/GrapheneOS/hardened_malloc">hardened malloc (memory allocator)</a>
-                    leveraging modern hardware capabilities to provide substantial defenses against
-                    the most common classes of vulnerabilities (heap memory corruption) along with
-                    reducing the lifetime of sensitive data in memory. The
-                    <a href="https://github.com/GrapheneOS/hardened_malloc/blob/master/README.md">hardened_malloc
-                    README</a> has extensive documentation on it. The hardened_malloc project is
-                    portable to other Linux-based operating systems and is being adopted by other
-                    security-focused operating systems like Whonix.  Our allocator also heavily influenced the
-                    design of the <a href="https://www.openwall.com/lists/musl/2020/05/13/1">next-generation
-                    musl malloc implementation</a> which offers substantially better security than musl's
-                    previous malloc while still having minimal memory usage and code size.</li>
+                    <li>
+                        Our own <a href="https://github.com/GrapheneOS/hardened_malloc">hardened
+                        malloc (memory allocator)</a> leveraging modern hardware capabilities
+                        to provide substantial defenses against the most common classes of
+                        vulnerabilities (heap memory corruption) along with reducing the lifetime
+                        of sensitive data in memory. The <a
+                        href="https://github.com/GrapheneOS/hardened_malloc/blob/main/README.md">hardened_malloc
+                        README</a> has extensive documentation on it. The hardened_malloc
+                        project is portable to other Linux-based operating systems and is being
+                        adopted by other security-focused operating systems like Whonix.  Our
+                        allocator also heavily influenced the design of the <a
+                        href="https://www.openwall.com/lists/musl/2020/05/13/1">next-generation
+                        musl malloc implementation</a> which offers substantially better security than
+                        musl's previous malloc while still having minimal memory usage and code size.
+                        <ul>
+                            <li>Fully out-of-line metadata with protection from corruption, ruling
+                            out traditional allocator exploitation</li>
+                            <li>Separate memory regions for metadata, large allocations and each
+                            slab allocation size class with high entropy random bases and no
+                            address space reuse between the different regions</li>
+                            <li>Deterministic detection of any invalid free</li>
+                            <li>Zero-on-free with detection of write-after-free via checking that
+                            memory is still zeroed before handing it out again</li>
+                            <li>Delayed reuse of address space and memory allocations through the
+                            combination of deterministic and randomized quarantines to mitigate
+                            use-after-free vulnerabilities</li>
+                            <li>Fine-grained randomization</li>
+                            <li>Aggressive consistency checks</li>
+                            <li>Memory protected guard regions around allocations larger than 16k
+                            with randomization of guard region sizes for 128k and above</li>
+                            <li>Allocations smaller than 16k have guard regions around each of the
+                            slabs containing allocations (for example, 16 byte allocations are in
+                            4096 byte slabs with 4096 byte guard regions before and after)</li>
+                            <li>Random canaries with a leading zero are added to these smaller
+                            allocations to block C string overflows, absorb small overflows
+                            and detect linear overflows or other heap corruption when the
+                            canary value is checked (primarily on free)</li>
+                        </ul>
+                    </li>
                     <li>Hardened compiler toolchain</li>
-                    <li>Hardened kernel</li>
+                    <li>
+                        Hardened kernel
+                        <ul>
+                            <li>Support for dynamically loaded kernel modules is disabled and
+                            the minimal set of modules for the device model are built into the
+                            kernel to substantially improve the granularity of Control Flow
+                            Integrity (CFI) and reduce attack surface.</li>
+                            <li>4-level page tables are enabled on arm64 to provide a much larger
+                            address space (48-bit instead of 39-bit) with significantly higher
+                            entropy Address Space Layout Randomization (33-bit instead of
+                            24-bit).</li>
+                            <li>Random canaries with a leading zero are added to the kernel heap
+                            (slub) to block C string overflows, absorb small overflows and detect
+                            linear overflows or other heap corruption when the canary value is
+                            checked (on free, copies to/from userspace, etc.).</li>
+                            <li>Memory is wiped (zeroed) as soon as it's released in both the
+                            low-level kernel page allocator and higher level kernel heap allocator
+                            (slub). This substantially reduces the lifetime of sensitive data in
+                            memory, mitigates use-after-free vulnerabilities and makes most
+                            uninitialized data usage vulnerabilities harmless. Without our
+                            changes, memory that's released retains data indefinitely until the
+                            memory is handed out for other uses and gets partially or fully
+                            overwritten by new data.</li>
+                            <li>Kernel stack allocations are zeroed to make most uninitialized
+                            data usage vulnerabilities harmless.</li>
+                            <li>Assorted attack surface reduction through disabling features or
+                            setting up infrastructure to dynamically enable/disable them only as
+                            needed (perf, ptrace).</li>
+                            <li>Assorted upstream hardening features are enabled, including many
+                            which we played a part in developing and landing upstream as part of
+                            our linux-hardened project (which we intend to revive as a more active
+                            project again).</li>
+                        </ul>
+                    </li>
                     <li>Prevention of dynamic native code execution in-memory or via the filesystem
                     for the base OS without going via the package manager, etc.</li>
                     <li>Filesystem access hardening</li>
@@ -125,15 +187,23 @@
                     stripping out unnecessary code, making more features optional and disabling
                     optional features by default (NFC, Bluetooth, etc.), when the screen is
                     locked (connecting new USB peripherals, camera access) and optionally after a
-                    timeout (Bluetooth)</li>
+                    timeout (Bluetooth, Wi-Fi)</li>
+                    <li>Option to disable native debugging (ptrace) to reduce local attack surface
+                    (still enabled by default for compatibility)</li>
                     <li>Low-level improvements to the <a href="/faq#encryption">filesystem-based
                     full disk encryption</a> used on modern Android</li>
                     <li>Support for logging out of user profiles without needing a device manager:
                     makes them inactive so that they can't continue running code while using
                     another profile and purges the disk encryption keys (which are per-profile)
                     from memory and hardware registers</li>
+                    <li>Option to enable automatically rebooting the device when no profile has
+                    been unlocked for the configured time period to put the device fully at rest
+                    again.</li>
                     <li>Indicators for active camera and microphone usage are enabled by default
                     alongside the traditional location indicator</li>
+                    <li>Improved user visibility into persistent firmware security through version
+                    and configuration verification with reporting of inconsistencies and debug
+                    features being enabled.</li>
                     <li>Support longer passwords by default (64 characters) without a device manager</li>
                     <li>Stricter implementation of the optional fingerprint unlock feature permitting
                     only 5 attempts rather than 20 before permanent lockout (our recommendation is
@@ -141,10 +211,13 @@
                     <li>PIN scrambling option</li>
                     <li><a href="/usage#lte-only-mode">LTE-only mode</a> to reduce cellular radio
                     attack surface by disabling enormous amounts of legacy code</li>
-                    <li><a href="/usage#wifi-privacy-associated">Default enabled per-connection MAC randomization</a>
-                    as an improvement over Android's default per-network MAC randomization reusing
-                    the same MAC address until the DHCP lease with that network expires (can still
-                    use the standard implementation or fully disable it)</li>
+                    <li><a href="/usage#wifi-privacy-associated">Per-connection MAC randomization
+                    option (enabled by default)</a> as a more private option than the standard
+                    persistent per-network random MAC.</li>
+                    <li>When the per-connection MAC randomization added by GrapheneOS is being
+                    used, DHCP client state is flushed before reconnecting to a network to avoid
+                    revealing that it's likely the same device as before.</li>
+                    <li>Improved IPv6 privacy addresses to prevent tracking across networks</li>
                     <li>Vanadium: hardened WebView and default browser — the WebView is what most
                     other apps use to handle web content, so you benefit from Vanadium in many apps
                     even if you choose another browser</li>
@@ -167,29 +240,53 @@
                     app</li>
                     <li><a href="/usage#exec-spawning">Secure application spawning system</a> avoiding
                     sharing address space layout and other secrets across applications</li>
-                    <li>Network permission toggle disallowing both direct and indirect network access,
-                    superior to a purely firewall-based implementation only disallowing direct
-                    access to the network without covering inter-process communication (enabled by
-                    default for compatibility)</li>
+                    <li>Network permission toggle for disallowing both direct and indirect access
+                    to any of the available networks. The device-local network (localhost) is also
+                    guarded by this permission, which is important for preventing apps from using
+                    it to communicate between profiles. Unlike a firewall-based implementation,
+                    the Network permission toggle prevents apps from using the network via APIs
+                    provided by the OS or other apps in the same profile as long as they're marked
+                    appropriately.</li>
+                    <li>The standard INTERNET permission used as the basis for the Network
+                    permission toggle is enhanced with a second layer of enforcement and proper
+                    support for granting/revoking it on a per-profile basis.</li>
                     <li>Sensors permission toggle: disallow access to all other sensors not covered by
-                    existing Android permissions (enabled by default for compatibility)</li>
+                    existing Android permissions (Camera, Microphone, Body Sensors, Activity
+                    Recognition) including an accelerometer, gyroscope, compass, barometer,
+                    thermometer and any other sensors present on a given device. To avoid breaking
+                    compatibility with Android apps, the added permission is enabled by
+                    default.</li>
                     <li>Authenticated encryption for network time updates via a first party server to
                     prevent attackers from changing the time and enabling attacks based on bypassing
                     certificate / key expiry, etc.</li>
                     <li>Proper support for disabling network time updates rather than just not using
                     the results</li>
                     <li>Connectivity checks via a first party server with the option to revert to the
-                    standard checks</li>
+                    standard checks (to blend in) or to fully disable them</li>
                     <li>Hardened local build / signing infrastructure</li>
                     <li><a href="/usage#updates">Seamless automatic OS update system</a> that just
                     works and stays out of the way in the background without disrupting device
                     usage, with full support for the standard automatic rollback if the first boot
                     of the updated OS fails</li>
-                    <li>Require unlocking to access sensitive function via quick tiles</li>
+                    <li>Require unlocking to access sensitive functionality via quick tiles</li>
                     <li>Minor changes to default settings to prefer privacy over small conveniences:
                     personalized keyboard suggestions based on gathering input history are disabled by
                     default, sensitive notifications are hidden on the lockscreen by default and
                     passwords are hidden during entry by default</li>
+                    <li><a href="/faq#bundled-apps">Minimal bundled apps and services</a>. Only
+                    essential apps are integrated into the OS. We don't make partnerships with
+                    apps and services to bundle them into the OS. An app may be the best choice
+                    today and poor choice in the future. Our approach will be recommending certain
+                    apps during the initial setup, not hard-wiring them into the OS.</li>
+                    <li>No Google apps and services. These can be used on GrapheneOS but only if
+                    they avoid requiring invasive OS integration. Building privileged support for
+                    Google services into the OS isn't something we're going to be doing, even if
+                    that's partially open source like microG.</li>
+                    <li><a href="/usage#sandboxed-play-services">Compatibility layer for coercing
+                    user installed Google Play services into running as sandboxed apps without any
+                    special privileges.</a></li>
+                    <li>Fixes for multiple serious vulnerabilities not yet fixed upstream due to a
+                    flexible release cycle / process prioritizing security.</li>
                 </ul>
             </section>
 
@@ -255,10 +352,11 @@
                     at a distance. Companies support the project
                     <a href="/faq#company">rather than the project serving the needs of any
                     particular company</a></li>
-                    <li><a href="/faq#privacy-policy">Strong privacy policies</a></li>
-                    <li><a href="/history/">Proven record</a> of the team standing up against
-                    attempts to compromise the integrity of the project and placing it above
-                    personal gain</li>
+                    <li><a href="/faq#privacy-policy">Strong privacy policies</a> across all our
+                    software and services</li>
+                    <li><a href="/history/">Proven track record</a> of the team standing up
+                    against attempts to compromise the integrity of the project and placing it
+                    above personal gain</li>
                 </ul>
             </section>
         </main>

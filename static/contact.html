@@ -5,6 +5,7 @@
         <title>Contact | GrapheneOS</title>
         <meta name="description" content="Contact information for GrapheneOS."/>
         <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
@@ -19,11 +20,11 @@
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/contact"/>
         <link rel="canonical" href="https://grapheneos.org/contact"/>
-        <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <link rel="icon" sizes="any" type="image/svg+xml" href="/mask-icon.svg"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
         <link rel="mask-icon" href="/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        <link rel="stylesheet" href="/grapheneos.css"/>
+        <link rel="stylesheet" href="/main.css"/>
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
     </head>
@@ -31,7 +32,7 @@
         <header>
             <nav id="site-menu">
                 <ul>
-                    <li><a href="/">GrapheneOS</a></li>
+                    <li><a href="/"><img src="/mask-icon.svg" alt=""/>GrapheneOS</a></li>
                     <li><a href="/features">Features</a></li>
                     <li><a href="/install/">Install</a></li>
                     <li><a href="/build">Build</a></li>
@@ -69,35 +70,49 @@
                 <h2><a href="#community">Community</a></h2>
 
                 <p>GrapheneOS has a very active community primarily based around the official chat
-                room. It's the best place to request support, ask questions or get involved in the
-                project. An official offtopic chat room is available for discussion of topics not
-                strictly related to GrapheneOS.</p>
+                rooms on Matrix.</p>
 
-                <p>The official chat room is available via IRC as #grapheneos on chat.freenode.net
-                and via Matrix as #grapheneos:matrix.org. An archive of the channel logs is
-                available <a href="https://freenode.logbot.info/grapheneos">via logbot</a>. There
-                are multiple ways to join the channel:</p>
+                <p>The links below will take you to the Element web client, which uses matrix.org as
+                the homeserver by default. However, you can use the client and homeserver of your
+                choice to join our rooms.</p>
 
-                <ul>
-                    <li>Open <a href="ircs://chat.freenode.net:6697/grapheneos">#grapheneos</a> to join with your IRC client</li>
-                    <li>Open <a href="https://webchat.freenode.net/#grapheneos">#grapheneos webchat</a> to join with your browser</li>
-                    <li>Join the bridged #grapheneos:matrix.org Matrix room with your Matrix client</li>
-                </ul>
+                <table>
+                    <tr>
+                        <td><a href="https://app.element.io/#/room/%23grapheneos:grapheneos.org">#grapheneos:grapheneos.org</a></td>
+                        <td>Best place to request support, ask questions or get involved in the project</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://app.element.io/#/room/%23offtopic:grapheneos.org">#offtopic:grapheneos.org</a></td>
+                        <td>Discuss topics not strictly related to GrapheneOS</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://app.element.io/#/room/%23dev:grapheneos.org">#dev:grapheneos.org</a></td>
+                        <td>Discuss GrapheneOS app and OS development</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://app.element.io/#/room/%23testing:grapheneos.org">#testing:grapheneos.org</a></td>
+                        <td>Provide feedback on Beta channel releases</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://app.element.io/#/room/%23releases:grapheneos.org">#releases:grapheneos.org</a></td>
+                        <td>Release announcements</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://app.element.io/#/room/%23infra:grapheneos.org">#infra:grapheneos.org</a></td>
+                        <td>Infrastructure monitoring and discussion</td>
+                    </tr>
+                </table>
 
-                <p>The official offtopic chat room is available via IRC as #grapheneos-offtopic on
-                chat.freenode.net and via Matrix as #grapheneos:matrix.org. There are multiple
-                ways to join the channel:</p>
-
-                <ul>
-                    <li>Open <a href="ircs://chat.freenode.net:6697/grapheneos-offtopic">#grapheneos-offtopic</a> to join with your IRC client</li>
-                    <li>Open <a href="https://webchat.freenode.net/#grapheneos-offtopic">#grapheneos-offtopic webchat</a> to join with your browser</li>
-                    <li>Join the bridged #grapheneos-offtopic:matrix.org Matrix room with your Matrix client</li>
-                </ul>
+                <p>The official GrapheneOS space groups together all of the official rooms along
+                with members of the community who join the space. Spaces are a new experimental
+                Matrix feature and older clients will see it as an unusable chat room rather than as
+                a community space. You can join the space at
+                <a href="https://app.element.io/#/room/%23community:grapheneos.org">#community:grapheneos.org</a></p>
 
                 <p>The official subreddit is
                 <a href="https://reddit.com/r/GrapheneOS">/r/GrapheneOS</a>. The subreddit is
-                currently primarily used for announcements and you should use the IRC / Matrix
-                channel to seek support or participate in the community.</p>
+                currently primarily used for announcements and you should use the Matrix
+                rooms to seek support or participate in the community.</p>
             </section>
 
             <section id="contacting-the-project">
@@ -108,8 +123,8 @@
                 <p>Please don't contact the GrapheneOS project or developers to request support /
                 device support / features or to report bugs. Use the <a href="#community">community
                 platforms</a> and <a href="#reporting-issues">issue trackers</a> listed below. The
-                developers are active on the IRC / Matrix channel but the broader community can
-                usually answer most questions, and this allows the developers to focus their time and
+                developers are active on the Matrix room but the broader community can usually
+                answer most questions, and this allows the developers to focus their time and
                 energy on the project.</p>
 
                 <p>Email is the preferred way to contact the project. Twitter direct messages are
@@ -151,7 +166,7 @@
                 listed for reference:</p>
 
                 <ul>
-                    <li><a href="https://github.com/GrapheneOS/os_issue_tracker/issues">OS issue tracker</a> for all GrapheneOS repositories that are not standalone projects</li>
+                    <li><a href="https://github.com/GrapheneOS/os-issue-tracker/issues">OS issue tracker</a> for all GrapheneOS repositories that are not standalone projects</li>
                     <li><a href="https://github.com/GrapheneOS/hardened_malloc/issues">hardened_malloc issue tracker</a></li>
                     <li><a href="https://github.com/GrapheneOS/platform_packages_apps_Updater/issues">Update client issue tracker</a></li>
                 </ul>
@@ -174,9 +189,8 @@
                         <li><a href="https://github.com/GrapheneOS/AttestationServer/issues">AttestationServer (attestation.app) issue tracker</a></li>
                         <li><a href="https://github.com/GrapheneOS/grapheneos.org/issues">GrapheneOS site (grapheneos.org) issue tracker</a></li>
                         <li><a href="https://github.com/GrapheneOS/releases.grapheneos.org/issues">Update server (releases.grapheneos.org) issue tracker</a></li>
-                        <li><a href="https://github.com/GrapheneOS/grapheneos.network/issues">Connectivity check server (grapheneos.network) issue tracker</a></li>
+                        <li><a href="https://github.com/GrapheneOS/grapheneos.network/issues">Connectivity check / time server (grapheneos.network) issue tracker</a></li>
                         <li><a href="https://github.com/GrapheneOS/mail.grapheneos.org/issues">Mail server (mail.grapheneos.org) issue tracker</a></li>
-                        <li><a href="https://github.com/GrapheneOS/time.grapheneos.org/issues">HTTPS time server (time.grapheneos.org) issue tracker</a></li>
                     </ul>
                 </section>
             </section>
@@ -205,6 +219,8 @@
                     "https://github.com/GrapheneOS",
                     "https://reddit.com/u/GrapheneOS",
                     "https://www.linkedin.com/company/grapheneos/",
+                    "https://www.facebook.com/GrapheneOS",
+                    "https://www.instagram.com/grapheneos/",
                     "https://en.wikipedia.org/wiki/GrapheneOS",
                     "https://www.wikidata.org/wiki/Q85764357"
                 ],

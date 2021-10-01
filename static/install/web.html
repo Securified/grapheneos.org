@@ -5,6 +5,7 @@
         <title>Web installer | Install | GrapheneOS</title>
         <meta name="description" content="Web-based installer for GrapheneOS, a security and privacy focused mobile OS with Android app compatibility."/>
         <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
@@ -19,22 +20,22 @@
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/install/web"/>
         <link rel="canonical" href="https://grapheneos.org/install/web"/>
-        <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <link rel="icon" sizes="any" type="image/svg+xml" href="/mask-icon.svg"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
         <link rel="mask-icon" href="/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        <link rel="stylesheet" href="/grapheneos.css"/>
+        <link rel="stylesheet" href="/main.css"/>
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
         <script type="module" src="/js/redirect.js"></script>
-        <script type="module" src="/js/fastboot/dist/fastboot.min.mjs?1.0.8"></script>
+        <script type="module" src="/js/fastboot/v1.0.9/fastboot.min.mjs"></script>
         <script type="module" src="/js/web-install.js"></script>
     </head>
     <body>
         <header>
             <nav id="site-menu">
                 <ul>
-                    <li><a href="/">GrapheneOS</a></li>
+                    <li><a href="/"><img src="/mask-icon.svg" alt=""/>GrapheneOS</a></li>
                     <li><a href="/features">Features</a></li>
                     <li><a href="/install/">Install</a></li>
                     <li><a href="/build">Build</a></li>
@@ -52,11 +53,11 @@
         <main id="web-install">
             <h1><a href="#web-install">Web installer</a></h1>
 
-            <p>This is a WebUSB-based installer for GrapheneOS and is the recommended approach for
-            most users. The <a href="/install/cli">command-line installation guide</a> is the more
-            traditional approach to installing GrapheneOS.</p>
+            <p>This is the WebUSB-based installer for GrapheneOS and is the recommended approach
+            for most users. The <a href="/install/cli">command-line installation guide</a> is the
+            more traditional approach to installing GrapheneOS.</p>
 
-            <p>If you have trouble following this guide, ask for help on the
+            <p>If you have trouble with the installation process, ask for help on the
             <a href="/contact#community">official GrapheneOS chat channel</a>. There are almost
             always people around willing to help with it. Before asking for help, make an attempt
             to follow the guide on your own and then ask for help with anything you get stuck
@@ -113,7 +114,7 @@
                     <li>Windows 10</li>
                     <li>macOS Big Sur</li>
                     <li>Arch Linux</li>
-                    <li>Debian 10</li>
+                    <li>Debian 10 (buster)</li>
                     <li>Ubuntu 20.04 LTS</li>
                     <li>Ubuntu 20.10</li>
                     <li>ChromeOS</li>
@@ -127,6 +128,7 @@
 
                 <ul>
                     <li>Chromium (outside Ubuntu, since they ship a broken Snap package without working WebUSB)</li>
+                    <li>Bromite</li>
                     <li>Vanadium (GrapheneOS)</li>
                     <li>Google Chrome</li>
                     <li>Microsoft Edge</li>
@@ -186,12 +188,12 @@
                 <p>You need to boot your phone into the bootloader interface. To do this, you need
                 to hold the volume down button while the phone boots.</p>
 
-                <p>The easiest way to do this is to reboot the phone and begin holding volume down
-                until it boots up into the bootloader interface.</p>
+                <p>The easiest approach is to reboot the phone and begin holding the volume down
+                button until it boots up into the bootloader interface.</p>
 
-                <p>Alternatively, turn off the phone, and then boot it up while holding volume
-                down during the boot process. You can either boot it with the power button or by
-                plugging it in as required in the next section.</p>
+                <p>Alternatively, turn off the phone, then boot it up while holding the volume
+                down button during the boot process. You can either boot it with the power button
+                or by plugging it in as required in the next section.</p>
             </section>
 
             <section id="connecting-phone">
@@ -339,9 +341,10 @@
                 <section id="replacing-grapheneos-with-the-stock-os">
                     <h3><a href="#replacing-grapheneos-with-the-stock-os">Replacing GrapheneOS with the stock OS</a></h3>
 
-                    <p>Installation of the stock OS via the stock factory images is the same process
-                    described above. However, before locking, there's an additional step to fully revert
-                    the device to a clean factory state.</p>
+                    <p>Installation of the stock OS via the stock factory images is similar to the
+                    process described above but with Google's web flashing tool. However, before
+                    locking, there's an additional step to fully revert the device to a clean
+                    factory state.</p>
 
                     <p>The GrapheneOS factory images flash a non-stock Android Verified Boot key which
                     needs to be erased to fully revert back to a stock device state. After flashing the

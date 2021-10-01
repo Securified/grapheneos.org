@@ -5,6 +5,7 @@
         <title>Usage guide | GrapheneOS</title>
         <meta name="description" content="Usage instructions for GrapheneOS, a security and privacy focused mobile OS with Android app compatibility."/>
         <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
@@ -19,11 +20,11 @@
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/usage"/>
         <link rel="canonical" href="https://grapheneos.org/usage"/>
-        <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <link rel="icon" sizes="any" type="image/svg+xml" href="/mask-icon.svg"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
         <link rel="mask-icon" href="/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        <link rel="stylesheet" href="/grapheneos.css"/>
+        <link rel="stylesheet" href="/main.css"/>
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
         <script type="module" src="/js/redirect.js"></script>
@@ -32,7 +33,7 @@
         <header>
             <nav id="site-menu">
                 <ul>
-                    <li><a href="/">GrapheneOS</a></li>
+                    <li><a href="/"><img src="/mask-icon.svg" alt=""/>GrapheneOS</a></li>
                     <li><a href="/features">Features</a></li>
                     <li><a href="/install/">Install</a></li>
                     <li><a href="/build">Build</a></li>
@@ -55,6 +56,15 @@
             <nav id="table-of-contents">
                 <h2><a href="#table-of-contents">Table of contents</a></h2>
                 <ul>
+                    <li>
+                        <a href="#system-navigation">System navigation</a>
+                        <ul>
+                            <li><a href="#gesture-navigation">Gesture navigation</a></li>
+                            <li><a href="#2-button-navigation">2-button navigation</a></li>
+                            <li><a href="#3-button-navigation">3-button navigation</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#accessibility">Accessibility</a></li>
                     <li><a href="#auditor">Auditor</a></li>
                     <li>
                         <a href="#updates">Updates</a>
@@ -77,8 +87,161 @@
                         </ul>
                     </li>
                     <li><a href="#lte-only-mode">LTE-only mode</a></li>
+                    <li>
+                        <a href="#sandboxed-play-services">Sandboxed Play services</a>
+                        <ul>
+                            <li><a href="#sandboxed-play-services-limitations">Limitations</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#banking-apps">Banking apps</a></li>
                 </ul>
             </nav>
+
+            <section id="system-navigation">
+                <h2><a href="#system-navigation">System navigation</a></h2>
+
+                <p>By default, GrapheneOS uses gesture-based navigation. We recommend reading our
+                guide on gesture navigation and giving it a chance even if you think you won't
+                like it. Our experience is that when armed with the appropriate knowledge, the
+                vast majority of users prefer the newer gesture navigation approach.</p>
+
+                <p>The system navigation mode can be configured in Settings → System → Gestures →
+                System navigation. The same menu is also available in Settings → Accessibility →
+                System navigation.</p>
+
+                <section id="gesture-navigation">
+                    <h3><a href="#gesture-navigation">Gesture navigation</a></h3>
+
+                    <p>The bottom of the screen is a reserved touch zone for system navigation. A
+                    line is displayed in the center to show that the navigation bar is present
+                    across the entire bottom of the screen. In most apps, this area will display
+                    padding. Modern apps are able to tell the OS that they can handle not having
+                    the padding to display app content there while still not being able to receive
+                    touches from it. Open up the Settings app for an example.</p>
+
+                    <p>Swiping up from the navigation bar while removing your finger from the
+                    screen is the <strong>Home</strong> gesture.</p>
+
+                    <p>Swiping up from the navigation bar while holding your finger on the screen
+                    before releasing is the <strong>Recent Apps</strong> gesture. The most
+                    recently opened activity is always on the furthest right. Each step left goes
+                    one step back through the history of recently opened apps. Opening an app with
+                    the recent apps activity will place it on the furthest right in the recent
+                    apps order just like a new app being opened.</p>
+
+                    <p>The recent apps activity has a screenshot button as an alternative to
+                    holding power and volume down while using an app.</p>
+
+                    <p>Rather than opening the recent apps activity, you can swipe left on the
+                    navigation bar for the <strong>Previous</strong> app and swipe right for the
+                    <strong>Next</strong> app. This will not change the recent apps order. This is
+                    usually the best way to navigate through recent apps.</p>
+
+                    <p>Swiping from either the left or the right of the screen within the app (not
+                    the navigation bar) is the <strong>Back</strong> gesture. Apps are supposed to
+                    avoid implementing conflicting gestures, but have the option to override this
+                    gesture if they truly need to get rid of it. However, many apps without active
+                    development of their UI design still haven't addressed this despite gestures
+                    being the default for 2 years on Google Android. You can avoid triggering the
+                    back gesture in one of 2 easy ways: avoid swiping from right near the edge or
+                    hold your finger on the side of the screen for a moment before swiping. The
+                    more advanced option is using a diagonal swipe pointing sharply to the bottom
+                    of the screen since this will bypass the back gesture but will still trigger
+                    most app gestures. The advanced option is the most convenient approach once
+                    you get used to doing it.</p>
+
+                    <p>The launcher uses a swipe up gesture starting anywhere on the screen to
+                    open the app drawer from the home screen. You need to start that gesture above
+                    the system navigation bar since any gesture starting on the navigation bar is
+                    handled by the OS as a system navigation gesture.</p>
+                </section>
+
+                <section id="2-button-navigation">
+                    <h3><a href="#2-button-navigation">2-button navigation</a></h3>
+
+                    <p>2-button navigation is a legacy mode not supported anymore by Google
+                    Android on the Pixel 4 and later. It will likely be removed in a future
+                    release of GrapheneOS. You should use <a href="#3-button-navigation">3-button
+                    navigation</a> if you want the traditional button-based navigation.</p>
+
+                    <p>A large row across the bottom of the screen is reserved for navigation
+                    buttons. The <strong>Back</strong> button is on the left and the
+                    <strong>Home</strong> button is in the center.</p>
+
+                    <p>Swiping up from the navigation bar while removing your finger from the
+                    screen is the <strong>Recent apps</strong> gesture. The most recently opened
+                    activity is always on the furthest right. Each step left goes one step back
+                    through the history of recently opened apps. Opening an app with the recent
+                    apps activity will place it on the furthest right in the recent apps
+                    order just like a new app being opened.</p>
+
+                    <p>2-button navigation provides the recent apps activity with the launcher. It
+                    shows the recent apps above the bottom row of the home screen and the search
+                    integration not used in GrapheneOS. The usual launcher features work including
+                    swiping up anywhere on the screen to open the app drawer. Due to the launcher
+                    integration, the screenshot button available in the other modes isn't present.
+                    Instead, a screenshot button is added to the global action menu accessed by
+                    holding the power button.</p>
+                </section>
+
+                <section id="3-button-navigation">
+                    <h3><a href="#3-button-navigation">3-button navigation</a></h3>
+
+                    <p>3-button navigation is Android's oldest touchscreen-based navigation
+                    system. It will remain supported for the foreseeable future to provide
+                    accessibility for users unable to easily use the gestures. It's older than
+                    2-button navigation but isn't considered a legacy feature.</p>
+
+                    <p>A large row across the bottom of the screen is reserved for navigation
+                    buttons. The <strong>Back</strong> button is on the left, the
+                    <strong>Home</strong> button is in the center and the <strong>Recent
+                    Apps</strong> button is on the right.</p>
+
+                    <p>In the recent apps activity, the most recently opened activity is always on
+                    the furthest right. Each step left goes one step back through the history of
+                    recently opened apps. Opening an app with the recent apps activity will place
+                    it on the furthest right in the recent apps order just like a new app being
+                    opened.</p>
+
+                    <p>The recent apps activity has a screenshot button as an alternative to
+                    holding power and volume down while using an app.</p>
+                </section>
+            </section>
+
+            <section id="accessibility">
+                <h2><a href="#accessibility">Accessibility</a></h2>
+
+                <p>GrapheneOS includes all of the accessibility features from the Android Open
+                Source Project and strives to fill in the gaps from not including Google apps and
+                services. We include our own fork of the open source TalkBack accessibility
+                service along with a Monochromacy option for the standard color correction
+                menu.</p>
+
+                <p>GrapheneOS does not yet include a text-to-speech (TTS) service in the base OS
+                due to limitations of the available options. Including one is planned in the
+                future when a suitable option is available. RHVoice and eSpeak NG are both open
+                source and are the most common choices by GrapheneOS users. Both of these mostly
+                work fine but have licensing issues and don't support Direct Boot so they cannot
+                be used before the initial unlock of the device. Installing and setting up either
+                one of these or another TTS app will get TalkBack working. TalkBack itself
+                supports Direct Boot and works before the first unlock but it needs to have a TTS
+                app supporting it in order to do more than playing the activation sound before the
+                first unlock. After installing a TTS service, you need to select it in the OS
+                configuration to accept activating it. The OS will display one of them as already
+                selected, but it won't simply work from being installed as that wouldn't be safe.
+                This is the same as the stock OS but it comes with one set up already.</p>
+
+                <p>GrapheneOS disables showing the characters as passwords are typed by default.
+                You can enable this in Settings ➔ Privacy.</p>
+
+                <p>Third party accessibility services can be installed and activated. This
+                includes the ones made by Google. Most of these will work but some may have a hard
+                dependency on functionality from Google Play services for some of their
+                functionality or to run at all. Accessibility services are very powerful and we
+                strongly recommend against using third party implementations if you can get by
+                well without them. We plan to add safeguards in this area while still keeping them
+                working without problematic barriers.</p>
+            </section>
 
             <section id="auditor">
                 <h2><a href="#auditor">Auditor</a></h2>
@@ -329,36 +492,38 @@
             <section id="camera">
                 <h2><a href="#camera">Camera</a></h2>
 
+                <p>GrapheneOS itself has the same camera capabilities and quality as the stock OS.
+                It will match the stock OS when comparing the same app on each OS.</p>
+
                 <p>The Camera app included in GrapheneOS is very basic and can't take full advantage
                 of the hardware. It doesn't offer much in the way of configuration. In the long term,
                 it's going to be replaced. In the short term, there are other apps available providing
                 more capabilities and better support for taking advantage of the hardware.</p>
 
-                <p>The Pixel 3 (but not the Pixel 3a) and Pixel 4 (but not the Pixel 4a) have a
-                Pixel Visual Core / Pixel Neural Core providing a hardware-based implementation of
-                HDR+. HDR+ captures many images and intelligently merges data across them, taking
-                into account motion, etc. It substantially improves the quality of images,
-                especially in low light. This is used transparently for third party apps that are
-                compatible with it, and there isn't an explicit switch to turn it on or off for
-                most of them. An example of a compatible app is Open Camera's default
-                configuration, or Open Camera with the Camera 2 API and other settings (including
-                the the various knobs / toggles outside of the settings menu) left alone. In
-                general, HDR+ will work transparently in most apps as long as they keep things
-                simple and use a good minimalist approach to taking pictures. It should work
-                transparently in most messaging apps, etc. with internal support for taking
-                pictures.</p>
+                <p>Open Camera is somewhat more advanced and much more configurable. You should
+                make sure to configure it to use the Camera2 API since it uses the legacy camera
+                APIs by default for broader compatibility with devices. It isn't currently able to
+                make use of special purpose cameras and doesn't have any advanced image capturing
+                or processing technology. It has a traditional software-based HDR mode which
+                captures 3 images and merges them in a way that isn't at all intelligent and
+                causes a lot of blur and distortion. You probably don't want to use this unless
+                you have a way to mount the phone in a stable position and aren't taking a picture
+                of anything that's not almost entirely still.</p>
 
-                <p>In addition to supporting HDR+ via the Pixel Visual Core, or similar features on
-                other devices with the same constraints, Open Camera offers advanced configuration and
-                various advanced features. Make sure to enable the Camera 2 API in the settings, which
-                should be the default, but the app doesn't have a great user interface / user
-                experience. You probably don't want to use the traditional HDR feature in the app.
-                That's not HDR+, but rather captures 3 images and merges them in a way that isn't at
-                all intelligent and causes a lot of blur and distortion. The HDR+ implementation can
-                actually benefit from the camera not being completely steady as it's smart enough to
-                match up the picture and it provides it with more data vs. a traditional HDR
-                implementation where it essentially doesn't work without a tripod and is not really at
-                all useful on a phone unless you actually have that for it.</p>
+                <p>Google Camera can be used with the <a href="#sandboxed-play-services">sandboxed
+                Play services compatibility layer</a> and can take full advantage of the available
+                cameras and image processing hardware as it can on the stock OS. Other camera apps
+                could provide the same image quality and features but there aren't any comparable
+                alternatives in practice. HDR+ is enabled by default and is a much more advanced
+                replacement for HDR taking bursts of pictures and intelligently combining those
+                which is what makes the image quality so much higher, especially for low light.
+                The Night Sight feature is essentially the same thing, but with the light of the
+                picture unnaturally increased through combining the data.</p>
+
+                <p>Since there isn't a project making a serious, high quality open source camera
+                app able to even compete with Google Camera without HDR+ and the fancy features,
+                GrapheneOS is funding the creation of a new app as a replacement for the AOSP
+                Camera app.</p>
             </section>
 
             <section id="exec-spawning">
@@ -415,16 +580,18 @@
                 application when it violates the rules.</p>
 
                 <p>If you run into an application aborting, try to come up with a process for
-                reproducing the issue and then capture a bug report via the 'Take bug report' feature
-                in Developer options. Report an issue to the GrapheneOS OS issue tracker and email the
-                bug report capture zip to contact@grapheneos.org with the issue tracker number in the
-                subject like "Bug report capture for issue #104". The bug report capture includes
-                plain text 'tombstones' with logs, tracebacks, address space layout, register content
-                and a tiny bit of context from memory from areas that are interesting for debugging.
-                This may contain some sensitive data. Feel free to provide only the tombstone for the
-                relevant crash and filter out information you don't want to send. However, it will be
-                more difficult to debug if you provide less of the information. If the app doesn't
-                work with sensitive information, just send the whole tombstone.</p>
+                reproducing the issue and then capture a bug report via the 'Take bug report'
+                feature in Developer options. Report an issue to <a
+                href="https://github.com/GrapheneOS/os-issue-tracker/issues">the GrapheneOS OS
+                issue tracker</a> and email the bug report capture zip to contact@grapheneos.org
+                with the issue tracker number in the subject like "Bug report capture for issue
+                #104". The bug report capture includes plain text 'tombstones' with logs,
+                tracebacks, address space layout, register content and a tiny bit of context
+                from memory from areas that are interesting for debugging.  This may contain
+                some sensitive data. Feel free to provide only the tombstone for the relevant
+                crash and filter out information you don't want to send. However, it will be
+                more difficult to debug if you provide less of the information. If the app
+                doesn't work with sensitive information, just send the whole tombstone.</p>
             </section>
 
             <section id="wifi-privacy">
@@ -470,9 +637,6 @@
                 <section id="wifi-privacy-associated">
                     <h3><a href="#wifi-privacy-associated">Associated with an Access Point (AP)</a></h3>
 
-                    <p>The DHCP client uses the anonymity profile rather than sending a hostname so it
-                    doesn't compromise the privacy offered by MAC randomization.</p>
-
                     <p>Associated MAC randomization is performed by default. This can be controlled
                     per-network with Settings ➔ Network &amp; Internet ➔ Wi-Fi ➔ &lt;network&gt; ➔
                     Advanced  ➔ Privacy.</p>
@@ -482,6 +646,12 @@
                     device MAC". In GrapheneOS, the default is generating a new random MAC address when
                     connecting to a network. It has 3 options available: "Use fully randomized MAC
                     (default)", "Use per-network randomized MAC" and "Use device MAC".</p>
+
+                    <p>The DHCP client uses the anonymity profile rather than sending a hostname
+                    so it doesn't compromise the privacy offered by MAC randomization. When the
+                    per-connection MAC randomization added by GrapheneOS is being used, DHCP
+                    client state is flushed before reconnecting to a network to avoid revealing
+                    that it's likely the same device as before.</p>
 
                     <p>GrapheneOS also disables support for stable link-local IPv6 addresses, since these
                     have the potential to be used as identifiers. It's more sensible to use typical
@@ -510,6 +680,135 @@
                 LTE does provide basic network authentication / encryption, but it's for the network
                 itself. The intention of the LTE-only feature is only hardening against remote
                 exploitation by disabling an enormous amount of legacy code.</p>
+            </section>
+
+            <section id="sandboxed-play-services">
+                <h2><a href="#sandboxed-play-services">Sandboxed Play services</a></h2>
+
+                <p>GrapheneOS has support for installing the official releases of
+                com.android.vending (Google Play Store), com.google.android.gms (Google Play
+                services), com.google.android.gsf (Google Services Framework) as regular sandboxed
+                apps in a specific profile. These receive no special privileges and the OS itself
+                doesn't use them for anything. They run as unprivileged, sandboxed apps like any
+                others. GrapheneOS simply provides fallback code teaching them how to run without
+                any of the special privileged permissions and SELinux policy they depend on
+                having. You can choose which apps will use them by using a dedicated user profile
+                since apps can't share data or communicate across users. A work profile also
+                works, although without as much isolation. Even within the same profile, apps not
+                explicitly choosing to use Google services won't use them because the OS doesn't
+                integrate support for it or use it as the backend for APIs in the OS like the
+                stock OS.</p>
+
+                <p>The core functionality and APIs are almost entirely supported already since
+                GrapheneOS largely only has to coerce these apps into continuing to run without
+                being able to use any of the usual invasive OS integration. A compatibility layer
+                is also provided to support dynamically downloaded/loaded modules (dynamite
+                modules).</p>
+
+                <p>Install com.google.android.gsf, then com.google.android.gms and finally use a
+                split APK installer to install all 5 of the APKs for com.android.vending together.
+                Make sure to install all 3 in the correct order and don't skip installing the Play
+                Store since it provides services used by apps depending on Play. You can obtain a
+                split APK installer app from either Aurora Store, F-Droid or the developers of the
+                app via their GitHub releases, etc.</p>
+
+                <p>In the future, we'll have a client app for our repository so you'll be able to
+                install and update the official Play services apps through that app and you won't
+                need to deal with split APK installation manually.</p>
+
+                <ul>
+                    <li><a href="https://apps.grapheneos.org/packages/com.google.android.gsf/">com.google.android.gsf</a></li>
+                    <li><a href="https://apps.grapheneos.org/packages/com.google.android.gms/">com.google.android.gms</a></li>
+                    <li><a href="https://apps.grapheneos.org/packages/com.android.vending/">com.android.vending</a></li>
+                </ul>
+
+                <p>You should give a battery optimization exception to Google Play services for
+                features like push notifications to work properly in the background. It isn't
+                needed for the other 2 apps.</p>
+
+                <p>After installing the apps, you should open the Play Store and press sign in to
+                trigger initialization. Signing into an account is optional and it will work fine
+                without it, but you do need to get it initialized and this is currently the best
+                way to mimic the initialization done by the stock OS setup wizard.</p>
+
+                <p>You can obtain updates to these apps from our repository which will be easy
+                once we have a client app. The Play Store app can also be used to update Google
+                Play services. Updates to the Google Services Framework (com.google.android.gsf)
+                app are normally only distributed through OS updates so you need to get those from
+                our repository. The Play Store app isn't able to update itself through the
+                compatibility layer yet but it may be supported in the future.</p>
+
+                <section id="sandboxed-play-services-limitations">
+                    <h3><a href="#sandboxed-play-services-limitations">Limitations</a></h3>
+
+                    <p>Functionality depending on privileged access such as special access to
+                    hardware isn't available. We would need to implement compatibility layers
+                    teaching it how to function as a regular app. This currently isn't within the
+                    scope of the project beyond the existing support for dynamite modules and
+                    partially implemented support for Play Store app installation/updates. The
+                    official Android Auto interface is a good example of functionality heavily
+                    depending on having highly invasive privileged access far beyond what would be
+                    realistic to get working with an expanded compatibility layer.</p>
+
+                    <p>The Play Store app is designed to use privileged permissions for unattended
+                    app installation, updates and removal which isn't possible on GrapheneOS since
+                    it's not a privileged app. GrapheneOS provides a dedicated compatibility layer
+                    for Play Store app installation teaching it to use the standard unprivileged
+                    approach. It prompts the user to permit it as an app source and then prompts
+                    for each app install/update. The Play Store currently doesn't get the result
+                    for the install succeeding or failing so it will think the installation is
+                    still in progress. You can work around this by force stopping the Play Store
+                    after installing an app and then opening it again to install other apps.</p>
+
+                    <p>Play Store feature delivery isn't currently supported, but this isn't
+                    broadly used by current generation apps aside from large games.</p>
+
+                    <p>Since there's no OS integration beyond fallback code to make it function
+                    without any special privileges, there isn't a way to launch the Play services
+                    settings activity. We'll need to make a tiny app providing a way to launch
+                    it.</p>
+                </section>
+            </section>
+
+            <section id="banking-apps">
+                <h2><a href="#banking-apps">Banking apps</a></h2>
+
+                <p>Banking apps are a particularly problematic class of apps for compatibility
+                with alternate operating systems. Some of these work fine with any GrapheneOS
+                configuration but most of them have extensive dependencies on Play services. For
+                many of these apps, it's enough to set up the GrapheneOS sandboxed Play services
+                feature in the same profile. Unfortunately, there are further complications not
+                generally encountered with non-financial apps.</p>
+
+                <p>Many of these apps have their own crude anti-tampering mechanisms trying to
+                prevent inspecting or modifying the app in a weak attempt to hide their code and
+                API from security researchers. GrapheneOS allows users to disable native code
+                debugging via a toggle in Settings ➔ Security to improve the app sandbox and this
+                can interfere with apps debugging their own code to add a barrier to analyzing the
+                app. You should try enabling this again if you've disabled it and are encountering
+                compatibility issues with these kinds of apps.</p>
+
+                <p>Banking apps are increasingly using Google's SafetyNet attestation service to
+                check the integrity and certification status of the operating system. GrapheneOS
+                passes the <code>basicIntegrity</code> check but isn't certified by Google so it
+                fails the <code>ctsProfileMatch</code> check. Most apps currently only enforce
+                weak software-based attestation which can be bypassed by spoofing what it checks.
+                GrapheneOS doesn't attempt to bypass the checks since it would be very fragile and
+                would repeatedly break as the checks are improved. Devices launched with Android 8
+                or later have hardware attestation support which cannot be bypassed without leaked
+                keys or serious vulnerabilities so the era of being able to bypass these checks by
+                spoofing results is coming to an end regardless.</p>
+
+                <p>The hardware attestation feature is part of the Android Open Source Project and
+                is fully supported by GrapheneOS. SafetyNet attestation chooses to use it to
+                enforce using Google certified operating systems. However, app developers can use
+                it directly and permit other properly signed operating systems upholding the
+                security model. GrapheneOS has a
+                <a href="https://grapheneos.org/articles/attestation-compatibility-guide">a
+                detailed guide</a> for app developers on how to support GrapheneOS with the
+                hardware attestation API. Direct use of the hardware attestation API provides much
+                higher assurance than using SafetyNet so these apps have nothing to lose by using a
+                more meaningful API and supporting a more secure OS.</p>
             </section>
         </main>
         <footer>

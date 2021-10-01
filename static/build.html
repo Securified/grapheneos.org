@@ -5,6 +5,7 @@
         <title>Build | GrapheneOS</title>
         <meta name="description" content="Building instructions for GrapheneOS, a security and privacy focused mobile OS with Android app compatibility."/>
         <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
@@ -19,20 +20,19 @@
         <meta property="og:site_name" content="GrapheneOS"/>
         <meta property="og:url" content="https://grapheneos.org/build"/>
         <link rel="canonical" href="https://grapheneos.org/build"/>
-        <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <link rel="icon" sizes="any" type="image/svg+xml" href="/mask-icon.svg"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
         <link rel="mask-icon" href="/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        <link rel="stylesheet" href="/grapheneos.css"/>
+        <link rel="stylesheet" href="/main.css"/>
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
-        <script type="module" src="/js/redirect.js"></script>
     </head>
     <body>
         <header>
             <nav id="site-menu">
                 <ul>
-                    <li><a href="/">GrapheneOS</a></li>
+                    <li><a href="/"><img src="/mask-icon.svg" alt=""/>GrapheneOS</a></li>
                     <li><a href="/features">Features</a></li>
                     <li><a href="/install/">Install</a></li>
                     <li aria-current="page"><a href="/build">Build</a></li>
@@ -136,25 +136,27 @@
                     <p>Smartphone targets:</p>
 
                     <ul>
-                        <li>aosp_crosshatch (Pixel 3 XL)</li>
-                        <li>aosp_blueline (Pixel 3)</li>
-                        <li>aosp_bonito (Pixel 3a XL)</li>
-                        <li>aosp_sargo (Pixel 3a)</li>
-                        <li>aosp_coral (Pixel 4 XL)</li>
-                        <li>aosp_flame (Pixel 4)</li>
-                        <li>aosp_sunfish (Pixel 4a)</li>
-                        <li>aosp_bramble (Pixel 4a (5G))</li>
-                        <li>aosp_redfin (Pixel 5)</li>
+                        <li>barbet (Pixel 5a)</li>
+                        <li>redfin (Pixel 5)</li>
+                        <li>bramble (Pixel 4a (5G))</li>
+                        <li>sunfish (Pixel 4a)</li>
+                        <li>coral (Pixel 4 XL)</li>
+                        <li>flame (Pixel 4)</li>
+                        <li>bonito (Pixel 3a XL)</li>
+                        <li>sargo (Pixel 3a)</li>
+                        <li>crosshatch (Pixel 3 XL)</li>
+                        <li>blueline (Pixel 3)</li>
                     </ul>
 
-                    <p>These are all fully supported production-ready targets supporting all the baseline
-                    security features and receiving full monthly security updates covering all firmware,
-                    kernel drivers, driver libraries / services and other device-specific code. A fully
-                    signed user build for these devices is a proper GrapheneOS release. Newer generation
-                    devices have stronger hardware / firmware security and hardware-based OS security
-                    features and are better development devices for that reason. It's not possible to work
-                    on everything via past generation devices. The best development devices are the Pixel
-                    3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL and Pixel 4a.</p>
+                    <p>These are all fully supported production-ready targets supporting all the
+                    baseline security features and receiving full monthly security updates
+                    covering all firmware, kernel drivers, driver libraries / services and other
+                    device-specific code. A fully signed user build for these devices is a proper
+                    GrapheneOS release. Newer generation devices have stronger hardware / firmware
+                    security and hardware-based OS security features and are better development
+                    devices for that reason. It's not possible to work on everything via past
+                    generation devices. The best development devices are the Pixel 5 and Pixel 4a
+                    (5G).</p>
 
                     <p>Generic targets:</p>
 
@@ -277,6 +279,7 @@
                     <ul>
                         <li>OpenJDK (for the jar command)</li>
                         <li>protobuf library for Python 3</li>
+                        <li>jq</li>
                     </ul>
 
                     <p>Additional Vanadium (Chromium) build dependencies not provided by the source tree:</p>
@@ -303,11 +306,17 @@
                     <section id="development-branch">
                         <h4><a href="#development-branch">Development branch</a></h4>
 
-                        <p>The <code>11</code> branch is the only active development branch for GrapheneOS
-                        development. Older branches are no longer maintained. It is currently used for all
-                        officially supported devices and should be used for the basis of ports to other
-                        devices. Occasionally, some devices may be supported through device support branches
-                        to avoid impacting other devices with changes needed to support them.</p>
+                        <p>The <code>11</code> branch is the active developed branch of
+                        GrapheneOS. It follows along with the latest stable releases of the
+                        Android Open Source Project which currently means the latest monthly
+                        release of the <code>android11-qpr3-release</code> (Android 11 Quarterly
+                        Platform Release 3) branch. The <code>11</code> branch of GrapheneOS
+                        should be used for everything other than the Pixel 5a including porting to
+                        other devices.</p>
+
+                        <p>The temporary <code>11-barbet</code> branch is used for Pixel 5a
+                        (barbet) support and will go away after barbet support is provided by the
+                        mainline AOSP stable releases, likely with Android 12.</p>
 
                         <pre>mkdir grapheneos-11
 cd grapheneos-11
@@ -348,7 +357,7 @@ cd ../..</pre>
                         script to verify tag signatures across all the repositories, since they simply point
                         to the same commits with the same hashes.</p>
 
-                        <p>Note that the repo command itself takes care of updating itself and uses gpg to
+                        <p>Note that the repo command itself takes care of updating itself and uses GPG to
                         verify by default.</p>
                     </section>
                 </section>
@@ -370,7 +379,7 @@ cd ../..</pre>
 
                     <p>The kernel needs to be built in advance, since it uses a separate build system.</p>
 
-                    <p>Prebuilts are provided for the all the officially supported devices, so this step
+                    <p>Prebuilts are provided for all the officially supported devices, so this step
                     is optional.</p>
 
                     <p>List of kernels corresponding to officially supported devices:</p>
@@ -393,6 +402,7 @@ cd ../..</pre>
                                 <li>Pixel 5: redfin</li>
                             </ul>
                         </li>
+                        <li>Pixel 5a: barbet</li>
                     </ul>
 
                     <p>As part of the hardening in GrapheneOS, it uses fully monolithic kernel builds with
@@ -409,12 +419,12 @@ cd ../..</pre>
                     running the submodule commands for other devices as they will simply not do
                     anything.</p>
 
-                    <p>For example, to build the kernel for blueline:</p>
+                    <p>For example, to build the kernel for redfin:</p>
 
-                    <pre>cd kernel/google/crosshatch
+                    <pre>cd kernel/google/redbull
 git submodule sync
 git submodule update --init --recursive
-./build.sh blueline</pre>
+./build.sh redfin</pre>
                 </section>
 
                 <section id="setting-up-the-os-build-environment">
@@ -427,9 +437,9 @@ git submodule update --init --recursive
 
                     <pre>source script/envsetup.sh</pre>
 
-                    <p>Select the desired build target (<code>aosp_sunfish</code> is the Pixel 4a):</p>
+                    <p>Select the desired build target (<code>redfin</code> is the Pixel 5):</p>
 
-                    <pre>choosecombo release aosp_sunfish user</pre>
+                    <pre>choosecombo release redfin user</pre>
 
                     <p>For a development build, you may want to replace <code>user</code> with
                     <code>userdebug</code> in order to have better debugging support. Production builds
@@ -569,11 +579,11 @@ mv vendor/android-prepare-vendor/DEVICE/BUILD_ID/vendor/google_devices/* vendor/
                     <p>The encryption passphrase for all the keys generated for a device needs to
                     match for compatibility with the GrapheneOS scripts.</p>
 
-                    <p>To generate keys for sunfish (you should use unique keys per device
+                    <p>To generate keys for redfin (you should use unique keys per device
                     variant):</p>
 
-                    <pre>mkdir -p keys/sunfish
-cd keys/sunfish
+                    <pre>mkdir -p keys/redfin
+cd keys/redfin
 ../../development/tools/make_key releasekey '/CN=GrapheneOS/'
 ../../development/tools/make_key platform '/CN=GrapheneOS/'
 ../../development/tools/make_key shared '/CN=GrapheneOS/'
@@ -588,7 +598,7 @@ cd ../..</pre>
 
                     <p>Generate a signify key for signing factory images:</p>
 
-                    <pre>signify -G -n -p keys/sunfish/factory.pub -s keys/sunfish/factory.sec</pre>
+                    <pre>signify -G -n -p keys/redfin/factory.pub -s keys/redfin/factory.sec</pre>
 
                     <p>Remove the <code>-n</code> switch to set a passphrase. The <code>signify</code>
                     tool doesn't provide a way to change the passphrase without generating a new key, so
@@ -603,7 +613,7 @@ cd ../..</pre>
                         <p>You can (re-)encrypt your signing keys using the <code>encrypt_keys</code> script,
                         which will prompt for the old passphrase (if any) and new passphrase:</p>
 
-                        <pre>script/encrypt_keys.sh keys/sunfish</pre>
+                        <pre>script/encrypt_keys.sh keys/redfin</pre>
 
                         <p>The <code>script/decrypt_keys.sh</code> script can be used to remove encryption,
                         which is not recommended. The script exists primarily for internal usage to decrypt
@@ -645,10 +655,10 @@ cd ../..</pre>
 
                     <p>Generate a signed release build with the release.sh script:</p>
 
-                    <pre>script/release.sh sunfish</pre>
+                    <pre>script/release.sh redfin</pre>
 
                     <p>The factory images and update package will be in
-                    <code>out/release-sunfish-$BUILD_NUMBER</code>. The update zip performs a full OS
+                    <code>out/release-redfin-$BUILD_NUMBER</code>. The update zip performs a full OS
                     installation so it can be used to update from any previous version. More efficient
                     incremental updates are used for official over-the-air GrapheneOS updates and can be
                     generated by keeping around past signed <code>target_files</code> zips and generating
@@ -691,34 +701,34 @@ cd ../..</pre>
                         delta updates by passing the device, source version build number and target version
                         build number. For example:</p>
 
-                        <pre>script/generate_delta.sh sunfish 2020.12.12.03 2021.01.05.03</pre>
+                        <pre>script/generate_delta.sh redfin 2021.08.03.03 2021.08.09.02</pre>
 
                         <p>The script assumes that the releases are organized in the following directory
                         structure:</p>
 
                         <pre>releases
-├── 2020.12.12.03
-│   └── release-sunfish-2020.12.12.03
+├── 2021.08.03.03
+│   └── release-redfin-2021.08.03.03
 │       ├── otatools
-│       ├── sunfish-beta
-│       ├── sunfish-factory-2020.12.12.03.zip
-│       ├── sunfish-factory-2020.12.12.03.zip.sig
-│       ├── sunfish-img-2020.12.12.03.zip
-│       ├── sunfish-ota_update-2020.12.12.03.zip
-│       ├── sunfish-stable
-│       ├── sunfish-target_files-2020.12.12.03.zip
-│       └── sunfish-testing
-└── 2021.01.05.03
-    └── release-sunfish-2021.01.05.03
+│       ├── redfin-beta
+│       ├── redfin-factory-2021.08.03.03.zip
+│       ├── redfin-factory-2021.08.03.03.zip.sig
+│       ├── redfin-img-2021.08.03.03.zip
+│       ├── redfin-ota_update-2021.08.03.03.zip
+│       ├── redfin-stable
+│       ├── redfin-target_files-2021.08.03.03.zip
+│       └── redfin-testing
+└── 2021.08.09.02
+    └── release-redfin-2021.08.09.02
         ├── otatools
-        ├── sunfish-beta
-        ├── sunfish-factory-2021.01.05.03.zip
-        ├── sunfish-factory-2021.01.05.03.zip.sig
-        ├── sunfish-img-2021.01.05.03.zip
-        ├── sunfish-ota_update-2021.01.05.03.zip
-        ├── sunfish-stable
-        ├── sunfish-target_files-2021.01.05.03.zip
-        └── sunfish-testing</pre>
+        ├── redfin-beta
+        ├── redfin-factory-2021.08.09.02.zip
+        ├── redfin-factory-2021.08.09.02.zip.sig
+        ├── redfin-img-2021.08.09.02.zip
+        ├── redfin-ota_update-2021.08.09.02.zip
+        ├── redfin-stable
+        ├── redfin-target_files-2021.08.09.02.zip
+        └── redfin-testing</pre>
 
                         <p>Incremental updates are uploaded alongside the update packages and update metadata
                         on the static web server used as an update server. The update client will
@@ -748,7 +758,7 @@ cd ../..</pre>
                     source tree. The GrapheneOS browser build is located at external/vanadium and the
                     WebView is at external/chromium-webview.</p>
 
-                    <p>See <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/android_build_instructions.md">
+                    <p>See <a href="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/android_build_instructions.md">
                     Chromium's Android build instructions</a> for details on obtaining the
                     prerequisites.</p>
 
@@ -796,11 +806,11 @@ gclient sync -D --with_branch_heads --with_tags --jobs 32</pre>
 
                     <p>Build the components:</p>
 
-                    <pre>ninja -C out/Default/ trichrome_webview_64_32_apk trichrome_chrome_64_32_bundle trichrome_library_64_32_apk</pre>
+                    <pre>ninja -C out/Default/ trichrome_webview_64_32_apk trichrome_chrome_64_32_apk trichrome_library_64_32_apk</pre>
 
-                    <p>Generate TrichromeChrome.apk from the bundle and sign the apks:</p>
+                    <p>Sign the apks:</p>
 
-                    <pre>../generate_release.sh</pre>
+                    <pre>../generate_release.sh out</pre>
 
                     <p>The apks need to be copied from <code>out/Default/apks/release/*.apk</code>
                     into the Android source tree at
@@ -899,13 +909,14 @@ $DEVICE-stable</pre>
                 quite out-of-date and should be avoided. To set up a minimal SDK installation at
                 <code>~/android/sdk</code> without Android Studio:</p>
 
-                <pre>mkdir -p ~/android/sdk/cmdline-tools
-cd ~/android/sdk/cmdline-tools
-curl -O https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip
-echo 'ef319a5afdb41822cb1c88d93bc7c23b0af4fc670abca89ff0346ee6688da797  commandlinetools-linux-6514223_latest.zip' | sha256sum -c
-unzip commandlinetools-linux-6514223_latest.zip
-rm commandlinetools-linux-6514223_latest.zip
-mv tools latest</pre>
+                <pre>mkdir -p ~/android/sdk/bootstrap
+cd ~/android/sdk/bootstrap
+curl -O https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
+echo '124f2d5115eee365df6cf3228ffbca6fc3911d16f8025bebd5b1c6e2fcfa7faf  commandlinetools-linux-7583922_latest.zip' | sha256sum -c
+unzip commandlinetools-linux-7583922_latest.zip
+cmdline-tools/bin/sdkmanager 'cmdline-tools;latest' --sdk_root=$HOME/android/sdk
+cd ..
+rm -r bootstrap</pre>
 
                 <p>Set <code>ANDROID_HOME</code> to point at the SDK installation in your current
                 shell and shell profile configuration. You also need to add the
@@ -913,10 +924,6 @@ mv tools latest</pre>
 
                 <pre>export ANDROID_HOME="$HOME/android/sdk"
 export PATH="$HOME/android/sdk/cmdline-tools/latest/bin:$PATH"</pre>
-
-                <p>Make <code>cmdline-tools</code> responsible for updating itself:</p>
-
-                <pre>sdkmanager 'cmdline-tools;latest'</pre>
 
                 <p>Install platform-tools for tools like adb and fastboot:</p>
 
@@ -929,11 +936,11 @@ export PATH="$HOME/android/sdk/cmdline-tools/latest/bin:$PATH"</pre>
                 <p>For running the Compatibility Test Suite you'll also need the build-tools for
                 aapt:</p>
 
-                <pre>sdkmanager 'build-tools;30.0.2'</pre>
+                <pre>sdkmanager 'build-tools;31.0.0'</pre>
 
                 <p>Add the <code>build-tools</code> executables to your <code>PATH</code>:</p>
 
-                <pre>export PATH="$HOME/android/sdk/build-tools/30.0.2:$PATH"</pre>
+                <pre>export PATH="$HOME/android/sdk/build-tools/31.0.0:$PATH"</pre>
 
                 <p>For working with native code, you need the NDK:</p>
 
@@ -1001,19 +1008,19 @@ mv android-studio studio</pre>
 
                         <pre>mkdir -p ~/android/cts/{arm,x86}
 cd ~/android/cts/arm
-curl -O https://dl.google.com/dl/android/cts/android-cts-11_r1-linux_x86-arm.zip
-unzip android-cts-11_r1-linux_x86-arm.zip
-rm android-cts-11_r1-linux_x86-arm.zip
-curl -O https://dl.google.com/dl/android/cts/android-cts-verifier-11_r1-linux_x86-arm.zip
-unzip android-cts-verifier-11_r1-linux_x86-arm.zip
-rm android-cts-verifier-11_r1-linux_x86-arm.zip
+curl -O https://dl.google.com/dl/android/cts/android-cts-11_r4-linux_x86-arm.zip
+unzip android-cts-11_r4-linux_x86-arm.zip
+rm android-cts-11_r4-linux_x86-arm.zip
+curl -O https://dl.google.com/dl/android/cts/android-cts-verifier-11_r4-linux_x86-arm.zip
+unzip android-cts-verifier-11_r4-linux_x86-arm.zip
+rm android-cts-verifier-11_r4-linux_x86-arm.zip
 cd ~/android/cts/x86
-curl -O https://dl.google.com/dl/android/cts/android-cts-verifier-11_r1-linux_x86-x86.zip
-unzip android-cts-verifier-11_r1-linux_x86-x86.zip
-rm android-cts-verifier-11_r1-linux_x86-x86.zip
-curl -O https://dl.google.com/dl/android/cts/android-cts-11_r1-linux_x86-x86.zip
-unzip android-cts-11_r1-linux_x86-x86.zip
-rm android-cts-11_r1-linux_x86-x86.zip
+curl -O https://dl.google.com/dl/android/cts/android-cts-verifier-11_r4-linux_x86-x86.zip
+unzip android-cts-verifier-11_r4-linux_x86-x86.zip
+rm android-cts-verifier-11_r4-linux_x86-x86.zip
+curl -O https://dl.google.com/dl/android/cts/android-cts-11_r4-linux_x86-x86.zip
+unzip android-cts-11_r4-linux_x86-x86.zip
+rm android-cts-11_r4-linux_x86-x86.zip
 cd ~/android/cts
 curl -O https://dl.google.com/dl/android/cts/android-cts-media-1.5.zip
 unzip android-cts-media-1.5.zip

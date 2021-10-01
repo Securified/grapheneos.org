@@ -5,6 +5,7 @@
         <title>Releases | GrapheneOS</title>
         <meta name="description" content="Official releases of GrapheneOS, a security and privacy focused mobile OS with Android app compatibility."/>
         <meta name="theme-color" content="#212121"/>
+        <meta name="color-scheme" content="dark light"/>
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="twitter:site" content="@GrapheneOS"/>
@@ -20,11 +21,11 @@
         <meta property="og:url" content="https://grapheneos.org/releases"/>
         <link rel="canonical" href="https://grapheneos.org/releases"/>
         <link rel="alternate" type="application/atom+xml" href="/releases.atom"/>
-        <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
-        <link rel="icon" sizes="any" type="image/svg+xml" href="/mask-icon.svg"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" sizes="any" type="image/svg+xml" href="/favicon.svg"/>
         <link rel="mask-icon" href="/mask-icon.svg" color="#1a1a1a"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-        <link rel="stylesheet" href="/grapheneos.css"/>
+        <link rel="stylesheet" href="/main.css"/>
         <link rel="manifest" href="/manifest.webmanifest"/>
         <link rel="license" href="/LICENSE.txt"/>
         <script type="module" src="/js/releases.js"></script>
@@ -34,7 +35,7 @@
         <header>
             <nav id="site-menu">
                 <ul>
-                    <li><a href="/">GrapheneOS</a></li>
+                    <li><a href="/"><img src="/mask-icon.svg" alt=""/>GrapheneOS</a></li>
                     <li><a href="/features">Features</a></li>
                     <li><a href="/install/">Install</a></li>
                     <li><a href="/build">Build</a></li>
@@ -60,6 +61,7 @@
                     <li>
                         <a href="#stable-channel">Stable channel</a>
                         <ul>
+                            <li><a href="#barbet-stable">Pixel 5a</a></li>
                             <li><a href="#redfin-stable">Pixel 5</a></li>
                             <li><a href="#bramble-stable">Pixel 4a (5G)</a></li>
                             <li><a href="#sunfish-stable">Pixel 4a</a></li>
@@ -69,13 +71,12 @@
                             <li><a href="#sargo-stable">Pixel 3a</a></li>
                             <li><a href="#crosshatch-stable">Pixel 3 XL</a></li>
                             <li><a href="#blueline-stable">Pixel 3</a></li>
-                            <li><a href="#taimen-stable">Pixel 2 XL (obsolete)</a></li>
-                            <li><a href="#walleye-stable">Pixel 2 (obsolete)</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#beta-channel">Beta channel</a>
                         <ul>
+                            <li><a href="#barbet-beta">Pixel 5a</a></li>
                             <li><a href="#redfin-beta">Pixel 5</a></li>
                             <li><a href="#bramble-beta">Pixel 4a (5G)</a></li>
                             <li><a href="#sunfish-beta">Pixel 4a</a></li>
@@ -85,13 +86,34 @@
                             <li><a href="#sargo-beta">Pixel 3a</a></li>
                             <li><a href="#crosshatch-beta">Pixel 3 XL</a></li>
                             <li><a href="#blueline-beta">Pixel 3</a></li>
-                            <li><a href="#taimen-beta">Pixel 2 XL (obsolete)</a></li>
-                            <li><a href="#walleye-beta">Pixel 2 (obsolete)</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#changelog">Changelog</a>
                         <ul>
+                            <li><a href="#2021092612">2021092612</a></li>
+                            <li><a href="#2021092220">2021092220</a></li>
+                            <li><a href="#2021091407">2021091407</a></li>
+                            <li><a href="#2021090819">2021090819</a></li>
+                            <li><a href="#2021090401">2021090401</a></li>
+                            <li><a href="#2021082501">2021082501</a></li>
+                            <li><a href="#2021081822">2021081822</a></li>
+                            <li><a href="#2021081411">2021081411</a></li>
+                            <li><a href="#2021.08.09.02">2021.08.09.02</a></li>
+                            <li><a href="#2021.08.03.03">2021.08.03.03</a></li>
+                            <li><a href="#2021.07.26.20">2021.07.26.20</a></li>
+                            <li><a href="#2021.07.19.18">2021.07.19.18</a></li>
+                            <li><a href="#2021.07.16.19">2021.07.16.19</a></li>
+                            <li><a href="#2021.07.07.19">2021.07.07.19</a></li>
+                            <li><a href="#2021.06.20.20">2021.06.20.20</a></li>
+                            <li><a href="#2021.06.09.13">2021.06.09.13</a></li>
+                            <li><a href="#2021.06.08.06">2021.06.08.06</a></li>
+                            <li><a href="#2021.05.29.09">2021.05.29.09</a></li>
+                            <li><a href="#2021.05.19.06">2021.05.19.06</a></li>
+                            <li><a href="#2021.05.16.04">2021.05.16.04</a></li>
+                            <li><a href="#2021.05.04.01">2021.05.04.01</a></li>
+                            <li><a href="#2021.04.22.20">2021.04.22.20</a></li>
+                            <li><a href="#2021.04.16.04">2021.04.16.04</a></li>
                             <li><a href="#2021.04.05.20">2021.04.05.20</a></li>
                             <li><a href="#2021.03.30.02">2021.03.30.02</a></li>
                             <li><a href="#2021.03.19.14">2021.03.19.14</a></li>
@@ -200,10 +222,9 @@
                 <p>Releases are announced on this page including via an atom feed, via our
                 <a href="https://twitter.com/GrapheneOS">@GrapheneOS Twitter account</a>, on the
                 <a href="https://reddit.com/r/GrapheneOS">official subreddit</a> and in the
-                official #grapheneos IRC channel on irc.freenode.net bridged with the
-                #grapheneos:matrix.org room on Matrix. A release announcement indicates that the
-                source code tags are available and that the official builds will soon be pushed
-                out via the Beta channel.</p>
+                official <a href="/contact#community">GrapheneOS chat room</a> A release
+                announcement indicates that the source code tags are available and that the
+                official builds will soon be pushed out via the Beta channel.</p>
             </section>
 
             <section id="stable-channel">
@@ -213,103 +234,94 @@
                 the update server. The list you're seeing below is a pre-generated template and may
                 not be updated for the latest set of releases yet.</strong></p></noscript>
 
+                <section id="barbet-stable">
+                    <h3><a href="#barbet-stable">Pixel 5a</a></h3>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210905.003.2021092612">RD2A.210905.003.2021092612</a></p>
+                    <ul>
+                        <li><a href="https://releases.grapheneos.org/barbet-factory-2021092612.zip">barbet-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/barbet-factory-2021092612.zip.sig">barbet-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/barbet-ota_update-2021092612.zip">barbet-ota_update-2021092612.zip</a></li>
+                    </ul>
+                </section>
                 <section id="redfin-stable">
                     <h3><a href="#redfin-stable">Pixel 5</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021.04.05.20.zip">redfin-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021.04.05.20.zip.sig">redfin-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/redfin-ota_update-2021.04.05.20.zip">redfin-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021092612.zip">redfin-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021092612.zip.sig">redfin-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/redfin-ota_update-2021092612.zip">redfin-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="bramble-stable">
                     <h3><a href="#bramble-stable">Pixel 4a (5G)</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021.04.05.20.zip">bramble-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021.04.05.20.zip.sig">bramble-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/bramble-ota_update-2021.04.05.20.zip">bramble-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021092612.zip">bramble-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021092612.zip.sig">bramble-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/bramble-ota_update-2021092612.zip">bramble-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="sunfish-stable">
                     <h3><a href="#sunfish-stable">Pixel 4a</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021.04.05.20.zip">sunfish-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021.04.05.20.zip.sig">sunfish-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/sunfish-ota_update-2021.04.05.20.zip">sunfish-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021092612.zip">sunfish-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021092612.zip.sig">sunfish-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/sunfish-ota_update-2021092612.zip">sunfish-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="coral-stable">
                     <h3><a href="#coral-stable">Pixel 4 XL</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/coral-factory-2021.04.05.20.zip">coral-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/coral-factory-2021.04.05.20.zip.sig">coral-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/coral-ota_update-2021.04.05.20.zip">coral-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/coral-factory-2021092612.zip">coral-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/coral-factory-2021092612.zip.sig">coral-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/coral-ota_update-2021092612.zip">coral-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="flame-stable">
                     <h3><a href="#flame-stable">Pixel 4</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/flame-factory-2021.04.05.20.zip">flame-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/flame-factory-2021.04.05.20.zip.sig">flame-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/flame-ota_update-2021.04.05.20.zip">flame-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/flame-factory-2021092612.zip">flame-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/flame-factory-2021092612.zip.sig">flame-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/flame-ota_update-2021092612.zip">flame-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="bonito-stable">
                     <h3><a href="#bonito-stable">Pixel 3a XL</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021.04.05.20.zip">bonito-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021.04.05.20.zip.sig">bonito-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/bonito-ota_update-2021.04.05.20.zip">bonito-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021092612.zip">bonito-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021092612.zip.sig">bonito-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/bonito-ota_update-2021092612.zip">bonito-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="sargo-stable">
                     <h3><a href="#sargo-stable">Pixel 3a</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021.04.05.20.zip">sargo-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021.04.05.20.zip.sig">sargo-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/sargo-ota_update-2021.04.05.20.zip">sargo-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021092612.zip">sargo-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021092612.zip.sig">sargo-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/sargo-ota_update-2021092612.zip">sargo-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="crosshatch-stable">
                     <h3><a href="#crosshatch-stable">Pixel 3 XL</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021.04.05.20.zip">crosshatch-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021.04.05.20.zip.sig">crosshatch-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/crosshatch-ota_update-2021.04.05.20.zip">crosshatch-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021092612.zip">crosshatch-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021092612.zip.sig">crosshatch-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/crosshatch-ota_update-2021092612.zip">crosshatch-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="blueline-stable">
                     <h3><a href="#blueline-stable">Pixel 3</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021.04.05.20.zip">blueline-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021.04.05.20.zip.sig">blueline-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/blueline-ota_update-2021.04.05.20.zip">blueline-ota_update-2021.04.05.20.zip</a></li>
-                    </ul>
-                </section>
-                <section id="taimen-stable">
-                    <h3><a href="#taimen-stable">Pixel 2 XL (obsolete)</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210305.006.2021.03.20.15">RQ2A.210305.006.2021.03.20.15</a></p>
-                    <ul>
-                        <li><a href="https://releases.grapheneos.org/taimen-factory-2021.03.20.15.zip">taimen-factory-2021.03.20.15.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/taimen-factory-2021.03.20.15.zip.sig">taimen-factory-2021.03.20.15.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/taimen-ota_update-2021.03.20.15.zip">taimen-ota_update-2021.03.20.15.zip</a></li>
-                    </ul>
-                </section>
-                <section id="walleye-stable">
-                    <h3><a href="#walleye-stable">Pixel 2 (obsolete)</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210305.006.2021.03.20.15">RQ2A.210305.006.2021.03.20.15</a></p>
-                    <ul>
-                        <li><a href="https://releases.grapheneos.org/walleye-factory-2021.03.20.15.zip">walleye-factory-2021.03.20.15.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/walleye-factory-2021.03.20.15.zip.sig">walleye-factory-2021.03.20.15.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/walleye-ota_update-2021.03.20.15.zip">walleye-ota_update-2021.03.20.15.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021092612.zip">blueline-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021092612.zip.sig">blueline-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/blueline-ota_update-2021092612.zip">blueline-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
             </section>
@@ -321,103 +333,94 @@
                 the update server. The list you're seeing below is a pre-generated template and may
                 not be updated for the latest set of releases yet.</strong></p></noscript>
 
+                <section id="barbet-beta">
+                    <h3><a href="#barbet-beta">Pixel 5a</a></h3>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210905.003.2021092612">RD2A.210905.003.2021092612</a></p>
+                    <ul>
+                        <li><a href="https://releases.grapheneos.org/barbet-factory-2021092612.zip">barbet-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/barbet-factory-2021092612.zip.sig">barbet-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/barbet-ota_update-2021092612.zip">barbet-ota_update-2021092612.zip</a></li>
+                    </ul>
+                </section>
                 <section id="redfin-beta">
                     <h3><a href="#redfin-beta">Pixel 5</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021.04.05.20.zip">redfin-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021.04.05.20.zip.sig">redfin-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/redfin-ota_update-2021.04.05.20.zip">redfin-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021092612.zip">redfin-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/redfin-factory-2021092612.zip.sig">redfin-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/redfin-ota_update-2021092612.zip">redfin-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="bramble-beta">
                     <h3><a href="#bramble-beta">Pixel 4a (5G)</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021.04.05.20.zip">bramble-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021.04.05.20.zip.sig">bramble-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/bramble-ota_update-2021.04.05.20.zip">bramble-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021092612.zip">bramble-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bramble-factory-2021092612.zip.sig">bramble-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/bramble-ota_update-2021092612.zip">bramble-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="sunfish-beta">
                     <h3><a href="#sunfish-beta">Pixel 4a</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021.04.05.20.zip">sunfish-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021.04.05.20.zip.sig">sunfish-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/sunfish-ota_update-2021.04.05.20.zip">sunfish-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021092612.zip">sunfish-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sunfish-factory-2021092612.zip.sig">sunfish-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/sunfish-ota_update-2021092612.zip">sunfish-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="coral-beta">
                     <h3><a href="#coral-beta">Pixel 4 XL</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/coral-factory-2021.04.05.20.zip">coral-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/coral-factory-2021.04.05.20.zip.sig">coral-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/coral-ota_update-2021.04.05.20.zip">coral-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/coral-factory-2021092612.zip">coral-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/coral-factory-2021092612.zip.sig">coral-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/coral-ota_update-2021092612.zip">coral-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="flame-beta">
                     <h3><a href="#flame-beta">Pixel 4</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/flame-factory-2021.04.05.20.zip">flame-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/flame-factory-2021.04.05.20.zip.sig">flame-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/flame-ota_update-2021.04.05.20.zip">flame-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/flame-factory-2021092612.zip">flame-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/flame-factory-2021092612.zip.sig">flame-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/flame-ota_update-2021092612.zip">flame-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="bonito-beta">
                     <h3><a href="#bonito-beta">Pixel 3a XL</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021.04.05.20.zip">bonito-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021.04.05.20.zip.sig">bonito-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/bonito-ota_update-2021.04.05.20.zip">bonito-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021092612.zip">bonito-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/bonito-factory-2021092612.zip.sig">bonito-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/bonito-ota_update-2021092612.zip">bonito-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="sargo-beta">
                     <h3><a href="#sargo-beta">Pixel 3a</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021.04.05.20.zip">sargo-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021.04.05.20.zip.sig">sargo-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/sargo-ota_update-2021.04.05.20.zip">sargo-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021092612.zip">sargo-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/sargo-factory-2021092612.zip.sig">sargo-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/sargo-ota_update-2021092612.zip">sargo-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="crosshatch-beta">
                     <h3><a href="#crosshatch-beta">Pixel 3 XL</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021.04.05.20.zip">crosshatch-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021.04.05.20.zip.sig">crosshatch-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/crosshatch-ota_update-2021.04.05.20.zip">crosshatch-ota_update-2021.04.05.20.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021092612.zip">crosshatch-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/crosshatch-factory-2021092612.zip.sig">crosshatch-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/crosshatch-ota_update-2021092612.zip">crosshatch-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
                 <section id="blueline-beta">
                     <h3><a href="#blueline-beta">Pixel 3</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a></p>
+                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a></p>
                     <ul>
-                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021.04.05.20.zip">blueline-factory-2021.04.05.20.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021.04.05.20.zip.sig">blueline-factory-2021.04.05.20.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/blueline-ota_update-2021.04.05.20.zip">blueline-ota_update-2021.04.05.20.zip</a></li>
-                    </ul>
-                </section>
-                <section id="taimen-beta">
-                    <h3><a href="#taimen-beta">Pixel 2 XL (obsolete)</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210305.006.2021.03.20.15">RQ2A.210305.006.2021.03.20.15</a></p>
-                    <ul>
-                        <li><a href="https://releases.grapheneos.org/taimen-factory-2021.03.20.15.zip">taimen-factory-2021.03.20.15.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/taimen-factory-2021.03.20.15.zip.sig">taimen-factory-2021.03.20.15.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/taimen-ota_update-2021.03.20.15.zip">taimen-ota_update-2021.03.20.15.zip</a></li>
-                    </ul>
-                </section>
-                <section id="walleye-beta">
-                    <h3><a href="#walleye-beta">Pixel 2 (obsolete)</a></h3>
-                    <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210305.006.2021.03.20.15">RQ2A.210305.006.2021.03.20.15</a></p>
-                    <ul>
-                        <li><a href="https://releases.grapheneos.org/walleye-factory-2021.03.20.15.zip">walleye-factory-2021.03.20.15.zip</a></li>
-                        <li><a href="https://releases.grapheneos.org/walleye-factory-2021.03.20.15.zip.sig">walleye-factory-2021.03.20.15.zip.sig</a></li>
-                        <li><a href="https://releases.grapheneos.org/walleye-ota_update-2021.03.20.15.zip">walleye-ota_update-2021.03.20.15.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021092612.zip">blueline-factory-2021092612.zip</a></li>
+                        <li><a href="https://releases.grapheneos.org/blueline-factory-2021092612.zip.sig">blueline-factory-2021092612.zip.sig</a></li>
+                        <li><a href="https://releases.grapheneos.org/blueline-ota_update-2021092612.zip">blueline-ota_update-2021092612.zip</a></li>
                     </ul>
                 </section>
             </section>
@@ -435,25 +438,547 @@
                 release notes from before the rebranding of the project in 2018 and 2019.</p>
 
                 <!--
-                <article id="2021.04.05.20">
-                    <h3><a href="#2021.04.05.20">2021.04.05.20</a></h3>
+                <article id="2021092612">
+                    <h3><a href="#2021092612">2021092612</a></h3>
 
                     <p>Tags:</p>
                     <ul>
-                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.05.20">RQ2A.210405.005.2021.04.05.20</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210905.003.2021092612">RD2A.210905.003.2021092612</a> (Pixel 5a)</li>
+                    </ul>
+
+                    <p>Changes since the 2021092612 release:</p>
+
+                    <ul>
+                        <li>change generated carrier configurations to always allow editing APNs</li>
+                        <li>always show APN settings on CDMA carriers</li>
+                        <li>automate APN / carrier settings updates</li>
+                    </ul>
+                </article>
+                -->
+
+                <article id="2021092612">
+                    <h3><a href="#2021092612">2021092612</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092612">RQ3A.210905.001.2021092612</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210905.003.2021092612">RD2A.210905.003.2021092612</a> (Pixel 5a)</li>
+                    </ul>
+
+                    <p>Changes since the 2021092220 release:</p>
+
+                    <ul>
+                        <li>kernel (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL): apply upstream fix for ION use-after-free vulnerability</li>
+                        <li>Vanadium: update Chromium base to 94.0.4606.61</li>
+                        <li>android-prepare-vendor: remove a bunch of unused code / functionality</li>
+                        <li>android-prepare-vendor: skip all kernel modules</li>
+                    </ul>
+                </article>
+
+                <article id="2021092220">
+                    <h3><a href="#2021092220">2021092220</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021092220">RQ3A.210905.001.2021092220</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210905.003.2021092220">RD2A.210905.003.2021092220</a> (Pixel 5a)</li>
+                    </ul>
+
+                    <p>Changes since the 2021091407 release:</p>
+
+                    <ul>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/32">version 32</a></li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/33">version 33</a></li>
+                        <li>Vanadium: update Chromium base to 94.0.4606.50</li>
+                        <li>TalkBack (screen reader): update SDK and build tools versions</li>
+                        <li>clean up build scripts</li>
+                    </ul>
+                </article>
+
+                <article id="2021091407">
+                    <h3><a href="#2021091407">2021091407</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021091407">RQ3A.210905.001.2021091407</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210905.003.2021091407">RD2A.210905.003.2021091407</a> (Pixel 5a)</li>
+                    </ul>
+
+                    <p>Changes since the 2021090819 release:</p>
+
+                    <ul>
+                        <li>Sandboxed Play services compatibility layer: stub out DeviceConfig APIs by ignoring device configuration writes instead of throwing a SecurityException</li>
+                        <li>Sandboxed Play services compatibility layer: stub out DropBoxManager API by pretending no crash dumps, logs, etc. are available instead of throwing a SecurityException</li>
+                        <li>Sandboxed Play services compatibility layer: stub out getImei API by pretending IMEI cannot be retrieved instead of throwing a SecurityException</li>
+                        <li>Seedvault: add missing permission needed for UserManager restriction security fix in the last release</li>
+                        <li>Seedvault: update to latest revision</li>
+                        <li>TalkBack (screen reader): update base version to 370044210 and port our changes (Switch Access service has been dropped upstream)</li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/30">version 30</a></li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/31">version 31</a></li>
+                        <li>Vanadium: update Chromium base to 93.0.4577.82</li>
+                    </ul>
+                </article>
+
+                <article id="2021090819">
+                    <h3><a href="#2021090819">2021090819</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210905.001.2021090819">RQ3A.210905.001.2021090819</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210905.003.2021090819">RD2A.210905.003.2021090819</a> (Pixel 5a)</li>
+                    </ul>
+
+                    <p>Changes since the 2021090401 release:</p>
+
+                    <ul>
+                        <li>full 2021-09-01 security patch level</li>
+                        <li>full 2021-09-05 security patch level</li>
+                        <li>rebased onto RQ3A.210905.001 and RD2A.210905.003 releases</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): use device-specific dtbo.img</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a: update APNs</li>
+                        <li>Pixel 5a: add missing configuration for biometric sensors (fingerprint sensor)</li>
+                        <li>Pixel 5a: declare Pixel features are available so that apps with Pixel-specific features will use them</li>
+                        <li>Seedvault: respect UserManager restrictions on app installation to avoid providing a way to bypass device management restrictions</li>
+                        <li>Seedvault: show experimental restore backup option in backup settings instead of only supporting restore in the initial setup wizard</li>
+                    </ul>
+                </article>
+
+                <article id="2021090401">
+                    <h3><a href="#2021090401">2021090401</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210805.001.A1.2021090401">RQ3A.210805.001.A1.2021090401</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RD2A.210605.007.2021090401">RD2A.210605.007.2021090401</a> (Pixel 5a)</li>
+                    </ul>
+
+                    <p>Changes since the 2021082501 release:</p>
+
+                    <ul>
+                        <li>add experimental Pixel 5a support via device support branch</li>
+                        <li>Settings: add back past GrapheneOS feature for toggling whether secondary users can install new apps</li>
+                        <li>Vanadium: update Chromium base to 92.0.4515.166</li>
+                        <li>Vanadium: update Chromium base to 93.0.4577.62</li>
+                        <li>Vanadium: hide sign in preference when disallowed</li>
+                        <li>Vanadium: disable using Play services as a source for certain Google fonts</li>
+                        <li>automatically disable UART debugging when flashing factory images (GrapheneOS already extends the notification about it to production builds)</li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/29">version 29</a></li>
+                        <li>SetupWizard: properly disable system UI navigation for the entire setup process</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): drop unnecessary Wi-Fi driver change from our previous downstream security fixes</li>
+                        <li>Pixel 4, Pixel 4 XL: enable saturated color option</li>
+                    </ul>
+                </article>
+
+                <article id="2021082501">
+                    <h3><a href="#2021082501">2021082501</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210805.001.A1.2021082501">RQ3A.210805.001.A1.2021082501</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021081822 release:</p>
+
+                    <ul>
+                        <li>Updater: move settings into a preference category</li>
+                        <li>Updater: add detailed information to the error messages</li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/28">version 28</a></li>
+                        <li>Vanadium: move search suggestions toggle to privacy menu</li>
+                        <li>Vanadium: remove empty account category and Services menu from the main menu</li>
+                        <li>Sandboxed Play services compatibility layer: add shim to make Play services use the regular cellular geolocation API instead of attempting and failing to use a special API requiring MODIFY_PHONE_STATE to attribute power consumption to the app responsible for the request to Play services</li>
+                        <li>Sandboxed Play services compatibility layer: add shims making Play services use the unprivileged AppOps proxy API instead of attempting and failing to use the privileged APIs for blaming other apps (it can still blame other apps via the proxy API, but the OS treats it as an untrusted claim)</li>
+                        <li>Sandboxed Play services compatibility layer: add shim making Play services use UserManager.hasUserRestriction instead of UserManager.hasBaseUserRestriction to avoid requiring privileged permissions and to return correct answers since it can't bypass device management</li>
+                    </ul>
+                </article>
+
+                <article id="2021081822">
+                    <h3><a href="#2021081822">2021081822</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210805.001.A1.2021081822">RQ3A.210805.001.A1.2021081822</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021081411 release:</p>
+
+                    <ul>
+                        <li>Vanadium: update Chromium base to 92.0.4515.159</li>
+                        <li>Vanadium: improved implementation of not giving the default search engine permissions now that Chromium has support for it</li>
+                        <li>Updater: avoid error messages being truncated by using expandable notifications for them</li>
+                        <li>Settings: fix upstream bug preventing setting pictures for user profiles</li>
+                        <li>Settings: backport upstream fix for user edit dialog breaking from rotation</li>
+                        <li>Settings: add LTE only mode entry when carrier enables world mode too</li>
+                        <li>Sandboxed Play services compatibility layer: fix detection of system processes in secondary users</li>
+                        <li>Sandboxed Play services compatibility layer: handle edge case of packages without data directories</li>
+                    </ul>
+                </article>
+
+                <article id="2021081411">
+                    <h3><a href="#2021081411">2021081411</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210805.001.A1.2021081411">RQ3A.210805.001.A1.2021081411</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.08.09.02 release:</p>
+
+                    <ul>
+                        <li>remove periods from build number (2nd half of the full version) to improve compatibility with apps wrongly assuming they can parse it as an integer (including Google Camera for Night Sight feature detection)</li>
+                        <li>Settings: add 3rd option to connectivity check setting for disabling it (will prevent falling back to other networks from a broken one and handling captive portals)</li>
+                        <li>Settings: ignore carrier asking the OS not to show the preferred network setting, similar to how we already ignore being instructed to disallow tethering</li>
+                        <li>further fixes for the upstream code implementing the eBPF-based INTERNET permission (fixes cases where it was overly restrictive for secondary users, but we already prevented it from being overly permissive by adding back the simpler pre-eBPF approach as a 2nd layer of enforcement)</li>
+                        <li>Sandboxed Google Play compatibility layer: disable shared user id check since it isn't relevant to GrapheneOS and it appears that it may be causing issues</li>
+                    </ul>
+                </article>
+
+                <article id="2021.08.09.02">
+                    <h3><a href="#2021.08.09.02">2021.08.09.02</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210805.001.A1.2021.08.09.02">RQ3A.210805.001.A1.2021.08.09.02</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.08.03.03 release:</p>
+
+                    <ul>
+                        <li>Sandboxed Google Play compatibility layer: add infrastructure / shims to support dynamite modules (dynamically loaded modules including Maps API support)</li>
+                        <li>Vanadium: update Chromium base to 92.0.4515.131</li>
+                        <li>Vanadium: disable trials of privacy-aware analytics/advertising APIs</li>
+                        <li>Vanadium: remove unwanted sync and services link</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: update APNs</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: update CarrierConfig vendor.xml</li>
+                    </ul>
+                </article>
+
+                <article id="2021.08.03.03">
+                    <h3><a href="#2021.08.03.03">2021.08.03.03</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210805.001.A1.2021.08.03.03">RQ3A.210805.001.A1.2021.08.03.03</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.07.26.20 release:</p>
+
+                    <ul>
+                        <li>full 2021-08-01 security patch level</li>
+                        <li>full 2021-08-05 security patch level</li>
+                        <li>rebased onto RQ3A.210805.001.A1 release</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): backport implementation of <a href="https://datatracker.ietf.org/doc/html/rfc8981">IPv6 temporary addresses (RFC4941)</a> as a replacement for the legacy privacy address implementation, removing the need for our work on mitigating the issues with them (still used for older generation devices)</li>
+                        <li>Updater: use <em>System Updater</em> as the app name</li>
+                        <li>Updater: show when status notifications occurred</li>
+                        <li>Updater: add notification settings shortcut to update settings</li>
+                        <li>Sandboxed Google Play compatibility layer: add compatibility shims for secondary user support</li>
+                        <li>Sandboxed Google Play compatibility layer: use unified GmsCompat/ prefix for log tags</li>
+                        <li>Sandboxed Google Play compatibility layer: add shim for AppOpsManager#startOpNoThrow</li>
+                        <li>Sandboxed Google Play compatibility layer: move foreground service notification channel to dedicated Compatibility notification channel group</li>
+                        <li>Sandboxed Google Play compatibility layer: add proper description to foreground service notification</li>
+                        <li>Sandboxed Google Play compatibility layer: add shortcut for opening the notification channel settings from the foreground service notifications</li>
+                    </ul>
+                </article>
+
+                <article id="2021.07.26.20">
+                    <h3><a href="#2021.07.26.20">2021.07.26.20</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210705.001.2021.07.26.20">RQ3A.210705.001.2021.07.26.20</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.07.19.18 release:</p>
+
+                    <ul>
+                        <li>Updater: add detailed failure / success notifications. The next release will enable the timestamp to show when it happened. You can turn off the 'Already Updated' notification channel if you don't want those minimum priority notifications with no status icon collapsed at the bottom.</li>
+                        <li>Vanadium: update Chromium base to 92.0.4515.105</li>
+                        <li>Vanadium: update Chromium base to 92.0.4515.115</li>
+                        <li>Vanadium: drop removal of speculative service worker start for search</li>
+                        <li>init: fix use-after-free from event handling callbacks (issue uncovered by hardened_malloc in certain situations like unplugging a USB keyboard, etc.)</li>
+                        <li>fix PermissionController UI for Sensors/Network permissions with legacy API &lt; 23 apps (i.e. apps without proper support for Android Marshmallow and beyond)</li>
+                        <li>Sandboxed Google Play compatibility layer: disable badge for foreground service notification by default</li>
+                        <li>Settings: drop support for showing nearby devices from Play since it can't function without Play having any special privileges</li>
+                        <li>kernel (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL): improve support for hosting servers by enabling SYN cookies for denial of service resistance like newer generation devices</li>
+                        <li>hardened_malloc: update libdivide to 5.0.0</li>
+                    </ul>
+                </article>
+
+                <article id="2021.07.19.18">
+                    <h3><a href="#2021.07.19.18">2021.07.19.18</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210705.001.2021.07.19.18">RQ3A.210705.001.2021.07.19.18</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.07.16.19 release:</p>
+
+                    <ul>
+                        <li>Settings: fix displaying setting for GrapheneOS USB accessory policy (deny new usb)</li>
+                        <li>Settings: hide insecure pattern lock option (either use a randomly generated 6-8 digit PIN for secure encryption based on secure element throttling or a strong randomly generated passphrase to avoid depending on the secure element, not this misguided pattern option with ridiculously low entropy)</li>
+                        <li>Sandboxed Google Play compatibility layer: return false for SIM card lock check rather than throwing a SecurityException</li>
+                        <li>Sandboxed Google Play compatibility layer: avoid throwing an exception in certain edge cases for secondary users when checking whether the compatibility shims should be enabled for a process (i.e. when checking if the process is one of the 3 core Play apps)</li>
+                        <li>Vanadium: update Chromium base to 91.0.4472.164</li>
+                    </ul>
+                </article>
+
+                <article id="2021.07.16.19">
+                    <h3><a href="#2021.07.16.19">2021.07.16.19</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210705.001.2021.07.16.19">RQ3A.210705.001.2021.07.16.19</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.07.07.19 release:</p>
+
+                    <ul>
+                        <li>add <a href="/usage#sandboxed-play-services">experimental support for running Play services and friends as sandboxed user-installed apps without any special privileges</a></li>
+                        <li>Settings: use alternate implementation of Wi-Fi auto-turn-off setting matching the Bluetooth auto-turn-off UX</li>
+                        <li>overhaul Wi-Fi auto-turn-off implementation including handling the case of Wi-Fi being turned on without connecting to a network</li>
+                        <li>add lower auto-reboot timeout options</li>
+                        <li>display notification when UART is enabled in the bootloader configuration for user builds too (where it isn't supported by userspace, but still provides firmware and kernel logs) rather than only in userdebug builds</li>
+                        <li>Seedvault: update to latest revision</li>
+                        <li>Seedvault: switch to GrapheneOS fork with intent access restricted to prevent other apps from spawning the activities</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: set product brand to hardware brand</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: remove aosp_ prefix from product names</li>
+                    </ul>
+                </article>
+
+                <article id="2021.07.07.19">
+                    <h3><a href="#2021.07.07.19">2021.07.07.19</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210705.001.2021.07.07.19">RQ3A.210705.001.2021.07.07.19</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.06.20.20 release:</p>
+
+                    <ul>
+                        <li>full 2021-07-01 security patch level</li>
+                        <li>full 2021-07-05 security patch level</li>
+                        <li>rebased onto RQ3A.210705.001 release</li>
+                        <li>reimplement Bluetooth auto-turn-off feature to avoid using the Settings app for the implementation (fixes reliability issues)</li>
+                        <li>add experimental Wi-Fi auto-turn-off feature based on reimplementation of Bluetooth auto-turn-off (will not kick in when Wi-Fi is turned on without connecting to a network until the next release)</li>
+                        <li>Updater: display progress for the short phase of verifying the update</li>
+                        <li>Updater: reuse the same progress notification for downloading, verifying and installing the update</li>
+                        <li>Updater: only alert once for progress notifications if the user raises the notification importance level</li>
+                        <li>Updater: use foreground service via progress notification</li>
+                        <li>Vanadium: update Chromium base to 91.0.4472.120</li>
+                        <li>Vanadium: update Chromium base to 91.0.4472.134</li>
+                        <li>Seedvault: update to latest revision</li>
+                    </ul>
+                </article>
+
+                <article id="2021.06.20.20">
+                    <h3><a href="#2021.06.20.20">2021.06.20.20</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210605.005.2021.06.20.20">RQ3A.210605.005.2021.06.20.20</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.06.09.13 release:</p>
+
+                    <ul>
+                        <li>Vanadium: update Chromium base to 91.0.4472.101</li>
+                        <li>Vanadium: update Chromium base to 91.0.4472.114</li>
+                        <li>Vanadium: add toggle to Privacy and security settings for <a href="https://v8.dev/blog/jitless">disabling JIT compilation and using fully interpreted JavaScript via fast interpreter</a></li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): fix upstream module load order issues when modules are built into the kernel</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): build in every module and disable dynamic kernel module support again to restore finer-grained Control Flow Integrity (CFI) and attack surface reduction</li>
+                        <li>kernel (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5): generate a new privacy address when connecting to a network as a temporary partial workaround for the broken upstream privacy address implementation before Linux 5.8 (the privacy address standard itself was flawed and Linux 5.8+ has an implementation of the fixed standard, which we've suggested that Android backport in our upstream report)</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: declare Pixel features are available so that apps with Pixel-specific features will use them</li>
+                    </ul>
+                </article>
+
+                <article id="2021.06.09.13">
+                    <h3><a href="#2021.06.09.13">2021.06.09.13</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210605.005.2021.06.09.13">RQ3A.210605.005.2021.06.09.13</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.06.08.06 release:</p>
+
+                    <ul>
+                        <li>re-enable current camera/microphone privacy indicator implementation</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): use new GNU assembler (gas) prebuilts and drop all other usage of the GNU toolchain since LLVM provides everything else (LLVM assembler is used for userspace, but can't yet handle the Linux kernel)</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): temporarily move to building and using dynamic kernel modules (same list as AOSP) to work around new issues with monolithic builds until we have time to resolve it to improve CFI granularity again</li>
+                        <li>android-prepare-vendor (Pixel 4a (5G), Pixel 5): remove previously unused stock OS kernel modules now that we're temporarily enabling dynamic kernel module support so that only our builds of kernel modules are being used</li>
+                        <li>Updater: add support for custom accent color</li>
+                    </ul>
+                </article>
+
+                <article id="2021.06.08.06">
+                    <h3><a href="#2021.06.08.06">2021.06.08.06</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ3A.210605.005.2021.06.08.06">RQ3A.210605.005.2021.06.08.06</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.05.29.09 release:</p>
+
+                    <ul>
+                        <li>full 2021-06-01 security patch level</li>
+                        <li>full 2021-06-05 security patch level</li>
+                        <li>rebased onto RQ3A.210605.005 release, initial release of Android 11 QPR3 (Quarterly Platform Release 3)</li>
+                        <li>experimental new feature for configuring auto-reboot after N hours of the device being locked to put all logged in user profiles back at rest (i.e. data inaccessible to the OS until logged in again) when the device isn't in your possession</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): apply fixes for 2 Qualcomm Wi-Fi driver vulnerabilities from CAF missed in the upstream December 2020 security update for Pixels</li>
+                        <li>Vanadium: update Chromium base to 91.0.4472.88</li>
+                        <li>android-prepare-vendor: fix resuming image downloads due to broken HTTP/2 server semantics</li>
+                        <li>Settings: fix hardcoded black text in storage summary</li>
+                        <li>remove redundant property for disabling OpenGL preloading</li>
+                        <li>update kernel build tools used for Pixel 4a (5G), Pixel 5 and beyond</li>
+                    </ul>
+                </article>
+
+                <article id="2021.05.29.09">
+                    <h3><a href="#2021.05.29.09">2021.05.29.09</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.002.2021.05.29.09">RQ2A.210505.002.2021.05.29.09</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.003.2021.05.29.09">RQ2A.210505.003.2021.05.29.09</a> (Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.05.19.06 release:</p>
+
+                    <ul>
+                        <li>prevent DHCP (IPv4) from reusing state across connections to the same network when full MAC randomization is enabled</li>
+                        <li>Vanadium: update Chromium base to 91.0.4472.77</li>
+                        <li>Vanadium: enable opportunistic HTTPS by default</li>
+                        <li>Vanadium: disable mobile identity consistency by default</li>
+                        <li>revert our change adding the screenshot button to the power menu for 3-button navigation since it's provided by the recent apps activity for both gesture and 3-button navigation (we originally added it back for both 2-button and 3-button navigation even though it was only needed for 2-button navigation, and then the stock OS implemented the same fix only for 2-button navigation, which makes more sense)</li>
+                    </ul>
+                </article>
+
+                <article id="2021.05.19.06">
+                    <h3><a href="#2021.05.19.06">2021.05.19.06</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.002.2021.05.19.06">RQ2A.210505.002.2021.05.19.06</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.003.2021.05.19.06">RQ2A.210505.003.2021.05.19.06</a> (Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.05.16.04 release:</p>
+
+                    <ul>
+                        <li>Settings: remove field referencing the mainline module (APEX) version (also known as the Google Play system update version) since we ship these changes as part of the OS and have out-of-band module updates disabled since we have no use for them</li>
+                        <li>remove legacy Calendar widget</li>
+                        <li>add toggle for disabling fingerprint unlock while having fingerprints registered for usage in apps (authentication and protecting hardware keystore keys)</li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/27">version 27</a></li>
+                    </ul>
+                </article>
+
+                <article id="2021.05.16.04">
+                    <h3><a href="#2021.05.16.04">2021.05.16.04</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.002.2021.05.16.04">RQ2A.210505.002.2021.05.16.04</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.003.2021.05.16.04">RQ2A.210505.003.2021.05.16.04</a> (Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.05.04.01 release:</p>
+
+                    <ul>
+                        <li>enable gesture navigation by default (see <a href="/usage#system-navigation">our guide on system navigation</a> for details on using gesture navigation and switching to a button-based navigation)</li>
+                        <li>Updater: fix minor theme issue for light theme when pressing preferences</li>
+                        <li>replace our workaround for an upstream user profile crash issue with a proper upstream fix from Sony</li>
+                        <li>replace our workaround for another upstream user profile crash issue with a proper fix based on the approach of the fix from Sony</li>
+                        <li>Vanadium: update Chromium base to 90.0.4430.210</li>
+                        <li>hardened_malloc: purge memory even if VMA exhaustion causes munmap or MAP_FIXED mmap calls to fail</li>
+                        <li>hardened_malloc: increase class region size on x86_64 to 32GiB</li>
+                        <li>hardened_malloc: increase class region size on arm64 to 2GiB (should be 32GiB on devices where we've enabled 4-level page tables but that requires setting up build configuration infrastructure)</li>
+                        <li>raise vm.max_map_count further to have even more leeway before VMA exhaustion occurs from fine-grained guard regions</li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5): fix build reproducibility issue by backporting upstream fix</li>
+                        <li>kernel (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5): make CONFIG_LOCALVERSION_AUTO ignore Git tags so adding tags doesn't change the result of a build</li>
+                        <li>kernel (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5): apply fixes for 2 Qualcomm audio driver vulnerabilities from CAF including one missed in the upstream May 2021 security update for Pixels</li>
+                        <li>kernel (Pixel 4a): apply fix for use-after-free in GPU driver missed in the upstream security updates for the Pixel 4a</li>
+                        <li>switch HTTPS network time URL from <code>/</code> to <code>/generate_204</code> to allow for a future <code>/</code> redirect</li>
+                    </ul>
+                </article>
+
+                <article id="2021.05.04.01">
+                    <h3><a href="#2021.05.04.01">2021.05.04.01</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.002.2021.05.04.01">RQ2A.210505.002.2021.05.04.01</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210505.003.2021.05.04.01">RQ2A.210505.003.2021.05.04.01</a> (Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.04.22.20 release:</p>
+
+                    <ul>
+                        <li>full 2021-05-01 security patch level</li>
+                        <li>full 2021-05-05 security patch level</li>
+                        <li>rebased onto RQ2A.210505.003 release</li>
+                        <li>enable backup service for non-owner users so that secondary users can be backed up</li>
+                        <li>add SetupWizard activities for secondary users including support for restoring backups</li>
+                        <li>Settings (Accessibility): add Monochromacy (grayscale) option to color correction</li>
+                        <li>improve the newer generation eBPF-based implementation of the INTERNET permission to properly support revoking the permission in secondary profiles (we'll be keeping our restoration of the much simpler non-eBPF-based approach to avoid relying on this on devices using our hardened kernels) </li>
+                        <li>Vanadium: update Chromium base to 90.0.4430.91</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: set slot number for eSIM (still need an eSIM activation app since it's one of the remaining missing components from not including Google apps and services)</li>
+                        <li>hardened_malloc: use 1 slot for all extended size classes (reduces memory usage and improves security in combination with the guard slab feature)</li>
+                        <li>use device theme accent color for fingerprint dialog instead of teal</li>
+                        <li>integrate modern Android theme and wallpaper configuration</li>
+                        <li>remove legacy WallpaperPicker app</li>
+                        <li>Updater: modernize update settings via androidx preference library (new theme has minor quirks we'll be fixing in the next release)</li>
+                        <li>use alternate grapheneos.online domain for connectivity check / captive portal fallback URLs to improve handling of future issues comparable to Quad9 temporarily blocking grapheneos.network due to some kind of false positive</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: update APNs</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5: update CarrierConfig vendor.xml</li>
+                    </ul>
+                </article>
+
+                <article id="2021.04.22.20">
+                    <h3><a href="#2021.04.22.20">2021.04.22.20</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.22.20">RQ2A.210405.005.2021.04.22.20</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2021.04.16.04 release:</p>
+
+                    <ul>
+                        <li>kernel (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5): update our change to use max ASLR entropy before the init process enables it for the larger address space enabled by GrapheneOS</li>
+                        <li>kernel (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5): add back hard-wired check for the INTERNET permission on socket creation at least until the eBPF code is improved and fixed to work properly for secondary profiles</li>
+                        <li>Vanadium: disable unused FLOC feature</li>
+                        <li>Vanadium: update Chromium base to 90.0.4430.82</li>
+                    </ul>
+                </article>
+
+                <article id="2021.04.16.04">
+                    <h3><a href="#2021.04.16.04">2021.04.16.04</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/RQ2A.210405.005.2021.04.16.04">RQ2A.210405.005.2021.04.16.04</a> (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, emulator, generic, other targets)</li>
                     </ul>
 
                     <p>Changes since the 2021.04.05.20 release:</p>
 
                     <ul>
                         <li>kernel (Pixel 4a (5G), Pixel 5): rebuild with updated techpack/camera submodule</li>
-                        <li>add back support for fully disabling native debugging support in Settings → Security</li>
-                        <li>kernel (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5): enable support for native debugging toggle</li>
+                        <li>add back support for fully disabling native debugging (ptrace) support in Settings → Security</li>
+                        <li>kernel (Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5): enable support for native debugging (ptrace) toggle via Yama</li>
                         <li>Settings: add back extra field with bootloader version</li>
                         <li>Settings: only allow disabling Vanadium WebView library via developer tools since disabling it breaks app compatibility and almost always results in crashes rather than user friendly errors, including for base OS components using it</li>
+                        <li>Vanadium: update Chromium base to 90.0.4430.66</li>
+                        <li>Vanadium: fully disable autofill assistant</li>
+                        <li>Vanadium: disable unused autofill assistant configuration</li>
+                        <li>Vanadium: disable speculative service worker start by default</li>
+                        <li>Vanadium: disable safety check for Android by default</li>
+                        <li>Vanadium: disable new interest feed feature too</li>
+                        <li>Vanadium: disable unused password check feature</li>
                     </ul>
                 </article>
-                -->
 
                 <article id="2021.04.05.20">
                     <h3><a href="#2021.04.05.20">2021.04.05.20</a></h3>
@@ -470,7 +995,6 @@
                         <li>full 2021-04-05 security patch level</li>
                         <li>rebased onto RQ2A.210405.005 release</li>
                         <li>SetupWizard: rebrand to GrapheneOS for other languages</li>
-                        <li>disable OpenGL preloading and load it on demand instead since this isn't useful with exec-based spawning</li>
                     </ul>
                 </article>
 
@@ -1182,7 +1706,7 @@
                         <li>Pixel 2, Pixel 2 XL, Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL: update APNs with carriersettings-extractor</li>
                         <li>disable network time refresh when network time is disabled (previous behavior inherited from upstream)</li>
                         <li>kernel (Pixel 2, Pixel 2 XL, Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL): make reproducible builds simpler</li>
-                        <li>kernel (Pixel 4, Pixel 4 XL): use max mmap entropy by default to cover init</li>
+                        <li>kernel (Pixel 4, Pixel 4 XL): use max ASLR entropy before the init process enables it</li>
                     </ul>
 
                     <p>Restoration of past features since the 2020.06.22.21 release:</p>
