@@ -75,7 +75,7 @@
             doing it robustly and securely.</p>
 
             <p>This page provides an overview of currently implemented features differentiating
-            GrapheneOS from AOSP. It doesn't document our many historical features that are not no
+            GrapheneOS from AOSP. It doesn't document our many historical features that are no
             longer included for one reason or another. Many of our features were implemented in
             AOSP, Linux, <a href="https://llvm.org/">LLVM</a> and other projects GrapheneOS is
             based on and those aren't listed here. In many cases, we've been involved in getting
@@ -94,7 +94,7 @@
             <section id="grapheneos">
                 <h2><a href="#grapheneos">GrapheneOS</a></h2>
 
-                <p>Partial list of GrapheneOS features beyond what AOSP 11 provides:</p>
+                <p>Partial list of GrapheneOS features beyond what AOSP 12 provides:</p>
 
                 <ul>
                     <li>Hardened app runtime</li>
@@ -199,8 +199,7 @@
                     <li>Option to enable automatically rebooting the device when no profile has
                     been unlocked for the configured time period to put the device fully at rest
                     again.</li>
-                    <li>Indicators for active camera and microphone usage are enabled by default
-                    alongside the traditional location indicator</li>
+                    <li>Modern Microphone/Camera usage indicator UX is also used for Location.</li>
                     <li>Improved user visibility into persistent firmware security through version
                     and configuration verification with reporting of inconsistencies and debug
                     features being enabled.</li>
@@ -208,9 +207,12 @@
                     <li>Stricter implementation of the optional fingerprint unlock feature permitting
                     only 5 attempts rather than 20 before permanent lockout (our recommendation is
                     still keeping sensitive data in user profiles without fingerprint unlock)</li>
+                    <li>Support for using the fingerprint scanner only for authentication in apps
+                    and unlocking hardware keystore keys by toggling off support for unlocking.</li>
                     <li>PIN scrambling option</li>
                     <li><a href="/usage#lte-only-mode">LTE-only mode</a> to reduce cellular radio
-                    attack surface by disabling enormous amounts of legacy code</li>
+                    attack surface by disabling enormous amounts of both legacy code (2G, 3G) and
+                    bleeding edge code (5G)</li>
                     <li><a href="/usage#wifi-privacy-associated">Per-connection MAC randomization
                     option (enabled by default)</a> as a more private option than the standard
                     persistent per-network random MAC.</li>

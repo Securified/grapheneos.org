@@ -134,9 +134,11 @@
 
                 <ul>
                     <li>Windows 10</li>
+                    <li>Windows 11</li>
                     <li>macOS Big Sur</li>
                     <li>Arch Linux</li>
                     <li>Debian 10 (buster)</li>
+                    <li>Debian 11 (bullseye)</li>
                     <li>Ubuntu 20.04 LTS</li>
                     <li>Ubuntu 20.10</li>
                 </ul>
@@ -237,9 +239,9 @@ bsdtar xvf platform-tools_r31.0.3-linux.zip</pre>
 
                     <p>To download, verify and extract the standalone platform-tools on macOS:</p>
 
-                    <pre>curl -O https://dl.google.com/android/repository/d027ce0f9f214a4bd575a73786b44d8ccf7e7516.platform-tools_r31.0.3-darwin.zip
+                    <pre>curl -O https://dl.google.com/android/repository/e8b2b4cbe47c728c1e54c5f524440b52d4e1a33c.platform-tools_r31.0.3-darwin.zip
 echo 'SHA256 (e8b2b4cbe47c728c1e54c5f524440b52d4e1a33c.platform-tools_r31.0.3-darwin.zip) = 773c08cfa31cec1bb4568ce5b374366e6310a5ffc21875024604a0f65bc831b1' | shasum -c
-tar xvf d027ce0f9f214a4bd575a73786b44d8ccf7e7516.platform-tools_r31.0.3-darwin.zip</pre>
+tar xvf e8b2b4cbe47c728c1e54c5f524440b52d4e1a33c.platform-tools_r31.0.3-darwin.zip</pre>
 
                     <p>To download, verify and extract the standalone platform-tools on Windows:</p>
 
@@ -386,17 +388,17 @@ RWQZW9NItOuQYJ86EooQBxScfclrWiieJtAO9GpnfEjKbCO/3FriLGX3</pre>
                 When the current signing key is replaced, the new key will be signed with it.</p>
 
                 <p>Download the factory images for the device from <a href="/releases">the releases
-                page</a>. For example, to download the 2021.06.09.13 release for a device with the
+                page</a>. For example, to download the 2021110122 release for a device with the
                 codename <code>DEVICE_NAME</code>:</p>
 
-                <pre>curl -O https://releases.grapheneos.org/DEVICE_NAME-factory-2021.06.09.13.zip
-curl -O https://releases.grapheneos.org/DEVICE_NAME-factory-2021.06.09.13.zip.sig</pre>
+                <pre>curl -O https://releases.grapheneos.org/DEVICE_NAME-factory-2021110122.zip
+curl -O https://releases.grapheneos.org/DEVICE_NAME-factory-2021110122.zip.sig</pre>
 
                 <p>Verify the factory images using the signature if you were able to obtain
                 <code>signify</code> from trusted package repositories (see above), otherwise
                 continue on to the next section without this:</p>
 
-                <pre>signify -Cqp factory.pub -x DEVICE_NAME-factory-2021.06.09.13.zip.sig &amp;&amp; echo verified</pre>
+                <pre>signify -Cqp factory.pub -x DEVICE_NAME-factory-2021110122.zip.sig &amp;&amp; echo verified</pre>
 
                 <p>This will output <code>verified</code> if verification is successful. If something
                 goes wrong, it will output an error message rather than <code>verified</code>.</p>
@@ -412,15 +414,15 @@ curl -O https://releases.grapheneos.org/DEVICE_NAME-factory-2021.06.09.13.zip.si
 
                 <p>On Linux:</p>
 
-                <pre>bsdtar xvf DEVICE_NAME-factory-2021.06.09.13.zip</pre>
+                <pre>bsdtar xvf DEVICE_NAME-factory-2021110122.zip</pre>
 
                 <p>On macOS and Windows:</p>
 
-                <pre>tar xvf DEVICE_NAME-factory-2021.06.09.13.zip</pre>
+                <pre>tar xvf DEVICE_NAME-factory-2021110122.zip</pre>
 
                 <p>Move into the directory:</p>
 
-                <pre>cd DEVICE_NAME-factory-2021.06.09.13</pre>
+                <pre>cd DEVICE_NAME-factory-2021110122</pre>
 
                 <p>Flash the images with the flash-all script in the directory.</p>
 
