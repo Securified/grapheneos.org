@@ -76,7 +76,13 @@
                         </ul>
                     </li>
                     <li><a href="#web-browsing">Web browsing</a></li>
-                    <li><a href="#camera">Camera</a></li>
+                    <li>
+                        <a href="#camera">Camera</a>
+                        <ul>
+                            <li><a href="#grapheneos-camera-app">GrapheneOS Camera app</a></li>
+                            <li><a href="#google-camera">Google Camera</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#exec-spawning">Exec spawning</a></li>
                     <li><a href="#bugs-uncovered-by-security-features">Bugs uncovered by security features</a></li>
                     <li>
@@ -90,6 +96,7 @@
                     <li>
                         <a href="#sandboxed-play-services">Sandboxed Play services</a>
                         <ul>
+                            <li><a href="#sandboxed-play-services-installation">Installation</a></li>
                             <li><a href="#sandboxed-play-services-limitations">Limitations</a></li>
                         </ul>
                     </li>
@@ -492,38 +499,130 @@
             <section id="camera">
                 <h2><a href="#camera">Camera</a></h2>
 
-                <p>GrapheneOS itself has the same camera capabilities and quality as the stock OS.
-                It will match the stock OS when comparing the same app on each OS.</p>
+                <p>GrapheneOS has the same camera capabilities and quality as the stock OS. It
+                will match the stock OS when comparing the same app on each OS. GrapheneOS uses
+                our own modern Camera app rather than the standard AOSP Camera app. GrapheneOS
+                Camera is far better than any of the portable open source camera alternatives and
+                even most proprietary camera apps including paid apps. On Pixels, Google Camera
+                can be used as an alternative with more features. The section below has a detailed
+                guide on using GrapheneOS Camera and the following section explains the remaining
+                advantages of Google Camera on Pixels.</p>
 
-                <p>The Camera app included in GrapheneOS is very basic and can't take full advantage
-                of the hardware. It doesn't offer much in the way of configuration. In the long term,
-                it's going to be replaced. In the short term, there are other apps available providing
-                more capabilities and better support for taking advantage of the hardware.</p>
+                <section id="grapheneos-camera-app">
+                    <h3><a href="#grapheneos-camera-app">GrapheneOS Camera app</a></h3>
 
-                <p>Open Camera is somewhat more advanced and much more configurable. You should
-                make sure to configure it to use the Camera2 API since it uses the legacy camera
-                APIs by default for broader compatibility with devices. It isn't currently able to
-                make use of special purpose cameras and doesn't have any advanced image capturing
-                or processing technology. It has a traditional software-based HDR mode which
-                captures 3 images and merges them in a way that isn't at all intelligent and
-                causes a lot of blur and distortion. You probably don't want to use this unless
-                you have a way to mount the phone in a stable position and aren't taking a picture
-                of anything that's not almost entirely still.</p>
+                    <p>GrapheneOS includes our own modern Camera app based on the bleeding edge
+                    release channel of Android's CameraX library. It provides modes for QR
+                    scanning, image capture and video recording as tabs at the bottom of the
+                    screen. You can either use the tab interface or swipe left and right anywhere
+                    on the screen above it to switch between them. The arrow button at the top of
+                    the screen opens the settings panel and you can close it by pressing anywhere
+                    outside the settings panel. You can also swipe down to open the settings and
+                    swipe up to close it. Outside of the QR scanning mode, there's a row of large
+                    buttons above the tab bar for switching between the cameras (left), capturing
+                    images and starting/stopping video recording (middle) and opening the gallery
+                    (right). The volume keys can also be used as an equivalent to pressing the
+                    capture button. While recording a video, the gallery button becomes an image
+                    capture button for capturing images.</p>
 
-                <p>Google Camera can be used with the <a href="#sandboxed-play-services">sandboxed
-                Play services compatibility layer</a> and can take full advantage of the available
-                cameras and image processing hardware as it can on the stock OS. Other camera apps
-                could provide the same image quality and features but there aren't any comparable
-                alternatives in practice. HDR+ is enabled by default and is a much more advanced
-                replacement for HDR taking bursts of pictures and intelligently combining those
-                which is what makes the image quality so much higher, especially for low light.
-                The Night Sight feature is essentially the same thing, but with the light of the
-                picture unnaturally increased through combining the data.</p>
+                    <p>Our Camera app provides the system media intents used by other apps to
+                    capture images / record videos via the OS provided camera implementation.
+                    These intents can only be provided by a system app since Android 11, so the
+                    quality of the system camera is quite important.</p>
 
-                <p>Since there isn't a project making a serious, high quality open source camera
-                app able to even compete with Google Camera without HDR+ and the fancy features,
-                GrapheneOS is funding the creation of a new app as a replacement for the AOSP
-                Camera app.</p>
+                    <p>The in-app gallery / video player doesn't yet support zooming and depends
+                    on opening an external image/video editor. This will be improved in the
+                    future. We'll eventually be making our own gallery/editor app sharing a lot of
+                    the code with the in-app gallery in the camera.</p>
+
+                    <p>Using the default 4:3 aspect ratio for image capture is recommended since
+                    16:9 is simply cropped output on all supported devices. A device oriented
+                    towards video recording might actually have a wider image sensor but that's
+                    not the case for Pixels or nearly any other smartphone.</p>
+
+                    <p>Image capture uses lightweight HDR+ on all supported Pixels and HDRnet for the
+                    preview on 5th generation Pixels. Using the torch or camera flash will result
+                    in HDR+ being disabled which is why automatic flash isn't enabled by default.
+                    The lightweight HDR+ doesn't use as many frames as the more aggressive Google
+                    Camera HDR+. CameraX extensions will eventually provide support for an HDR
+                    mode with more aggressive HDR+ taking/combining more than only around 3 frames
+                    along with a Night mode providing the Night Sight variant of HDR+ inflating
+                    the light of the scene through combining the frames. Other fancy features like
+                    Portrait mode will also depend on CameraX extensions being provided in the
+                    future. There isn't a timeline for this but an initial implementation will
+                    likely be shipped within the next year for Pixels.</p>
+
+                    <p>Zooming via pinch to zoom or the zoom slider will automatically make use of
+                    the wide angle and telephoto cameras on Pixels. 5th and 6th generation Pixels
+                    (4a (5G), 5, 5a, 6, 6 Pro) have a wide angle camera for zooming out to under
+                    1x to capture a much wider field of view. Images taken with the wide angle
+                    lens won't match the quality of the normal camera, especially with 6th
+                    generation Pixels. Flagship 4th generation Pixels (4, 4 XL) have a telephoto
+                    camera providing 2x optical zoom and the Pixel 6 Pro has one providing 4x
+                    optical zoom.</p>
+
+                    <p>By default, continuous auto focus, auto exposure and auto white balance are
+                    used across the whole scene. Tapping to focus will switch to auto focus, auto
+                    exposure and auto white balance based on that location. The focus timeout
+                    setting determines the timeout before it switches back the default mode. The
+                    exposure compensation slider on the left allows manually tuning exposure and
+                    will automatically adjust shutter speed, aperture and ISO without disrupting
+                    lightweight HDR+ support. Further configuration / tuning over the algorithms
+                    will be provided in the future. Direct manual control doesn't make much sense
+                    with the modern camera stack and isn't planned.</p>
+
+                    <p>CameraX only recently gained official support for video recording in
+                    October 2021 and there are still some quirks. The preview can sometimes end up
+                    misaligned but the recorded videos won't be impacted. 16:9 is currently the
+                    only supported video aspect ratio. 1080p (FHD) is the default but 2160p (UHD)
+                    is supported. CameraX UHD support may be buggy on some devices.</p>
+
+                    <p>The QR scanning mode only scans within the scanning square marked on the
+                    screen. The QR code should be aligned with the edges of the square but can
+                    have any 90 degree orientation. Non-standard inverted QR codes are fully
+                    supported. It's a very quick and high quality QR scanner able to easily scan
+                    very high density QR codes from Pixels. Every 2 seconds, it will refresh auto
+                    focus, auto exposure and auto white balance on the scanning square. It has
+                    full support for zooming in and out. Support for other kinds of barcodes will
+                    be added in the future, but adding them transparently would result in getting
+                    false positives and would substantially harm the QR scanning capability. It
+                    will need to be done in a way offering more control without having an overly
+                    complex user interface.</p>
+
+                    <p>Camera permission is the only one that's required. Images and videos are
+                    stored via the Media Store API so media/storage permissions aren't required.
+                    The Microphone permission is needed for video recording by default but not
+                    when including audio is disabled. Location permission is only needed if you
+                    explicitly enabling location tagging, which is an experimental feature.</p>
+
+                    <p>Captured images currently include an EXIF timestamp, the phone model and an
+                    abstraction of the exposure configuration. This will become fully optional in
+                    the future and will likely be opt-in rather than opt-out. EXIF orientation
+                    data is crucial for setting the proper orientation of the image. Videos have
+                    their own similar metadata.</p>
+                </section>
+
+                <section id="google-camera">
+                    <h3><a href="#google-camera">Google Camera</a></h3>
+
+                    <p>Google Camera can be used with the <a href="#sandboxed-play-services">sandboxed
+                    Play services compatibility layer</a> and can take full advantage of the
+                    available cameras and image processing hardware as it can on the stock OS.</p>
+
+                    <p>We aim to reduce the benefits of Google Camera compared to GrapheneOS
+                    Camera over time, especially on Pixels. Many features of Google Camera will
+                    end up being available for GrapheneOS Camera in the next year or so via
+                    CameraX extensions including more aggressive HDR+, Night Sight and Portrait.
+                    Video features such as Electronic Image Stabilization (EIS), slow motion and
+                    time lapse are likely further away than within the next year. These video
+                    features could potentially be provided via CameraX vendor extensions or could
+                    be implemented via our own post-processing of the video output. Panorama,
+                    Photo Sphere, Astrophotography, Motion Photos, Frequent Faces, Dual Exposure
+                    Controls, Google Lens, etc. aren't on the roadmap for GrapheneOS Camera. Video
+                    refresh rate configuration and H.265 support should be available for
+                    GrapheneOS Camera in the near future via CameraX improvements along with DNG
+                    (RAW) support in the further future.</p>
+                </section>
             </section>
 
             <section id="exec-spawning">
@@ -644,7 +743,7 @@
                     <p>In the stock OS, the default is to use a unique persistent random MAC address for
                     each network. It has 2 options available: "Use randomized MAC (default)" and "Use
                     device MAC". In GrapheneOS, the default is generating a new random MAC address when
-                    connecting to a network. It has 3 options available: "Use fully randomized MAC
+                    connecting to a network. It has 3 options available: "Use per-connection randomized MAC
                     (default)", "Use per-network randomized MAC" and "Use device MAC".</p>
 
                     <p>The DHCP client uses the anonymity profile rather than sending a hostname
@@ -685,58 +784,83 @@
             <section id="sandboxed-play-services">
                 <h2><a href="#sandboxed-play-services">Sandboxed Play services</a></h2>
 
-                <p>GrapheneOS has support for installing the official releases of
-                com.android.vending (Google Play Store), com.google.android.gms (Google Play
-                services), com.google.android.gsf (Google Services Framework) as regular sandboxed
-                apps in a specific profile. These receive no special privileges and the OS itself
-                doesn't use them for anything. They run as unprivileged, sandboxed apps like any
-                others. GrapheneOS simply provides fallback code teaching them how to run without
-                any of the special privileged permissions and SELinux policy they depend on
-                having. You can choose which apps will use them by using a dedicated user profile
-                since apps can't share data or communicate across users. A work profile also
-                works, although without as much isolation. Even within the same profile, apps not
-                explicitly choosing to use Google services won't use them because the OS doesn't
-                integrate support for it or use it as the backend for APIs in the OS like the
-                stock OS.</p>
+                <p>GrapheneOS has a compatibility layer providing the option to install and use
+                the official releases of Play services in the standard app sandbox. Play services
+                receives absolutely no special access or privileges on GrapheneOS as opposed to
+                bypassing the app sandbox and receiving a massive amount of highly privileged
+                access. Instead, the compatibility layer teaches it how to work within the full
+                app sandbox. It also isn't used as a backend for the OS services as it would be
+                elsewhere since GrapheneOS doesn't use Play services even when it's installed.</p>
+
+                <p>Since the Play services apps are simply regular apps on GrapheneOS, you install
+                them within a specific user or work profile and they're only available within that
+                profile. Only apps within the same profile can use it and they need to explicitly
+                choose to use it. It works the same way as any other app and has no special
+                capabilities. As with any other app, it can't access data of other apps and
+                requires explicit user consent to gain access to profile data or the standard
+                permissions. Apps within the same profile can communicate with mutual consent and
+                it's no different for sandboxed Play services.</p>
 
                 <p>The core functionality and APIs are almost entirely supported already since
                 GrapheneOS largely only has to coerce these apps into continuing to run without
                 being able to use any of the usual invasive OS integration. A compatibility layer
                 is also provided to support dynamically downloaded/loaded modules (dynamite
-                modules).</p>
+                modules). The compatibility layer will be gradually expanded and improved in order
+                to get more of the Play services functionality working.</p>
 
-                <p>Install com.google.android.gsf, then com.google.android.gms and finally use a
-                split APK installer to install all 5 of the APKs for com.android.vending together.
-                Make sure to install all 3 in the correct order and don't skip installing the Play
-                Store since it provides services used by apps depending on Play. You can obtain a
-                split APK installer app from either Aurora Store, F-Droid or the developers of the
-                app via their GitHub releases, etc.</p>
+                <section id="sandboxed-play-services-installation">
+                    <h3><a href="#sandboxed-play-services-installation">Installation</a></h3>
 
-                <p>In the future, we'll have a client app for our repository so you'll be able to
-                install and update the official Play services apps through that app and you won't
-                need to deal with split APK installation manually.</p>
+                    <p>Play services is divided up into 3 separate apps: Google Services Framework
+                    (com.google.android.gsf), Google Play services (com.google.android.gms) and
+                    Google Play Store (com.android.vending). To use sandboxed Play services, you
+                    simply need to install the official releases of these 3 apps in the user and
+                    work profiles where you want to use it.</p>
 
-                <ul>
-                    <li><a href="https://apps.grapheneos.org/packages/com.google.android.gsf/">com.google.android.gsf</a></li>
-                    <li><a href="https://apps.grapheneos.org/packages/com.google.android.gms/">com.google.android.gms</a></li>
-                    <li><a href="https://apps.grapheneos.org/packages/com.android.vending/">com.android.vending</a></li>
-                </ul>
+                    <p>The simplest approach is to only use the Owner user profile. Apps installed
+                    in the Owner profile are sandboxed the same way as everywhere else and don't
+                    receive any special access. If you want to choose which apps use Play services
+                    rather than making it available to all of them, install it in a separate user
+                    or work profile for apps depending on Play services. You could also do it the
+                    other way around, but it makes more sense to try to use as much as possible
+                    without Play services rather than treating not using it as the exceptional
+                    case.</p>
 
-                <p>You should give a battery optimization exception to Google Play services for
-                features like push notifications to work properly in the background. It isn't
-                needed for the other 2 apps.</p>
+                    <p>Install com.google.android.gsf, then com.google.android.gms and finally use
+                    a split APK installer to install all 5 of the APKs for com.android.vending
+                    together. Make sure to install all 3 in the correct order and don't skip
+                    installing the Play Store since it provides services used by apps depending on
+                    Play. You can obtain a split APK installer app from either Aurora Store,
+                    F-Droid or the developers of the app via their GitHub releases, etc.</p>
 
-                <p>After installing the apps, you should open the Play Store and press sign in to
-                trigger initialization. Signing into an account is optional and it will work fine
-                without it, but you do need to get it initialized and this is currently the best
-                way to mimic the initialization done by the stock OS setup wizard.</p>
+                    <p>In the future, we'll have a client app for our repository so you'll be able
+                    to install and update the official Play services apps through that app and you
+                    won't need to deal with split APK installation manually.</p>
 
-                <p>You can obtain updates to these apps from our repository which will be easy
-                once we have a client app. The Play Store app can also be used to update Google
-                Play services. Updates to the Google Services Framework (com.google.android.gsf)
-                app are normally only distributed through OS updates so you need to get those from
-                our repository. The Play Store app isn't able to update itself through the
-                compatibility layer yet but it may be supported in the future.</p>
+                    <ul>
+                        <li><a href="https://apps.grapheneos.org/packages/com.google.android.gsf/">com.google.android.gsf</a></li>
+                        <li><a href="https://apps.grapheneos.org/packages/com.google.android.gms/">com.google.android.gms</a></li>
+                        <li><a href="https://apps.grapheneos.org/packages/com.android.vending/">com.android.vending</a></li>
+                    </ul>
+
+                    <p>You should give a battery optimization exception to Google Play services
+                    for features like push notifications to work properly in the background. It
+                    isn't needed for the other 2 apps.</p>
+
+                    <p>After installing the apps, you should open the Play Store and press sign in
+                    to trigger initialization. Signing into an account is optional and it will
+                    work fine without it, but you do need to get it initialized and this is
+                    currently the best way to mimic the initialization done by the stock OS setup
+                    wizard.</p>
+
+                    <p>You can obtain updates to these apps from our repository which will be easy
+                    once we have a client app. The Play Store app can also be used to update
+                    Google Play services. Updates to the Google Services Framework
+                    (com.google.android.gsf) app are normally only distributed through OS updates
+                    so you need to get those from our repository. The Play Store app isn't able to
+                    update itself through the compatibility layer yet but it may be supported in
+                    the future.</p>
+                </section>
 
                 <section id="sandboxed-play-services-limitations">
                     <h3><a href="#sandboxed-play-services-limitations">Limitations</a></h3>
@@ -747,7 +871,7 @@
                     scope of the project beyond the existing support for dynamite modules and
                     partially implemented support for Play Store app installation/updates. The
                     official Android Auto interface is a good example of functionality heavily
-                    depending on having highly invasive privileged access far beyond what would be
+                    depending on having highly invasive privileged access beyond what would be
                     realistic to get working with an expanded compatibility layer.</p>
 
                     <p>The Play Store app is designed to use privileged permissions for unattended
