@@ -119,10 +119,10 @@
                     <li>Debian 10 (buster)</li>
                     <li>Debian 11 (bullseye)</li>
                     <li>Ubuntu 20.04 LTS</li>
-                    <li>Ubuntu 20.10</li>
+                    <li>Ubuntu 21.10</li>
                     <li>ChromeOS</li>
                     <li>GrapheneOS</li>
-                    <li>Google Android on GrapheneOS-supported devices</li>
+                    <li>Google Android (stock Pixel OS) and other certified Android variants</li>
                 </ul>
 
                 <p>Make sure your operating system is up-to-date before proceeding.</p>
@@ -135,6 +135,7 @@
                     <li>Vanadium (GrapheneOS)</li>
                     <li>Google Chrome</li>
                     <li>Microsoft Edge</li>
+                    <li>Brave</li>
                 </ul>
 
                 <p>Make sure your browser is up-to-date before proceeding.</p>
@@ -355,11 +356,11 @@
 
                     <p>Installation of the stock OS via the stock factory images is similar to the
                     process described above but with Google's web flashing tool. However, before
-                    locking, there's an additional step to fully revert the device to a clean
-                    factory state.</p>
+                    flashing and locking, there's an additional step to fully revert the device to
+                    a clean factory state.</p>
 
                     <p>The GrapheneOS factory images flash a non-stock Android Verified Boot key which
-                    needs to be erased to fully revert back to a stock device state. After flashing the
+                    needs to be erased to fully revert back to a stock device state. Before flashing the
                     stock factory images and before locking the bootloader, you should erase the custom
                     Android Verified Boot key to untrust it:</p>
 

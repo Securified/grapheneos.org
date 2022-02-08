@@ -142,6 +142,12 @@ async function unlockBootloader(setProgress) {
 
 const supportedDevices = ["raven", "oriole", "barbet", "redfin", "bramble", "sunfish", "coral", "flame", "bonito", "sargo", "crosshatch", "blueline"];
 
+const qualcommDevices = ["barbet", "redfin", "bramble", "sunfish", "coral", "flame", "bonito", "sargo", "crosshatch", "blueline"];
+
+const legacyQualcommDevices = ["sunfish", "coral", "flame", "bonito", "sargo", "crosshatch", "blueline"];
+
+const gs101Devices = ["raven", "oriole"];
+
 async function getLatestRelease() {
     let product = await device.getVariable("product");
     if (!supportedDevices.includes(product)) {
@@ -152,14 +158,14 @@ async function getLatestRelease() {
     let metadata = await metadataResp.text();
     let releaseId = metadata.split(" ")[0];
 
-    return `${product}-factory-${releaseId}.zip`;
+    return [`${product}-factory-${releaseId}.zip`, product];
 }
 
 async function downloadRelease(setProgress) {
     await ensureConnected(setProgress);
 
     setProgress("Finding latest release...");
-    let latestZip = await getLatestRelease();
+    let [latestZip,] = await getLatestRelease();
 
     // Download and cache the zip as a blob
     safeToLeave = false;
@@ -200,7 +206,7 @@ async function flashRelease(setProgress) {
     // Need to do this again because the user may not have clicked download if
     // it was cached
     setProgress("Finding latest release...");
-    let latestZip = await getLatestRelease();
+    let [latestZip, product] = await getLatestRelease();
     await blobStore.init();
     let blob = await blobStore.loadFile(latestZip);
     if (blob === null) {
@@ -221,6 +227,21 @@ async function flashRelease(setProgress) {
         // See https://android.googlesource.com/platform/system/core/+/eclair-release/fastboot/fastboot.c#532
         // for context as to why the trailing space is needed.
         await device.runCommand("oem uart disable ");
+        if (qualcommDevices.includes(product)) {
+            setProgress("Erasing apdp...");
+            // Both slots are wiped as even apdp on an inactive slot will modify /proc/cmdline
+            await device.runCommand("erase:apdp_a");
+            await device.runCommand("erase:apdp_b");
+        }
+        if (legacyQualcommDevices.includes(product)) {
+            setProgress("Erasing msadp...");
+            await device.runCommand("erase:msadp_a");
+            await device.runCommand("erase:msadp_b");
+        }
+        if (gs101Devices.includes(product)) {
+            setProgress("Disabling FIPS...");
+            await device.runCommand("erase:fips");
+        }
     } finally {
         safeToLeave = true;
     }
@@ -309,8 +330,6 @@ fastboot.configureZip({
 });
 
 if ("usb" in navigator) {
-    console.log("WebUSB available");
-
     addButtonHook("unlock-bootloader", unlockBootloader);
     addButtonHook("download-release", downloadRelease);
     addButtonHook("flash-release", flashRelease);
