@@ -94,7 +94,7 @@
             <section id="grapheneos">
                 <h2><a href="#grapheneos">GrapheneOS</a></h2>
 
-                <p>Partial list of GrapheneOS features beyond what AOSP 12 provides:</p>
+                <p>Partial list of GrapheneOS features beyond what AOSP 12.1 provides:</p>
 
                 <ul>
                     <li>Hardened app runtime</li>
@@ -226,6 +226,11 @@
                     <li>Vanadium: hardened WebView and default browser — the WebView is what most
                     other apps use to handle web content, so you benefit from Vanadium in many apps
                     even if you choose another browser</li>
+                    <li>Apps: first-party GrapheneOS app repository focused on security, which is
+                    currently used to distribute our own apps and a mirror of Google Play for the
+                    sandboxed Google Play feature. In the future, it will be used to distribute
+                    first-party GrapheneOS builds of externally developed open source apps with
+                    hardening applied.</li>
                     <li>Hardware-based security verification and monitoring: the
                     <a href="https://github.com/GrapheneOS/Auditor/releases">Auditor app</a> app and
                     <a href="https://attestation.app/">attestation service</a> provide strong
@@ -271,6 +276,10 @@
                     the results</li>
                     <li>Connectivity checks via a first party server with the option to revert to the
                     standard checks (to blend in) or to fully disable them</li>
+                    <li>Attestation key provisioning via a first party server with the option to
+                    revert to the standard server</li>
+                    <li>GNSS almanac downloads (PSDS) via a first party server with the option to
+                    revert to the standard server (not available for all GPS vendors yet)</li>
                     <li>Hardened local build / signing infrastructure</li>
                     <li><a href="/usage#updates">Seamless automatic OS update system</a> that just
                     works and stays out of the way in the background without disrupting device
@@ -295,6 +304,22 @@
                     special privileges.</a></li>
                     <li>Fixes for multiple serious vulnerabilities not yet fixed upstream due to a
                     flexible release cycle / process prioritizing security.</li>
+                    <li>Added toggle for the Owner user to disallow secondary users from
+                    installing apps based on the standard device management capability.</li>
+                    <li>User installed apps can be disabled as you can do with system apps to
+                    fully prevent them from running without losing their data or having the
+                    inconvenience of needing to uninstall and reinstall them. An app that's force
+                    stopped can't start itself but can be started by other apps while a disabled
+                    app is completely disabled.</li>
+                    <li>Modern APN, carrier configuration, MMS and visual voicemail databases
+                    based on extracting the databases from Google's Pixel apps, making them
+                    compatible with an OS not including any carrier bloatware apps and disabling
+                    various misfeatures such as disallowed tethering, disallowed 2G toggle,
+                    etc.</li>
+                    <li>Screenshot EXIF metadata is reduced by not including information on the OS
+                    and OS version so that it's only clear it's an OS including this feature. The
+                    inclusion of timestamps is also disabled by default with an opt-in toggle for
+                    the user to enable it.</li>
                 </ul>
             </section>
 
