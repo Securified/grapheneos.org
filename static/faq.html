@@ -71,6 +71,7 @@
                             <li><a href="#when-devices">When will more devices be supported?</a></li>
                             <li><a href="#legacy-devices">Why are older devices no longer supported?</a></li>
                             <li><a href="#which-legacy-devices">Which devices did GrapheneOS support in the past?</a></li>
+                            <li><a href="#device-lifetime">How long will GrapheneOS support my device for?</a></li>
                         </ul>
                     </li>
                     <li>
@@ -149,14 +150,14 @@
                         <li>Pixel 4a (sunfish)</li>
                         <li>Pixel 4 XL (coral)</li>
                         <li>Pixel 4 (flame)</li>
-                        <li>Pixel 3a XL (bonito)</li>
-                        <li>Pixel 3a (sargo)</li>
                     </ul>
 
                     <p>The following devices are end-of-life, no longer receive full security
                     updates and are supported via extended support releases of GrapheneOS:</p>
 
                     <ul>
+                        <li>Pixel 3a XL (bonito)</li>
+                        <li>Pixel 3a (sargo)</li>
                         <li>Pixel 3 XL (crosshatch)</li>
                         <li>Pixel 3 (blueline)</li>
                     </ul>
@@ -353,6 +354,90 @@
                         <li>HiKey 960 (hikey960)</li>
                         <li>HiKey (hikey)</li>
                     </ul>
+                </article>
+
+                <article id="device-lifetime">
+                    <h3><a href="#device-lifetime">How long can GrapheneOS support my device for?</a></h3>
+
+                    <p>GrapheneOS can only fully provide security updates to a device provided
+                    that the OEM is releasing them. When an OEM is no longer providing security
+                    updates, GrapheneOS aims to provide harm reduction releases for devices which
+                    only have a minimum of 3 years support. Extended support updates at minimum
+                    will be done until the next Android version. It is likely that we will make a
+                    decision around harm reduction releases for other devices with longer
+                    lifetimes in Q4 2024. Harm reduction releases do not have complete security
+                    patches because it's not possible to provide full security updates for the
+                    device without OEM support and they are intended to buy users some limited
+                    time to migrate to a supported device.</p>
+
+                    <table>
+                        <tr>
+                            <th>Device</th>
+                            <th>OEM minimum support end</th>
+                            <th>OEM minimum support length</th>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 6 Pro</td>
+                            <td>October 2026</td>
+                            <td>5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 6</td>
+                            <td>October 2026</td>
+                            <td>5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 5a</td>
+                            <td>August 2024</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 5</td>
+                            <td>October 2023</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 4a 5G</td>
+                            <td>November 2023</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 4a</td>
+                            <td>August 2023</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 4</td>
+                            <td>October 2022</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 4 XL</td>
+                            <td>October 2022</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 3a XL</td>
+                            <td>May 2022</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 3a</td>
+                            <td>May 2022</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 3 XL</td>
+                            <td>October 2021</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 3</td>
+                            <td>October 2021</td>
+                            <td>3 years</td>
+                        </tr>
+                    </table>
+
                 </article>
             </section>
 
@@ -614,7 +699,7 @@
                     the network is not currently occurring, the network is still untrustworthy and
                     information should not be sent unencrypted.</p>
 
-                    <p> Authenticated transport encryption such as HTTPS for web sites avoids trusting the
+                    <p>Authenticated transport encryption such as HTTPS for web sites avoids trusting the
                     cellular network. End-to-end encrypted protocols such as the Signal messaging protocol
                     also avoid trusting the servers. GrapheneOS uses authenticated encryption with modern
                     protocols, forward secrecy and strong cipher configurations for our services. We only
@@ -625,6 +710,14 @@
                     detect some forms of interception rather than dealing with the root of the problem
                     (unencrypted communications / data transfer) would be foolish and doomed to
                     failure.</p>
+
+                    <p>GrapheneOS does not add gimmicks without a proper threat model and
+                    rationale. We won't include flawed heuristics to guess when the cellular
+                    network should be trusted. These kinds of features provide a false sense of
+                    security and encourage unwarranted trust in cellular protocols and carrier
+                    networks as the default. These also trigger false positives causing
+                    unnecessary concern and panic. The correct approach is avoiding trusting the
+                    network as explained above.</p>
 
                     <p>Connecting to your carrier's network inherently depends on you identifying yourself to
                     it and anyone able to obtain administrative access. Activating airplane mode will
@@ -641,13 +734,6 @@
                     intended for attack surface reduction</a>. It should not be mistaken as a way to make
                     the cellular network into something that can be trusted.</p>
 
-                    <p>GrapheneOS does not add gimmicks without a proper threat model and rationale. We
-                    won't include flawed heuristics to guess when the cellular network should be trusted.
-                    These kinds of features provide a false sense of security and encourage unwarranted
-                    trust in cellular protocols and carrier networks as the default. These also trigger
-                    false positives causing unnecessary concern and panic. Make good use of authenticated
-                    encryption and airplane mode to avoid needing to depend on an insecure network.</p>
-
                     <p>Receiving a silent SMS is not a good indicator of being targeted by your cell
                     carrier, police or government because <em>anyone on the cell network can send
                     them</em> including yourself. Cellular triangulation will happen regardless of whether
@@ -657,6 +743,9 @@
                     alerts for silent SMS but rather would be ignored with the rest of the spam. Regardless,
                     sending texts or other data is not required or particularly useful to track devices
                     connected to a network for an adversary with the appropriate access.</p>
+
+                    <p>Airplane mode is the only way to avoid the cellular network tracking your
+                    device and works correctly on the devices we support.</p>
                 </article>
 
                 <article id="wifi-privacy">
@@ -850,6 +939,8 @@
                         <li>grapheneos.org</li>
                         <li>releases.grapheneos.org</li>
                         <li>time.grapheneos.org</li>
+                        <li>apps.grapheneos.org</li>
+                        <li>discuss.grapheneos.org</li>
                     </ul>
 
                     <p>Our implementation of the policy primarily consists of making sure our servers only
@@ -858,8 +949,9 @@
                     complex, ad-hoc privacy policy rather than reusing a sensible one with serious thought
                     put into it by experts.</p>
 
-                    <p>Our mail server (mail.grapheneos.org) isn't offered as a public service and doesn't
-                    have a privacy policy since it's only used internally by GrapheneOS developers.</p>
+                    <p>Our mail server (mail.grapheneos.org), Matrix server (matrix.grapheneos.org) and
+                    Element instance (element.grapheneos.org) aren't offered as a public service and don't
+                    have a privacy policy since they're only used internally by GrapheneOS developers and staff.</p>
                 </article>
 
                 <article id="default-dns">
@@ -1210,11 +1302,10 @@
                 and services. They won't ever be bundled with the OS. GrapheneOS includes
                 compatibility layer for sandboxed Play services to make user installed Play
                 services apps able to run as fully sandboxed, unprivileged apps. This is <a
-                href="https://grapheneos.org/usage#sandboxed-play-services">documented as
-                part of the usage guide</a>. Many apps work perfectly without Play services and
-                many others only depend on it for a subset of their functionality. Users can
-                choose to install Play services in specific profile(s) to control which apps can
-                use it.</p>
+                href="/usage#sandboxed-google-play">documented as part of the usage guide</a>.
+                Many apps work perfectly without Play services and many others only depend on it
+                for a subset of their functionality. Users can choose to install Play services in
+                specific profile(s) to control which apps can use it.</p>
 
                 <p>AOSP APIs not tied to Google but that are typically provided via Play services
                 will continue to be implemented using open source providers like the Seedvault
@@ -1267,13 +1358,15 @@
             <article id="bundled-apps">
                 <h2><a href="#bundled-apps">Why aren't my favorite apps bundled with GrapheneOS?</a></h2>
 
-                <p>There are drawbacks to bundling apps into the OS and few advantages in most cases.
-                Rather than GrapheneOS bundling a bunch of apps, it makes far more sense for users to
-                install their preferred apps via F-Droid, Aurora Store or other sources. GrapheneOS
-                also has a first party app update system for a first party repository with higher
-                robustness and security than the existing options. Rather than bundling apps, it could
-                just offer recommendations as part of an initial setup wizard. Users have unique needs
-                and preferences and there has to be a very compelling reason to bundle additional apps
+                <p>There are drawbacks to bundling apps into the OS and few advantages in most
+                cases. Rather than GrapheneOS bundling a bunch of apps, it makes far more sense
+                for users to install their preferred apps from the developers if they can
+                self-update, from the Play Store (via sandboxed Google Play or Aurora Store),
+                F-Droid, Amazon Appstore or other sources. GrapheneOS also has a first party app
+                update system for a first party repository with higher robustness and security
+                than the existing options. Rather than bundling apps, it could just offer
+                recommendations as part of an initial setup wizard. Users have unique needs and
+                preferences and there has to be a very compelling reason to bundle additional apps
                 with the OS. For example, it's useful to have the Auditor app available before
                 connecting to the internet (see the
                 <a href="/install/web#verifying-installation">installation guide documentation on

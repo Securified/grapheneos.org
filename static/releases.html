@@ -69,8 +69,8 @@
                             <li><a href="#sunfish-stable">Pixel 4a</a></li>
                             <li><a href="#coral-stable">Pixel 4 XL</a></li>
                             <li><a href="#flame-stable">Pixel 4</a></li>
-                            <li><a href="#bonito-stable">Pixel 3a XL</a></li>
-                            <li><a href="#sargo-stable">Pixel 3a</a></li>
+                            <li><a href="#bonito-stable">Pixel 3a XL (legacy)</a></li>
+                            <li><a href="#sargo-stable">Pixel 3a (legacy)</a></li>
                             <li><a href="#crosshatch-stable">Pixel 3 XL (legacy)</a></li>
                             <li><a href="#blueline-stable">Pixel 3 (legacy)</a></li>
                         </ul>
@@ -86,8 +86,8 @@
                             <li><a href="#sunfish-beta">Pixel 4a</a></li>
                             <li><a href="#coral-beta">Pixel 4 XL</a></li>
                             <li><a href="#flame-beta">Pixel 4</a></li>
-                            <li><a href="#bonito-beta">Pixel 3a XL</a></li>
-                            <li><a href="#sargo-beta">Pixel 3a</a></li>
+                            <li><a href="#bonito-beta">Pixel 3a XL (legacy)</a></li>
+                            <li><a href="#sargo-beta">Pixel 3a (legacy)</a></li>
                             <li><a href="#crosshatch-beta">Pixel 3 XL (legacy)</a></li>
                             <li><a href="#blueline-beta">Pixel 3 (legacy)</a></li>
                         </ul>
@@ -95,6 +95,18 @@
                     <li>
                         <a href="#changelog">Changelog</a>
                         <ul>
+                            <li><a href="#2022071100">2022071100</a></li>
+                            <li><a href="#2022070800">2022070800</a></li>
+                            <li><a href="#2022070600">2022070600</a></li>
+                            <li><a href="#2022063000">2022063000</a></li>
+                            <li><a href="#2022062200">2022062200</a></li>
+                            <li><a href="#2022061600">2022061600</a></li>
+                            <li><a href="#2022060701">2022060701</a></li>
+                            <li><a href="#2022060700">2022060700</a></li>
+                            <li><a href="#2022053100">2022053100</a></li>
+                            <li><a href="#2022052500">2022052500</a></li>
+                            <li><a href="#2022051100">2022051100</a></li>
+                            <li><a href="#2022050800">2022050800</a></li>
                             <li><a href="#2022050700">2022050700</a></li>
                             <li><a href="#2022050301">2022050301</a></li>
                             <li><a href="#2022050300">2022050300</a></li>
@@ -259,24 +271,28 @@
                 providing another layer of signature verification and downgrade protection. Verified
                 boot and the hardware-backed keystore also act as a final layer of protection.</p>
 
-                <p>Releases are tested by the developers and are then pushed out via the Beta channel.
-                The release is then pushed out via the Stable channel after being tested by some users
-                using the Beta channel. In some cases, problems are caught during Beta channel testing
-                and a new release is made via the Beta channel to replace the aborted one. In general,
-                it's not possible to downgrade unless a downgrade update package is generated, so use
-                the Stable channel if you cannot tolerate dealing with temporary issues while a new
-                release for the Beta channel is being created.</p>
+                <p>Releases are tested by the developers and are then pushed out via the Alpha
+                channel. The release is then pushed out via the Beta channel shortly afterwards.
+                Finally, the release is then pushed out via the Stable channel after being tested
+                by some users using the Beta channel. In some cases, problems are caught during
+                Beta channel testing and a new release is made via the Beta channel to replace the
+                aborted one. In general, it's not possible to downgrade unless a downgrade update
+                package is generated, so use the Stable channel if you cannot tolerate dealing
+                with temporary issues while a new release for the Beta channel is being
+                created.</p>
             </section>
 
             <section id="release-announcements">
                 <h2><a href="#release-announcements">Release announcements</a></h2>
 
-                <p>Releases are announced on this page including via an atom feed, via our
+                <p>Releases are announced on this page including via an
+                <a href="/releases.atom">atom feed</a>, via our
                 <a href="https://twitter.com/GrapheneOS">@GrapheneOS Twitter account</a>, on the
-                <a href="https://reddit.com/r/GrapheneOS">official subreddit</a> and in the
-                official <a href="/contact#community">GrapheneOS chat room</a> A release
-                announcement indicates that the source code tags are available and that the
-                official builds will soon be pushed out via the Beta channel.</p>
+                <a href="https://reddit.com/r/GrapheneOS">official subreddit</a>, on our
+                <a href="https://discuss.grapheneos.org">discussion forum</a> and in the official
+                <a href="/contact#community">GrapheneOS chat room</a>. A release announcement
+                indicates that the source code tags are available and that the official builds
+                will soon be pushed out via the Beta channel.</p>
             </section>
 
             <section id="stable-channel">
@@ -355,7 +371,7 @@
                     </ul>
                 </section>
                 <section id="bonito-stable">
-                    <h3><a href="#bonito-stable">Pixel 3a XL</a></h3>
+                    <h3><a href="#bonito-stable">Pixel 3a XL (legacy)</a></h3>
                     <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/{{bonito-stable-BUILD_ID}}.{{bonito-stable-BUILD_NUMBER}}">{{bonito-stable-BUILD_ID}}.{{bonito-stable-BUILD_NUMBER}}</a></p>
                     <ul>
                         <li><a href="https://releases.grapheneos.org/bonito-factory-{{bonito-stable-BUILD_NUMBER}}.zip">bonito-factory-{{bonito-stable-BUILD_NUMBER}}.zip</a></li>
@@ -364,7 +380,7 @@
                     </ul>
                 </section>
                 <section id="sargo-stable">
-                    <h3><a href="#sargo-stable">Pixel 3a</a></h3>
+                    <h3><a href="#sargo-stable">Pixel 3a (legacy)</a></h3>
                     <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/{{sargo-stable-BUILD_ID}}.{{sargo-stable-BUILD_NUMBER}}">{{sargo-stable-BUILD_ID}}.{{sargo-stable-BUILD_NUMBER}}</a></p>
                     <ul>
                         <li><a href="https://releases.grapheneos.org/sargo-factory-{{sargo-stable-BUILD_NUMBER}}.zip">sargo-factory-{{sargo-stable-BUILD_NUMBER}}.zip</a></li>
@@ -468,7 +484,7 @@
                     </ul>
                 </section>
                 <section id="bonito-beta">
-                    <h3><a href="#bonito-beta">Pixel 3a XL</a></h3>
+                    <h3><a href="#bonito-beta">Pixel 3a XL (legacy)</a></h3>
                     <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/{{bonito-beta-BUILD_ID}}.{{bonito-beta-BUILD_NUMBER}}">{{bonito-beta-BUILD_ID}}.{{bonito-beta-BUILD_NUMBER}}</a></p>
                     <ul>
                         <li><a href="https://releases.grapheneos.org/bonito-factory-{{bonito-beta-BUILD_NUMBER}}.zip">bonito-factory-{{bonito-beta-BUILD_NUMBER}}.zip</a></li>
@@ -477,7 +493,7 @@
                     </ul>
                 </section>
                 <section id="sargo-beta">
-                    <h3><a href="#sargo-beta">Pixel 3a</a></h3>
+                    <h3><a href="#sargo-beta">Pixel 3a (legacy)</a></h3>
                     <p>Version: <a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/{{sargo-beta-BUILD_ID}}.{{sargo-beta-BUILD_NUMBER}}">{{sargo-beta-BUILD_ID}}.{{sargo-beta-BUILD_NUMBER}}</a></p>
                     <ul>
                         <li><a href="https://releases.grapheneos.org/sargo-factory-{{sargo-beta-BUILD_NUMBER}}.zip">sargo-factory-{{sargo-beta-BUILD_NUMBER}}.zip</a></li>
@@ -518,6 +534,298 @@
                 release notes from before the rebranding of the project in 2018 and 2019.</p>
 
                 <!--
+                <article id="2022071100">
+                    <h3><a href="#2022071100">2022071100</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C2.2022071100">SP1A.210812.016.C2.2022071100</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022071100">SP2A.220505.006.2022071100</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-06-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220705.003.A1.2022071100">SQ3A.220705.003.A1.2022071100</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022071100 release:</p>
+
+                    <ul>
+                    </ul>
+                </article>
+                -->
+
+                <article id="2022071100">
+                    <h3><a href="#2022071100">2022071100</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C2.2022071100">SP1A.210812.016.C2.2022071100</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022071100">SP2A.220505.006.2022071100</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-06-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220705.003.A1.2022071100">SQ3A.220705.003.A1.2022071100</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022070800 release:</p>
+
+                    <ul>
+                        <li>fix adding access to files with our Storage Scopes feature on devices using the new shared storage implementation (Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro)</li>
+                        <li>improve permission UI instructing the user to revoke all storage permissions before enabling storage scopes</li>
+                        <li>prevent Play Store attempting to update Play services instead of blocking it from being able to update it when it tries in order to avoid it repeatedly trying and wasting data</li>
+                        <li>prevent Play Store attempting to auto-install components like Play Services for AR since the request for approval is an annoyance</li>
+                        <li>Settings: do not initialize OBB toggle for non-attachable (privileged) apps</li>
+                    </ul>
+                </article>
+
+                <article id="2022070800">
+                    <h3><a href="#2022070800">2022070800</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C2.2022070800">SP1A.210812.016.C2.2022070800</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022070800">SP2A.220505.006.2022070800</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-06-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220705.003.A1.2022070800">SQ3A.220705.003.A1.2022070800</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022070600 release:</p>
+
+                    <ul>
+                        <li>add new Storage Scopes feature for granting limited access to shared storage for apps normally requiring granting the storage permission (Files and Media for legacy apps, Media for modern apps), the file management special access permission (All files access) or the media management special access permission where these apps will think they've been granted those permissions but will only have access to specific scopes you've chosen to grant to them, as if they supported granting case-by-case consent through the system file manager themselves (which is not impacted by this feature and you can still grant case-by-case access to any file / directory through it)</li>
+                        <li>split out a new toggle for OBB (Opaque Binary Blob) installation (legacy approach to distributing large assets primarily used by games) so that the Play Store and other app stores with asset delivery support can be granted OBB access instead of Media access (or Files and Media for legacy apps)</li>
+                        <li>fix upstream Android bug in DeviceIdleJobsController which was preventing battery optimization exceptions from fully working for system apps and resulting in delays in some cases for the Messaging app and other system apps</li>
+                        <li>respect user switchability for forwarded notification UI</li>
+                        <li>kernel (Pixel 6, Pixel 6 Pro): update GKI base to ASB-2022-07-05_12-5.10</li>
+                        <li>kernel (Pixel 4, Pixel 4 XL, Pixel 4a): drop unnecessary NETLABEL feature</li>
+                    </ul>
+                </article>
+
+                <article id="2022070600">
+                    <h3><a href="#2022070600">2022070600</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C2.2022070600">SP1A.210812.016.C2.2022070600</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022070600">SP2A.220505.006.2022070600</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-06-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220705.003.A1.2022070600">SQ3A.220705.003.A1.2022070600</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022063000 release:</p>
+
+                    <ul>
+                        <li>full 2022-07-01 security patch level</li>
+                        <li>full 2022-07-05 security patch level</li>
+                        <li>rebased onto SQ3A.220705.003.A1 release</li>
+                        <li>Vanadium: update Chromium base to 103.0.5060.71</li>
+                    </ul>
+                </article>
+
+                <article id="2022063000">
+                    <h3><a href="#2022063000">2022063000</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C2.2022063000">SP1A.210812.016.C2.2022063000</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022063000">SP2A.220505.006.2022063000</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-06-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.A1.2022063000">SQ3A.220605.009.A1.2022063000</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.B1.2022063000">SQ3A.220605.009.B1.2022063000</a> (Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022062200 release:</p>
+
+                    <ul>
+                        <li>add opt-in support for forwarding notifications to the active user from users in the background with information censored in the same way as on the lockscreen (can be enabled in Settings ➔ System ➔ Multiple users for each user you want to forward their notifications)</li>
+                        <li>set correct tile label for our battery share quick tile</li>
+                        <li>Vanadium: update Chromium base to 103.0.5060.70</li>
+                        <li>Vanadium: disable reporting support (Report-To, report-uri) again</li>
+                        <li>Vanadium: add toggle for closing tabs on exit</li>
+                        <li>Vanadium: add toggle for opening external links in Incognito by default (does not currently include custom tabs)</li>
+                        <li>Vanadium: add toggle for WebRTC IP handling policy so that users can use a less strict value than our default disabling non-proxied (peer-to-peer) WebRTC completely</li>
+                        <li>Pixel 3, Pixel 3 XL: switch to SP1A.210812.016.C2 (June 2022) vendor files</li>
+                    </ul>
+                </article>
+
+                <article id="2022062200">
+                    <h3><a href="#2022062200">2022062200</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C1.2022062200">SP1A.210812.016.C1.2022062200</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022062200">SP2A.220505.006.2022062200</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-06-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.A1.2022062200">SQ3A.220605.009.A1.2022062200</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.B1.2022062200">SQ3A.220605.009.B1.2022062200</a> (Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022061600 release:</p>
+
+                    <ul>
+                        <li>Vanadium: update Chromium base to 103.0.5060.53</li>
+                        <li>implement reverse wireless charging feature for devices supporting it</li>
+                    </ul>
+                </article>
+
+                <article id="2022061600">
+                    <h3><a href="#2022061600">2022061600</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C1.2022061600">SP1A.210812.016.C1.2022061600</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022061600">SP2A.220505.006.2022061600</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-06-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.A1.2022061600">SQ3A.220605.009.A1.2022061600</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.B1.2022061600">SQ3A.220605.009.B1.2022061600</a> (Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022060701 release:</p>
+
+                    <ul>
+                        <li>Sandboxed Google Play compatibility layer: make dynamite module loading shims less intrusive</li>
+                        <li>Sandboxed Google Play compatibility layer: allow Vanadium to use GMS FIDO2 implementation</li>
+                        <li>Vanadium: update Chromium base to 102.0.5005.125</li>
+                        <li>Vanadium: enable process isolated sandboxed iframes by default</li>
+                        <li>Vanadium: replace global JIT toggle with a site setting with global configuration for the default and per-site overrides</li>
+                        <li>Vanadium: disable JIT compiler by default</li>
+                        <li>Vanadium: remove mremap from system call whitelist</li>
+                        <li>add indicator exemption for OS cell broadcast service which uses location services to determine if alerts should be shown</li>
+                        <li>Pixel 3, Pixel 3 XL, Pixel 3a, Pixel 3a XL: update end-of-life kernel source tree with backported patches</li>
+                        <li>enable always-on VPN and lockdown mode by default when adding a VPN</li>
+                        <li>add warning notification about insecure prototype Pixel devices since users are ending up getting prototype phones second hand that were stolen or sold by employees instead of returning / disposing of them (this is of course much more robustly detected by Auditor for users verifying with it)</li>
+                        <li>Pixel 4a (5G), Pixel 5, Pixel 5a: update kernel build tools revision</li>
+                    </ul>
+                </article>
+
+                <article id="2022060701">
+                    <h3><a href="#2022060701">2022060701</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C1.2022060701">SP1A.210812.016.C1.2022060701</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022060701">SP2A.220505.006.2022060701</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-05-05 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.A1.2022060701">SQ3A.220605.009.A1.2022060701</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.B1.2022060701">SQ3A.220605.009.B1.2022060701</a> (Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022060700 release:</p>
+
+                    <ul>
+                        <li>Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro: update adevtool state</li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/51">version 51</a></li>
+                        <li>kernel (Pixel 4a (5G), Pixel 5, Pixel 5a): temporarily disable slab canary feature added by GrapheneOS due to an upstream commit incompatible with it until we find the underlying upstream bug, which we're now much closer to understanding with this latest case</li>
+                    </ul>
+                </article>
+
+                <article id="2022060700">
+                    <h3><a href="#2022060700">2022060700</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C1.2022060700">SP1A.210812.016.C1.2022060700</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.006.2022060700">SP2A.220505.006.2022060700</a> (Pixel 3a, Pixel 3a XL) — extended support release for legacy devices with frozen 2022-05-05 patch level (will be increased to 2022-06-01 in an upcoming release)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.A1.2022060700">SQ3A.220605.009.A1.2022060700</a> (Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a)</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SQ3A.220605.009.B1.2022060700">SQ3A.220605.009.B1.2022060700</a> (Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022053100 release:</p>
+
+                    <ul>
+                        <li>full 2022-06-01 security patch level</li>
+                        <li>full 2022-06-05 security patch level</li>
+                        <li>rebased onto SQ3A.220605.009.B1 release, which is the third quarterly maintenance/feature release for Android 12</li>
+                        <li>kernel (Pixel 6, Pixel 6 Pro): update GKI base to ASB-2022-06-05_12-5.10</li>
+                        <li>Sandboxed Google Play compatibility layer: remove obsolete shims and infrastructure</li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/42">version 42</a></li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/43">version 43</a></li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/49">version 49</a></li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/50">version 50</a></li>
+                        <li>SELinux policy: remove unused domain for com.android.vzwomatrigger</li>
+                        <li>add indicator exemption for Fused Location Provider which is part of the OS location implementation wrapping the GNSS and Network location providers into a Fused provider using the best available data (GrapheneOS does not have an OS Network Location provider so it just wraps GNSS)</li>
+                        <li>remove unused android-prepare-vendor repository from the main branch (kept in legacy device branches)</li>
+                        <li>hardened_malloc: remove workarounds for camera service bugs for the Qualcomm SoC generation used by 3rd generation Pixels (kept in legacy device branches)</li>
+                        <li>kernel (Pixel 4, Pixel 4 XL, Pixel 4a): drop IPv6 privacy address fix now that upstream has backported IPv6 temporary address (RFC4941) support as a replacement which we already did for 5th generation Pixels (implemented in the baseline kernel.org LTS for 6th generation)</li>
+                    </ul>
+                </article>
+
+                <article id="2022053100">
+                    <h3><a href="#2022053100">2022053100</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C1.2022053100">SP1A.210812.016.C1.2022053100</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.002.2022053100">SP2A.220505.002.2022053100</a> (Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022052500 release:</p>
+
+                    <ul>
+                        <li>extend Network/Sensors permission handling for legacy apps not targeting Android 6 or above (API 23) to resolve a UI issue where the user choosing to grant the Network/Sensors permissions via the legacy permission review interface doesn't appear in the Settings app info page</li>
+                        <li>Gallery: use date added as a fallback for sort order when date taken is unset which is particularly important on GrapheneOS due to GrapheneOS Camera and GrapheneOS screenshots not including EXIF timestamps or other sensitive metadata by default</li>
+                        <li>Sandboxed Google Play compatibility layer: stub out reads of privileged settings values to avoid security exceptions</li>
+                        <li>Sandboxed Google Play compatibility layer: stub out privileged media session management functionality to avoid security exceptions</li>
+                        <li>Sandboxed Google Play compatibility layer: simplify implementation of many shims and remove obsolete shims</li>
+                        <li>Sandboxed Google Play compatibility layer: simplify implementation of adding the standard unprivileged package permissions as requested permissions for the Play Store</li>
+                        <li>Sandboxed Google Play compatibility layer: improve compatibility with Google Search app</li>
+                        <li>Contacts: don't prompt to add account when creating a contact</li>
+                        <li>Contacts: use common intent for getting directions instead of opening a Google Maps URL</li>
+                        <li>Messaging: backport change to allow selecting text inside the selected message</li>
+                        <li>fix upstream SMS/MMS database upgrade issue (meant to be shipped in a previous GrapheneOS release)</li>
+                        <li>backport fix for unnecessary wake lock in telephony service (meant to be shipped in a previous GrapheneOS release)</li>
+                        <li>backport fix for crash in telephony service with null subscription display name (meant to be shipped in a previous GrapheneOS release)</li>
+                        <li>Dialer: add missing permission declaration</li>
+                        <li>Vanadium: update Chromium base to 102.0.5005.78</li>
+                        <li>TalkBack (screen reader): update base code to 12.2 and switch versioning scheme</li>
+                        <li>TalkBack (screen reader): update dependencies</li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/41">version 41</a></li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/48">version 48</a></li>
+                        <li>Apps: update to <a href="https://github.com/GrapheneOS/Apps/releases/tag/7">version 7</a></li>
+                    </ul>
+                </article>
+
+                <article id="2022052500">
+                    <h3><a href="#2022052500">2022052500</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C1.2022052500">SP1A.210812.016.C1.2022052500</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.002.2022052500">SP2A.220505.002.2022052500</a> (Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022051100 release:</p>
+
+                    <ul>
+                        <li>Sandboxed Google Play compatibility layer: improve compatibility with the Nearby Share feature</li>
+                        <li>Sandboxed Google Play compatibility layer: add non-privileged approach for bringing apps out of standby to avoid delays for FCM and other features</li>
+                        <li>Sandboxed Google Play compatibility layer: extend compatibility layer to support making the Google Search app work as a regular sandboxed app</li>
+                        <li>Sandboxed Google Play compatibility layer: generic telephony compatibility improvement</li>
+                        <li>Sandboxed Google Play compatibility layer: add support for Play Store in Direct Boot mode</li>
+                        <li>add indicator exemption for Default Print Service since the nearby device access is considered location access but it doesn't make sense to show this for a core OS component only using the access internally</li>
+                        <li>add toggle for disallowing a user from installing apps from unknown sources which will become increasingly useful as we flesh out our app repository</li>
+                        <li>Messaging: fix notification sounds in secondary users (upstream AOSP bug)</li>
+                        <li>Vanadium: update Chromium base to 102.0.5005.59</li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/35">version 35</a></li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/36">version 36</a></li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/37">version 37</a></li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/38">version 38</a></li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/39">version 39</a></li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/40">version 40</a></li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/46">version 46</a></li>
+                        <li>Auditor: update to <a href="https://github.com/GrapheneOS/Auditor/releases/tag/47">version 47</a></li>
+                    </ul>
+                </article>
+
+                <article id="2022051100">
+                    <h3><a href="#2022051100">2022051100</a></h3>
+
+                    <p>Tags:</p>
+                    <ul>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP1A.210812.016.C1.2022051100">SP1A.210812.016.C1.2022051100</a> (Pixel 3, Pixel 3 XL) — extended support release for legacy devices with frozen 2021-11-01 patch level</li>
+                        <li><a href="https://github.com/GrapheneOS/platform_manifest/releases/tag/SP2A.220505.002.2022051100">SP2A.220505.002.2022051100</a> (Pixel 3a, Pixel 3a XL, Pixel 4, Pixel 4 XL, Pixel 4a, Pixel 4a (5G), Pixel 5, Pixel 5a, Pixel 6, Pixel 6 Pro, emulator, generic, other targets)</li>
+                    </ul>
+
+                    <p>Changes since the 2022050800 release:</p>
+
+                    <ul>
+                        <li>Sandboxed Google Play compatibility layer (GmsCompat): further improve location rerouting compatibility</li>
+                        <li>Sandboxed Google Play compatibility layer (GmsCompat): add logging to help with debugging issues with location rerouting in the future</li>
+                        <li>Vanadium: update Chromium base to 101.0.4951.61</li>
+                        <li>improve compatibility with buggy apps trying to use the non-existent OS network location provider when it isn't available and reroute them to the passive provider</li>
+                        <li>add hidden setting for sandboxed Google Play compatibility layer developers to bypass blocking the Play Store from updating the Google Play apps</li>
+                        <li>Camera: update to <a href="https://github.com/GrapheneOS/Camera/releases/tag/34">version 34</a></li>
+                    </ul>
+                </article>
+
                 <article id="2022050800">
                     <h3><a href="#2022050800">2022050800</a></h3>
 
@@ -530,13 +838,12 @@
                     <p>Changes since the 2022050700 release:</p>
 
                     <ul>
-                        <li>Sandboxed Google Play compatibility layer (GmsCompat): restore compatibility of location rerouting with previous versions of the Play services client library</li>
-                        <li>Sandboxed Google Play compatibility layer: fix background activity regression from several releases ago</li>
+                        <li>Sandboxed Google Play compatibility layer (GmsCompat): restore compatibility of location rerouting with old versions of the Play services client library</li>
+                        <li>Sandboxed Google Play compatibility layer: fix minor background activity UX regression from several releases ago</li>
                         <li>fix adding emergency contacts</li>
                         <li>adevtool: detect outdated Node.js and report an error</li>
                     </ul>
                 </article>
-                -->
 
                 <article id="2022050700">
                     <h3><a href="#2022050700">2022050700</a></h3>
@@ -553,7 +860,7 @@
                         <li>Sandboxed Google Play compatibility layer (GmsCompat): significantly improve compatibility of the default enabled geolocation API rerouting feature</li>
                         <li>remove timestamp from screenshot EXIF metadata by default and add a toggle to Settings ➔ Privacy for enabling it</li>
                         <li>work around slow unlock animation</li>
-                        <li>Pixel 6, Pixel 6 Pro: update GKI base to ASB-2022-05-05_12-5.10</li>
+                        <li>kernel (Pixel 6, Pixel 6 Pro): update GKI base to ASB-2022-05-05_12-5.10</li>
                         <li>Dialer: add fixes for Bluetooth audio call redirection and BLE devices</li>
                         <li>Settings: fix Wi-Fi timeout string issue in Settings search</li>
                         <li>Settings: add missing face unlock strings (used by the Pixel 4 and Pixel 4 XL but the fix is generic)</li>
@@ -767,7 +1074,7 @@
                     <p>Changes since the 2022040400 release:</p>
 
                     <ul>
-                        <li>Pixel 6, Pixel 6 Pro: update GKI base to ASB-2022-04-05_12-5.10 to start using the latest Android 12 GKI as a base</li>
+                        <li>kernel (Pixel 6, Pixel 6 Pro): update GKI base to ASB-2022-04-05_12-5.10 to start using the latest Android 12 GKI as a base</li>
                         <li>Sandboxed Google Play compatibility layer: add additional compatibility shims to restore compatibility with the latest Google Play Games and to fix other issues</li>
                         <li>Sandboxed Google Play compatibility layer: restart GMS processes when permission gets granted since it has bad handling of being given permissions dynamically</li>
                         <li>Sandboxed Google Play compatibility layer: notify user when GMS needs an extra permission or a companion app</li>
@@ -794,7 +1101,7 @@
                         <li>full 2022-04-01 security patch level</li>
                         <li>full 2022-04-05 security patch level</li>
                         <li>rebased onto SP2A.220405.004 release</li>
-                        <li>Pixel 6, Pixel 6 Pro: update GKI base to android12-5.10-2022-03_r1 from android12-5.10-2021-12_r8 for a bunch of upstream and downstream improvements (stock OS still uses android12-5.10-2021-12_r6 and is missing a bunch of important security fixes)</li>
+                        <li>kernel (Pixel 6, Pixel 6 Pro): update GKI base to android12-5.10-2022-03_r1 from android12-5.10-2021-12_r8 for a bunch of upstream and downstream improvements (stock OS still uses android12-5.10-2021-12_r6 and is missing a bunch of important security fixes)</li>
                         <li>Sandboxed Google Play compatibility layer: add additional compatibility shims to improve compatibility with recent Play services</li>
                         <li>Sandboxed Google Play compatibility layer: drop org.grapheneos.pdfviewer from blocked updates list since that app id is no longer being used</li>
                         <li>Sandboxed Google Play compatibility layer (GmsCompat): improve code quality and robustness</li>
@@ -803,7 +1110,7 @@
                         <li>Sandboxed Google Play compatibility layer (GmsCompat): fix Google Location Accuracy state check</li>
                         <li>Pixel 3, Pixel 3 XL: remove leftover upstream iorapd testing prop</li>
                         <li>adevtool: fix hang when there are existing files to overwrite</li>
-                        <li>fix SMS/MMS database upgrade issue</li>
+                        <li>fix upstream SMS/MMS database upgrade issue</li>
                         <li>backport fix for unnecessary wake lock in telephony service</li>
                         <li>backport fix for crash in telephony service with null subscription display name</li>
                         <li>backport Wi-Fi APEX module fix to improve robustness when chip reconfiguration fails</li>
@@ -886,7 +1193,7 @@
                     <ul>
                         <li>Pixel 6, Pixel 6 Pro: full Pixel 2022-03-05 security patch level (Android 2022-03-05 security patch level was already provided early by GrapheneOS)</li>
                         <li>Pixel 6, Pixel 6 Pro: rebased onto SP2A.220305.013.A3 release</li>
-                        <li>Pixel 6, Pixel 6 Pro: update GKI base to android12-5.10-2021-12_r8 from the android12-5.10-2021-12_r6 version still used by the AOSP / stock Pixel OS March release for a few additional security fixes beyond the ones already backported early by GrapheneOS along with latency improvements under certain heavy real-time loads</li>
+                        <li>kernel (Pixel 6, Pixel 6 Pro): update GKI base to android12-5.10-2021-12_r8 from the android12-5.10-2021-12_r6 version still used by the AOSP / stock Pixel OS March release for a few additional security fixes beyond the ones already backported early by GrapheneOS along with latency improvements under certain heavy real-time loads</li>
                         <li>add eSIM activation support as an optional toggle available when using sandboxed Google Play in the Owner profile (note: regular apps including sandboxed Google Play do not have additional access in the Owner profile)</li>
                         <li>Sandboxed Google Play compatibility layer: expand PhenoTypeFlags workaround to all Play services clients</li>
                         <li>GmsCompat: call startForegroundService from the main thread to avoid potential issues</li>
@@ -3329,7 +3636,7 @@
                         <li>rebuild crosshatch kernel to correct build environment issue</li>
                         <li>Vanadium (including WebView): update Chromium base to 80.0.3987.87</li>
                         <li>Vanadium (including WebView): drop partially working AImageReader workarounds</li>
-                        <li>fully work around bug with AImageReader caught by CFI on 64-bit to fix crashes during video rendering in Vanadium, Bromite, etc.</li>
+                        <li>fully work around bug with AImageReader caught by CFI on 64-bit to fix crashes during video rendering in Vanadium and other Chromium-based browsers</li>
                     </ul>
 
                     <p>Restoration of past features since the 2020.02.04.01 release:</p>

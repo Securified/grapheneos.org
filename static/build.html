@@ -212,7 +212,7 @@
                 <section id="build-dependencies">
                     <h3><a href="#build-dependencies">Build dependencies</a></h3>
 
-                    <p>Arch Linux, Debian buster and Ubuntu 20.04 LTS are the officially supported
+                    <p>Arch Linux, Debian bullseye and Ubuntu 22.04 LTS are the officially supported
                     operating systems for building GrapheneOS.</p>
 
                     <p>Dependencies for fetching and verifying the sources:</p>
@@ -303,6 +303,7 @@
                     <p>Additional Vanadium (Chromium) build dependencies not provided by the source tree:</p>
 
                     <ul>
+                        <li>gperf</li>
                         <li>32-bit glibc</li>
                         <li>32-bit gcc runtime library</li>
                     </ul>
@@ -330,8 +331,8 @@
                         release of the <code>android12L-release</code> (Android 12L) branch. The
                         <code>12.1</code> branch of GrapheneOS should be used for generic builds
                         including the emulator, porting to other devices and for non-legacy
-                        officially supported devices. Pixel 3 / Pixel 3 XL use the
-                        <code>12.1-crosshatch</code> branch setting an appropriate
+                        officially supported devices. Pixel 3 / Pixel 3 XL / Pixel 3a / Pixel 3a
+                        XL use the <code>12.1-crosshatch</code> branch setting an appropriate
                         <code>BUILD_ID</code> and security patch level field.</p>
 
                         <pre>mkdir grapheneos-12.1
@@ -527,9 +528,9 @@ vendor/adevtool/bin/run ota-firmware vendor/adevtool/config/DEVICE.yml -f vendor
 
                     <pre>source script/envsetup.sh</pre>
 
-                    <p>Select the desired build target (<code>redfin</code> is the Pixel 5):</p>
+                    <p>Select the desired build target (<code>raven</code> is the Pixel 6 Pro):</p>
 
-                    <pre>choosecombo release redfin user</pre>
+                    <pre>choosecombo release raven user</pre>
 
                     <p>For a development build, you may want to replace <code>user</code> with
                     <code>userdebug</code> in order to have better debugging support. Production builds
@@ -645,11 +646,11 @@ vendor/adevtool/bin/run ota-firmware vendor/adevtool/config/DEVICE.yml -f vendor
                     <p>The encryption passphrase for all the keys generated for a device needs to
                     match for compatibility with the GrapheneOS scripts.</p>
 
-                    <p>To generate keys for redfin (you should use unique keys per device
+                    <p>To generate keys for raven (you should use unique keys per device
                     variant):</p>
 
-                    <pre>mkdir -p keys/redfin
-cd keys/redfin
+                    <pre>mkdir -p keys/raven
+cd keys/raven
 ../../development/tools/make_key releasekey '/CN=GrapheneOS/'
 ../../development/tools/make_key platform '/CN=GrapheneOS/'
 ../../development/tools/make_key shared '/CN=GrapheneOS/'
@@ -664,7 +665,7 @@ cd ../..</pre>
 
                     <p>Generate a signify key for signing factory images:</p>
 
-                    <pre>signify -G -n -p keys/redfin/factory.pub -s keys/redfin/factory.sec</pre>
+                    <pre>signify -G -n -p keys/raven/factory.pub -s keys/raven/factory.sec</pre>
 
                     <p>Remove the <code>-n</code> switch to set a passphrase. The <code>signify</code>
                     tool doesn't provide a way to change the passphrase without generating a new key, so
@@ -679,7 +680,7 @@ cd ../..</pre>
                         <p>You can (re-)encrypt your signing keys using the <code>encrypt_keys</code> script,
                         which will prompt for the old passphrase (if any) and new passphrase:</p>
 
-                        <pre>script/encrypt_keys.sh keys/redfin</pre>
+                        <pre>script/encrypt_keys.sh keys/raven</pre>
 
                         <p>The <code>script/decrypt_keys.sh</code> script can be used to remove encryption,
                         which is not recommended. The script exists primarily for internal usage to decrypt
@@ -723,10 +724,10 @@ cd ../..</pre>
 
                     <p>Generate a signed release build with the release.sh script:</p>
 
-                    <pre>script/release.sh redfin</pre>
+                    <pre>script/release.sh raven</pre>
 
                     <p>The factory images and update package will be in
-                    <code>out/release-redfin-$BUILD_NUMBER</code>. The update zip performs a full OS
+                    <code>out/release-raven-$BUILD_NUMBER</code>. The update zip performs a full OS
                     installation so it can be used to update from any previous version. More efficient
                     incremental updates are used for official over-the-air GrapheneOS updates and can be
                     generated by keeping around past signed <code>target_files</code> zips and generating
@@ -769,34 +770,16 @@ cd ../..</pre>
                         delta updates by passing the device, source version build number and target version
                         build number. For example:</p>
 
-                        <pre>script/generate_delta.sh redfin 2021102503 2021102613</pre>
+                        <pre>script/generate_delta.sh raven 2021102503 2021102613</pre>
 
                         <p>The script assumes that the releases are organized in the following directory
                         structure:</p>
 
                         <pre>releases
-├── 2021102503
-│   └── release-redfin-2021102503
-│       ├── otatools
-│       ├── redfin-beta
-│       ├── redfin-factory-2021102503.zip
-│       ├── redfin-factory-2021102503.zip.sig
-│       ├── redfin-img-2021102503.zip
-│       ├── redfin-ota_update-2021102503.zip
-│       ├── redfin-stable
-│       ├── redfin-target_files-2021102503.zip
-│       └── redfin-testing
-└── 2021102613
-    └── release-redfin-2021102613
-        ├── otatools
-        ├── redfin-beta
-        ├── redfin-factory-2021102613.zip
-        ├── redfin-factory-2021102613.zip.sig
-        ├── redfin-img-2021102613.zip
-        ├── redfin-ota_update-2021102613.zip
-        ├── redfin-stable
-        ├── redfin-target_files-2021102613.zip
-        └── redfin-testing</pre>
+├── 2022050700
+│   └── release-raven-2022050700
+└── 2022050800
+    └── release-raven-2022050800</pre>
 
                         <p>Incremental updates are uploaded alongside the update packages and update metadata
                         on the static web server used as an update server. The update client will
@@ -852,8 +835,7 @@ git checkout $CORRECT_BRANCH_OR_TAG</pre>
                     <pre>cd src
 git fetch --tags
 git checkout $VERSION
-gclient sync -D --with_branch_heads --with_tags --jobs 32
-third_party/android_deps/fetch_all.py --ignore-vulnerabilities</pre>
+gclient sync -D --with_branch_heads --with_tags --jobs 32</pre>
 
                     <p>Apply the GrapheneOS patches on top of the tagged release:</p>
 
