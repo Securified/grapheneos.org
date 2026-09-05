@@ -56,7 +56,7 @@
                             <li><a href="#future-devices">Which devices will be supported in the future?</a></li>
                             <li><a href="#legacy-devices">Why are older devices no longer supported?</a></li>
                             <li><a href="#which-legacy-devices">Which devices did GrapheneOS support in the past?</a></li>
-                            <li><a href="#device-lifetime">How long will GrapheneOS support my device for?</a></li>
+                            <li><a href="#device-lifetime">How long will GrapheneOS support my device?</a></li>
                         </ul>
                     </li>
                     <li>
@@ -140,6 +140,11 @@
                     <p>GrapheneOS has official production support for the following devices:</p>
 
                     <ul>
+                        <li>Pixel 10a (stallion)</li>
+                        <li>Pixel 10 Pro Fold (rango)</li>
+                        <li>Pixel 10 Pro XL (mustang)</li>
+                        <li>Pixel 10 Pro (blazer)</li>
+                        <li>Pixel 10 (frankel)</li>
                         <li>Pixel 9a (tegu)</li>
                         <li>Pixel 9 Pro Fold (comet)</li>
                         <li>Pixel 9 Pro XL (komodo)</li>
@@ -156,15 +161,6 @@
                         <li>Pixel 6a (bluejay)</li>
                         <li>Pixel 6 Pro (raven)</li>
                         <li>Pixel 6 (oriole)</li>
-                    </ul>
-
-                    <p>GrapheneOS has experimental support for the following devices:</p>
-
-                    <ul>
-                        <li>Pixel 10 Pro Fold (rango)</li>
-                        <li>Pixel 10 Pro XL (mustang)</li>
-                        <li>Pixel 10 Pro (blazer)</li>
-                        <li>Pixel 10 (frankel)</li>
                     </ul>
 
                     <p>The release tags for these devices have official builds and updates
@@ -225,10 +221,11 @@
                     guarantee from launch for full security updates and other improvements:</p>
 
                     <ul>
-                        <li>Pixel 10 Pro Fold (experimental)</li>
-                        <li>Pixel 10 Pro XL (experimental)</li>
-                        <li>Pixel 10 Pro (experimental)</li>
-                        <li>Pixel 10 (experimental)</li>
+                        <li>Pixel 10a</li>
+                        <li>Pixel 10 Pro Fold</li>
+                        <li>Pixel 10 Pro XL</li>
+                        <li>Pixel 10 Pro</li>
+                        <li>Pixel 10</li>
                         <li>Pixel 9a</li>
                         <li>Pixel 9 Pro Fold</li>
                         <li>Pixel 9 Pro XL</li>
@@ -239,13 +236,16 @@
                         <li>Pixel 8</li>
                     </ul>
 
-                    <p>8th/9th generation Pixels provide a minimum guarantee of 7 years of support
-                    from launch instead of the previous 5 year minimum guarantee. 8th/9th generation
-                    Pixels also bring support for the incredibly powerful hardware memory tagging
-                    security feature as part of moving to new ARMv9 CPU cores. GrapheneOS uses
-                    hardware memory tagging by default to protect the base OS and known compatible
-                    user installed apps against exploitation, with the option to use it for all apps
-                    and opt-out on a case-by-case basis for the few incompatible with it.</p>
+                    <p>8th generation and later Pixels provide a minimum guarantee of 7 years of
+                    support from launch instead of the previous 5 year minimum guarantee. 8th
+                    generation and later Pixels also have support for the incredibly powerful
+                    hardware memory tagging security feature as part of moving to new ARMv9 CPU
+                    cores. GrapheneOS uses hardware memory tagging by default to protect the base OS
+                    and known compatible user installed apps against exploitation, with the option
+                    to use it for all apps and opt-out on a case-by-case basis for the few
+                    incompatible with it. Pointer authentication, branch target identification and
+                    other ARM security features were also introduced at the same time as hardware
+                    memory tagging.</p>
                 </article>
 
                 <article id="future-devices">
@@ -266,7 +266,7 @@
                     ends up being fairly tied to the hardware.</p>
 
                     <p>Non-exhaustive list of requirements for future devices, which are standards
-                    met or exceeded by current Pixel devices:</p>
+                    met or exceeded by devices starting from Pixel 8 (shiba) through Pixel 10a (stallion):</p>
 
                     <ul>
                         <li>Support for using alternate operating systems including full hardware
@@ -287,7 +287,7 @@
                         <li>PXN, SMEP or equivalent</li>
                         <li>PAN, SMAP or equivalent</li>
                         <li>Isolated radios (cellular, Wi-Fi, Bluetooth, NFC, etc.), GPU, SSD,
-                        media encode / decode, image processor and other components</li>
+                        media encode and decode, image processor and other components</li>
                         <li>Support for A/B updates of both the firmware and OS images with
                         automatic rollback if the initial boot fails one or more times</li>
                         <li>Verified boot with rollback protection for firmware</li>
@@ -401,24 +401,48 @@
                 </article>
 
                 <article id="device-lifetime">
-                    <h3><a href="#device-lifetime">How long can GrapheneOS support my device for?</a></h3>
+                    <h3><a href="#device-lifetime">How long can GrapheneOS support my device?</a></h3>
 
-                    <p>GrapheneOS can only fully provide security updates to a device provided
-                    that the OEM is releasing them. When an OEM is no longer providing security
-                    updates, GrapheneOS aims to provide harm reduction releases for devices which
-                    only have a minimum of 3 years support. Extended support updates at minimum
-                    will be done until the next Android version. It is likely that we will make a
-                    decision around harm reduction releases for other devices with longer
-                    lifetimes in Q4 2024. Harm reduction releases do not have complete security
-                    patches because it's not possible to provide full security updates for the
-                    device without OEM support and they are intended to buy users some limited
-                    time to migrate to a supported device.</p>
+                    <p>GrapheneOS can only fully provide security updates to a device provided that
+                    the OEM is releasing them. When an OEM is no longer providing security updates,
+                    GrapheneOS may provide temporary extended support releases for harm reduction.
+                    Extended support releases cannot provide full security patches and should not be
+                    used except as a last resort while planning to get a new device.</p>
+
+                    <p>Official updates for Pixels typically end shortly after end of the minimum
+                    guaranteed update support. There are occasionally a month or several months of
+                    additional updates but people shouldn't plan around it happening.</p>
 
                     <table>
                         <tr>
                             <th>Device</th>
                             <th>OEM minimum support end</th>
                             <th>OEM minimum support length</th>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 10a</td>
+                            <td>March 2033</td>
+                            <td>7 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 10 Pro Fold</td>
+                            <td>October 2032</td>
+                            <td>7 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 10 Pro XL</td>
+                            <td>August 2032</td>
+                            <td>7 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 10 Pro</td>
+                            <td>August 2032</td>
+                            <td>7 years</td>
+                        </tr>
+                        <tr>
+                            <td>Google Pixel 10</td>
+                            <td>August 2032</td>
+                            <td>7 years</td>
                         </tr>
                         <tr>
                             <td>Google Pixel 9a</td>
@@ -508,6 +532,10 @@
             <section id="security-and-privacy">
                 <h2><a href="#security-and-privacy">Security and privacy</a></h2>
 
+                <p>Our main documentation on our privacy and security features is available as part
+                of our <a href="/features">features page</a> with this section providing additional
+                information on specific privacy and security topics.</p>
+
                 <article id="encryption">
                     <h3><a href="#encryption">How is disk encryption implemented?</a></h3>
 
@@ -531,7 +559,7 @@
                     with metadata encryption. All data, file names and other metadata is always
                     stored encrypted. This is often referred to as file-based encryption but it
                     makes more sense to call it filesystem-based encryption. It's implemented by
-                    the Linux kernel as part of the ext4 / f2fs implementation rather than running
+                    the Linux kernel as part of the ext4 and f2fs implementation rather than running
                     a block-based encryption layer. The advantage of filesystem-based encryption
                     is the ability to use fine-grained keys rather than a single global key that's
                     always in memory once the device is booted.</p>
@@ -551,11 +579,11 @@
                     to delete other profiles without them being active.</p>
 
                     <p>GrapheneOS enables support for ending secondary user profile sessions after
-                    logging into them. It adds an end session button to the lockscreen and in the
-                    global action menu accessed by holding the power button. This fully purges the
-                    encryption keys and puts the profiles back at rest. This can't be done for the
-                    owner profile without rebooting due to it encrypting the sensitive system-wide
-                    operating system data.</p>
+                    logging into them. It adds an end session button to both the global action menu
+                    accessed by holding the power button and the user switcher interface. This fully
+                    purges the encryption keys and puts the profiles back at rest. This can't be
+                    done for the owner profile without rebooting due to it encrypting the sensitive
+                    system-wide operating system data.</p>
 
                     <p>Using a secondary profile for regular usage allows you to make use of the
                     device without decrypting the data in your regular usage profile. It also
@@ -578,37 +606,51 @@
                     using scrypt. This is used as the main input for key derivation.</p>
 
                     <p>The OS stores a high entropy random value as the Weaver token on the secure
-                    element (Titan M on Pixels) and uses it as another input for key derivation.
-                    The Weaver token is stored alongside a Weaver key derived by the OS from the
+                    element (Titan M on Pixels) and uses it as another input for key derivation. The
+                    Weaver token is stored alongside a Weaver key derived by the OS from the
                     password token. In order to retrieve the Weaver token, the secure element
                     requires the correct Weaver key. A secure internal timer is used to implement
-                    hardware-based delays for each attempt at key derivation. It quickly ramps up
-                    to 1 day delays before the next attempt. Weaver also provides reliable wiping
-                    of data since the secure element can reliably wipe a Weaver slot. Deleting a
-                    profile will wipe the corresponding Weaver slot and a factory reset of the
-                    device wipes all of the Weaver slots. The secure element also provides insider
-                    attack resistance preventing firmware updates before authenticating with the
-                    owner profile.</p>
+                    hardware-based delays for each attempt at key derivation. Only a total of 20
+                    attempts is permitted. Weaver also provides reliable wiping of data since the
+                    secure element can reliably wipe a Weaver slot. Deleting a profile will wipe the
+                    corresponding Weaver slot and a factory reset of the device wipes all of the
+                    Weaver slots. The secure element also provides insider attack resistance
+                    preventing firmware updates before authenticating with the owner profile.</p>
 
                     <p>Standard delays for encryption key derivation enforced by the secure
                     element:</p>
 
-                    <ul>
-                        <li>0 to 4 failed attempts: no delay</li>
-                        <li>5 failed attempts: 30 second delay</li>
-                        <li>6 to 9 failed attempts: no delay</li>
-                        <li>10 to 29 failed attempts: 30 second delay</li>
-                        <li>30 to 139 failed attempts: 30 × 2<sup>⌊(<var>n</var> - 30) ÷ 10⌋</sup>
-                        where <var>n</var> is the number of failed attempts. This means the delay
-                        doubles after every 10 attempts. There's a 30 second delay after 30 failed
-                        attempts, 60s after 40, 120s after 50, 240s after 60, 480s after 70, 960s
-                        after 80, 1920s after 90, 3840s after 100, 7680s after 110, 15360s after
-                        120 and 30720s after 130</li>
-                        <li>140 or more failed attempts: 86400 second delay (1 day)</li>
-                    </ul>
+                    <table>
+                        <thead>
+                            <tr><td>Failed attempts</td><td>Timeout after failed attempt</td></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1-4</td><td>0 seconds</td></tr>
+                            <tr><td>5</td><td>1 minute</td></tr>
+                            <tr><td>6</td><td>5 minutes</td></tr>
+                            <tr><td>7</td><td>15 minutes</td></tr>
+                            <tr><td>8</td><td>30 minutes</td></tr>
+                            <tr><td>9</td><td>90 minutes</td></tr>
+                            <tr><td>10</td><td>4 hours</td></tr>
+                            <tr><td>11</td><td>12 hours</td></tr>
+                            <tr><td>12</td><td>36 hours</td></tr>
+                            <tr><td>13</td><td>4 days</td></tr>
+                            <tr><td>14</td><td>13 days</td></tr>
+                            <tr><td>15</td><td>41 days</td></tr>
+                            <tr><td>16</td><td>123 days</td></tr>
+                            <tr><td>17</td><td>1 year</td></tr>
+                            <tr><td>18</td><td>3 years</td></tr>
+                            <tr><td>19</td><td>9 years</td></tr>
+                            <tr><td>20</td><td>No more attempts allowed</td></tr>
+                        </tbody>
+                    </table>
 
-                    <p>Invalid input outside the minimum or maximum length limits of the UI won't
-                    trigger an attempt at authentication or key derivation.</p>
+                    <p>Entering a PIN or password below the minimum length (4) is rejected without
+                    counting as a failed attempt. The most recent 5 unique failed attempts above the
+                    minimum length are kept in memory (cleared on unlock or reboot) to reject those
+                    without counting as a failed attempt. This feature avoids users wasting attempts
+                    when repeatedly entering the same invalid PIN or password due to misremembering
+                    it or making a mistake typing it.</p>
 
                     <p>GrapheneOS only officially supports devices with Weaver. The fallback
                     implementation for devices without it is out-of-scope for this FAQ.</p>
@@ -698,7 +740,7 @@
 
                     <p>Examples of the global OS configuration available to apps are time zone,
                     network country code and other similar global settings. Per-profile examples
-                    are dark mode and language. Similar to extension and browser configuration /
+                    are dark mode and language. Similar to extension and browser configuration and
                     state being fingerprinted by web sites, an app could use a combination of
                     these things in an attempt to identify the installation. All of these things
                     vary at runtime and can be changed, but some are fairly unlikely to change in
@@ -764,7 +806,7 @@
                     GrapheneOS also avoids trust in the cellular network in other ways including providing
                     a secure network time update implementation rather than trusting the cellular network
                     for this. Time is sensitive and can be used to bypass security checks depending on
-                    certificate / key expiry.</p>
+                    certificate and key expiry.</p>
 
                     <p>Cellular networks use inherently insecure protocols and have many trusted parties.
                     Even if interception of the connection or some other man-in-the-middle attack along
@@ -778,9 +820,9 @@
                     recommend apps taking a decent approach in this area.</p>
 
                     <p>Legacy calls and texts should be avoided as they're not secure and trust the
-                    carrier / network along with having weak security against other parties. Trying to
+                    carrier and network along with having weak security against other parties. Trying to
                     detect some forms of interception rather than dealing with the root of the problem
-                    (unencrypted communications / data transfer) would be foolish and doomed to
+                    (unencrypted communications and unencrypted data transfer) would be foolish and doomed to
                     failure.</p>
 
                     <p>GrapheneOS does not add gimmicks without a proper threat model and
@@ -856,7 +898,7 @@
                             https://releases.grapheneos.org/<var>DEVICE</var>-incremental-<var>OLD_VERSION</var>-<var>NEW_VERSION</var>.zip
                             for a delta update, and then falls back to
                             https://releases.grapheneos.org/<var>DEVICE</var>-ota_update-<var>NEW_VERSION</var>.zip.</p>
-                            <p>No query / data is sent to the server, so the only information given to it
+                            <p>No query or data is sent to the server, so the only information given to it
                             are the variables in these 3 URLs (device, channel, current version) which is
                             necessary to obtain the update.</p>
                             <p>Users are in control of which types of networks the Updater app will use
@@ -901,7 +943,7 @@
                             not available (GNSS can also be used as a time source but is disabled
                             by default, and OEMs can choose the priority order). Network time
                             updates are security sensitive since certificate validation depends on
-                            having an accurate time, but the standard NTP / SNTP protocols used
+                            having an accurate time, but the standard NTP and SNTP protocols used
                             across most OSes have no authentication. Our servers obtain the time
                             from 6 independent NTP servers with NTS for authentication where at
                             least 3 servers need to agree on the time for it to be updated.</p>
@@ -934,7 +976,7 @@
 
                             <pre>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36</pre>
 
-                            <p>No query / data is sent to the servers and the response is unused beyond
+                            <p>No query or data is sent to the servers and the response is unused beyond
                             checking the response code.</p>
 
                             <p>Connectivity checks are performed for each network connection and
@@ -986,8 +1028,9 @@
                             servers. These contain orbits and statuses of satellites, Earth
                             environmental data and time adjustment information.</p>
 
-                            <p>Pixel 8a, Pixel 9, Pixel 9 Pro, Pixel 9 Pro XL and Pixel 9 Pro Fold
-                            use a Samsung GNSS chip. Almanacs are downloaded from
+                            <p>Pixel 8a, Pixel 9, Pixel 9 Pro, Pixel 9 Pro XL, Pixel 9 Pro Fold,
+                            Pixel 9a, Pixel 10, Pixel 10 Pro, Pixel 10 Pro XL, Pixel 10 Pro Fold and
+                            Pixel 10a use a Samsung GNSS chip. Almanacs are downloaded from
                             https://samsung.psds.grapheneos.org/p4/42F3 which is a cache of
                             Samsung's data. Alternatively, the standard servers can be enabled in
                             the Settings app which will use https://1.ssiloc.com/p4/42F3.</p>
@@ -1075,6 +1118,49 @@
                             own service and we'd need to support proxying to that service too.</p>
                         </li>
                         <li>
+                            <p>Since Android 16, Android supports enforcing Certificate Transparency
+                            (CT) for TLS connections by enforcing certificates having multiple valid
+                            Signed Certificate Timestamps (SCTs) from permitted logs. It was opt-in
+                            for Android 16 but is now the default for apps targeting Android 17 and
+                            higher so it will be nearly universally deployed.</p>
+
+                            <p>Android needs lists of the valid CT logs in order to verify SCTs. It
+                            needs to regularly update the lists since logs are regularly being added
+                            and removed. CT enforcement is disabled if the lists are older than 70
+                            days so it's done with out-of-band updates to the lists rather than the
+                            lists being included in the OS or even an app.</p>
+
+                            <p>The CT log lists are signed with a public key downloaded alongside
+                            the lists. The public key is verified with a static list of public keys
+                            and then used to verify the lists.</p>
+
+                            <p>You can change the Certificate Transparency download URLs via the
+                            <b>Settings&#160;> Network &amp; internet&#160;> Certificate
+                            Transparency downloads</b> setting added by GrapheneOS. At the moment,
+                            it can be toggled between <b>GrapheneOS server</b> (default),
+                            <b>Standard (Google) server</b> or <b>Off</b>.</p>
+
+                            <p>Default GrapheneOS server URLs:</p>
+
+                            <ul>
+                                <li>https://gstatic.grapheneos.org/android/certificate_transparency/v2/log_list.json</li>
+                                <li>https://gstatic.grapheneos.org/android/certificate_transparency/v2/log_list.sig</li>
+                                <li>https://gstatic.grapheneos.org/android/certificate_transparency/v3/log_list.ctfb</li>
+                                <li>https://gstatic.grapheneos.org/android/certificate_transparency/v3/log_list.sig</li>
+                                <li>https://gstatic.grapheneos.org/android/certificate_transparency/log_list.pub</li>
+                            </ul>
+
+                            <p>Standard Google server URLs:</p>
+
+                            <ul>
+                                <li>https://www.gstatic.com/android/certificate_transparency/v2/log_list.json</li>
+                                <li>https://www.gstatic.com/android/certificate_transparency/v2/log_list.sig</li>
+                                <li>https://www.gstatic.com/android/certificate_transparency/v3/log_list.ctfb</li>
+                                <li>https://www.gstatic.com/android/certificate_transparency/v3/log_list.sig</li>
+                                <li>https://www.gstatic.com/android/certificate_transparency/log_list.pub</li>
+                            </ul>
+                        </li>
+                        <li>
                             <p>A test query is done via DNS-over-TLS in the automatic and manually
                             enabled modes to detect if DNS-over-TLS is available. It won't happen
                             when DNS-over-TLS is disabled. For the automatic mode, it uses this to
@@ -1099,7 +1185,7 @@
                         </li>
                         <li>
                             <p>DNS resolution for other connections involving connections to the
-                            network / user provided DNS resolvers</p>
+                            network/user provided DNS resolvers</p>
                         </li>
                     </ul>
 
@@ -1190,10 +1276,12 @@
                     on 4G and higher), VoNR (5G) and VoWi-Fi are largely implemented by the OS via
                     TCP/IP rather than by the cellular layer itself. This means there will be
                     connections by the OS to carrier servers instead of being handled by cellular.
-                    GrapheneOS modifies carrier configuration so that toggles for disabling VoLTE,
-                    VoNR and VoWi-Fi are always available. We plan to provide more toggles to
-                    control these things in the future beyond making all the standard toggles
-                    available.</p>
+                    Most of these services (RCS, SMS over LTE, VVM, VoLTE, VoNR, and VoWi-Fi)
+                    operate through the IP Multimedia Subsystem (IMS) and involve connections to
+                    the <code>3gppnetwork.org</code> domains. GrapheneOS modifies carrier
+                    configuration so that toggles for disabling VoLTE, VoNR and VoWi-Fi are always
+                    available. We plan to provide more toggles to control these things in the
+                    future beyond making all the standard toggles available.</p>
                 </article>
 
                 <article id="privacy-policy">
@@ -1437,7 +1525,7 @@
                     <p>Apps and web sites can detect that ad-blocking is being used and can
                     determine what's being blocked. This can be used as part of fingerprinting
                     users. Using a widely used service like AdGuard with a standard block list is
-                    much less of an issue than a custom set of subscriptions / rules, but it still
+                    much less of an issue than a custom set of subscriptions and rules, but it still
                     stands out compared to the default of not doing it.</p>
                 </article>
 
@@ -1620,7 +1708,7 @@
                     <h3><a href="#file-transfer">How do I transfer files to another device?</a></h3>
 
                     <p>Files can be transferred to another device using an external drive, USB file
-                    transfer via MTP / PTP or an app-based mechanism.</p>
+                    transfer via MTP and PTP, or an app-based mechanism.</p>
 
                     <p>The only difference on GrapheneOS is that by default the USB-C port and pogo
                     pins block new connections as soon as the device is locked by default and
@@ -1633,7 +1721,7 @@
                     <p>To use an external drive, plug it into the phone and use the system file
                     manager to copy files to and from it.</p>
 
-                    <p>Transferring files to an attached computer is done with MTP / PTP. Users on
+                    <p>Transferring files to an attached computer is done with MTP and PTP. Users on
                     a Mac computer will need to install <a
                     href="https://openmtp.ganeshrvel.com/">OpenMTP</a> or another MTP app to be able
                     to transfer files between macOS and Android. After plugging in the phone to the
@@ -1985,7 +2073,7 @@
             <article id="company">
                 <h2><a href="#company">Will GrapheneOS create a company?</a></h2>
 
-                <p>No, GrapheneOS will remain a non-profit open source project / organization. It
+                <p>No, GrapheneOS will remain a non-profit open source project and organization. It
                 will remain an independent organization not strongly associated with any specific
                 company. We partner with a variety of companies and other organizations, and we're
                 interested in more partnerships in the future. Keeping it as an non-profit avoids
@@ -2017,8 +2105,9 @@
             <article id="trademark">
                 <h2><a href="#trademark">What about the GrapheneOS name and logo?</a></h2>
 
-                <p>The GrapheneOS name and logo are trademarks of the GrapheneOS project. These
-                marks are in the process of being formally registered in Canada and the US. In the
+                <p>The GrapheneOS name and logo are trademarks of the GrapheneOS project. Both
+                are registered in the United States with serial numbers 90746220 and 90746226. The
+                marks are also in the process of being formally registered in Canada. In the
                 meantime, they're protected as common law trademarks.</p>
 
                 <p>Derivatives of GrapheneOS that are being published/redistributed should replace

@@ -86,6 +86,7 @@
                                     <li><a href="#kernel-emulator">Emulator</a></li>
                                     <li><a href="#kernel-microdroid">Microdroid</a></li>
                                     <li><a href="#kernel-6th-through-9th-generation-pixels">6th through 9th generation Pixels</a></li>
+                                    <li><a href="#kernel-10th-generation-pixels">10th generation Pixels</a></li>
                                 </ul>
                             </li>
                             <li><a href="#browser-and-webview">Browser and WebView</a></li>
@@ -132,6 +133,11 @@
                     <p>Smartphone and tablet targets:</p>
 
                     <ul>
+                        <li>stallion (Pixel 10a)</li>
+                        <li>rango (Pixel 10 Pro Fold)</li>
+                        <li>mustang (Pixel 10 Pro XL)</li>
+                        <li>blazer (Pixel 10 Pro)</li>
+                        <li>frankel (Pixel 10)</li>
                         <li>tegu (Pixel 9a)</li>
                         <li>comet (Pixel 9 Pro Fold)</li>
                         <li>komodo (Pixel 9 Pro XL)</li>
@@ -152,12 +158,12 @@
 
                     <p>These are all fully supported production-ready targets supporting all the
                     baseline security features and receiving full monthly security updates
-                    covering all firmware, kernel drivers, driver libraries / services and other
+                    covering all firmware, kernel drivers, driver libraries and services, and other
                     device-specific code. A fully signed user build for these devices is a proper
-                    GrapheneOS release. Newer generation devices have stronger hardware / firmware
+                    GrapheneOS release. Newer generation devices have stronger hardware and firmware
                     security and hardware-based OS security features and are better development
                     devices for that reason. It's not possible to work on everything via past
-                    generation devices. The best development devices are the Pixel 6 and 7 series.
+                    generation devices. The best development devices are Pixels series 8 to 10.
                     </p>
 
                     <p>SDK emulator target:</p>
@@ -178,7 +184,7 @@
                     libraries, firmware and device SELinux policy extensions. Other than some
                     special cases like the emulator, the generic targets rely on the device support
                     code present on the device. Shipping all of this is necessary for full security
-                    updates and is tied to enabling verified boot / attestation. Device-specific
+                    updates and is tied to enabling verified boot and attestation. Device-specific
                     driver changes are required to support GrapheneOS features such as the
                     hardware-level USB-C port control. There's also a lot of device-specific work to
                     work around or resolve memory corruption bugs uncovered by our features. Most
@@ -272,6 +278,7 @@ source ~/.bashrc</pre>
                     <p>Additional Vanadium (Chromium) build dependencies not provided by the source tree:</p>
 
                     <ul>
+                        <li>git-lfs</li>
                         <li>gperf</li>
                         <li>32-bit glibc</li>
                         <li>32-bit gcc runtime library</li>
@@ -297,16 +304,16 @@ source ~/.bashrc</pre>
                     <section id="development-branch">
                         <h4><a href="#development-branch">Development branch</a></h4>
 
-                        <p>The <code>16-qpr1</code> branch is the main development branch of
-                        GrapheneOS based on Android 16 QPR1. The <code>16-qpr1</code> branch of
+                        <p>The <code>17</code> branch is the main development branch of
+                        GrapheneOS based on Android 17. The <code>17</code> branch of
                         GrapheneOS should be used for generic builds including the emulator, porting
                         to other devices and for non-legacy officially supported devices.</p>
 
-                        <p>To sync the <code>16-qpr1</code> branch:</p>
+                        <p>To sync the <code>17</code> branch:</p>
 
-                        <pre>mkdir grapheneos-16-qpr1
-cd grapheneos-16-qpr1
-repo init -u https://github.com/GrapheneOS/platform_manifest.git -b 16-qpr1
+                        <pre>mkdir grapheneos-17
+cd grapheneos-17
+repo init -u https://github.com/GrapheneOS/platform_manifest.git -b 17
 repo sync -j8</pre>
 
                         <p>If your network is unreliable and <code>repo sync</code> fails, you can run the
@@ -321,7 +328,7 @@ repo sync -j8</pre>
                         and download the source tree. Note that some devices use different Android Open Source
                         Project branches so they can end up with different tags. Make sure to use the correct
                         tag for a device. For devices without official support, use the latest tag marked as
-                        being appropriate for generic / other devices in the release notes.</p>
+                        being appropriate for generic or other devices in the release notes.</p>
 
                         <pre>mkdir grapheneos-<var>TAG_NAME</var>
 cd grapheneos-<var>TAG_NAME</var>
@@ -543,6 +550,7 @@ CN=GrapheneOS
 ../../development/tools/make_key bluetooth "/CN=$CN/"
 ../../development/tools/make_key sdk_sandbox "/CN=$CN/"
 ../../development/tools/make_key gmscompat_lib "/CN=$CN/"
+../../development/tools/make_key nfc "/CN=$CN/"
 openssl genrsa 4096 | openssl pkcs8 -topk8 -scrypt -out avb.pem
 ../../external/avb/avbtool.py extract_public_key --key avb.pem --output avb_pkmd.bin
 cd ../..</pre>
@@ -682,90 +690,71 @@ cd ../..</pre>
                     providing the prebuilt toolchain for reproducible builds not depending on the
                     tools from the host OS.</p>
 
-                    <p>Additional Linux kernel build dependencies for 4th and 5th generation
-                    Pixels not provided by the source tree:</p>
-
-                    <ul>
-                        <li>libgcc (for the host, not the target)</li>
-                        <li>binutils (for the host, not the target)</li>
-                    </ul>
-
                     <section id="kernel-emulator">
                         <h4><a href="#kernel-emulator">Emulator</a></h4>
 
-                        <p>The default kernel version for the emulator is 6.6. You can change the
-                        kernel version used for the x86_64 emulator target supported by GrapheneOS in
-                        <code>device/generic/goldfish/board/kernel/x86_64.mk</code>.</p>
+                        <p>The kernel branch for the emulator is currently 6.12.</p>
 
-                        <p>To sync the 6.6 kernel sources:</p>
+                        <p>To sync the kernel sources:</p>
 
-                        <pre>mkdir -p android/kernel/6.6
-cd android/kernel/6.6
-repo init -u https://github.com/GrapheneOS/kernel_manifest-6.6.git -b 16-qpr1
+                        <pre>mkdir -p android/kernel/6.12
+cd android/kernel/6.12
+repo init -u https://github.com/GrapheneOS/kernel_manifest-6.12.git -b 17
 repo sync -j8</pre>
 
-                        <p>To build the 6.6 kernel image and modules for the emulator:</p>
+                        <p>To build the kernel image and modules:</p>
 
                         <pre>ARCH=x86_64 common/build_virt.sh</pre>
 
                         <p>Replace the prebuilts in the OS source tree:</p>
 
-                        <pre>ANDROID_BUILD_TOP=~/android/grapheneos-15 ARCH=x86_64 common/update_virt_prebuilts.sh</pre>
-
-                        <p>To sync the 6.1 kernel sources:</p>
-
-                        <pre>mkdir -p android/kernel/6.1
-cd android/kernel/6.1
-repo init -u https://github.com/GrapheneOS/kernel_manifest-6.1.git -b 16-qpr1
-repo sync -j8</pre>
-
-                        <p>To build the 6.1 kernel image and modules for the emulator:</p>
-
-                        <pre>ARCH=x86_64 common/build_virt.sh</pre>
-
-                        <p>Replace the prebuilts in the OS source tree:</p>
-
-                        <pre>ANDROID_BUILD_TOP=~/android/grapheneos-15 ARCH=x86_64 common/update_virt_prebuilts.sh</pre>
+                        <pre>ANDROID_BUILD_TOP=~/android/grapheneos-17 ARCH=x86_64 common/update_virt_prebuilts.sh</pre>
                     </section>
 
                     <section id="kernel-microdroid">
                         <h4><a href="#kernel-microdroid">Microdroid</a></h4>
 
+                        <p>The kernel branch for the emulator is currently 6.6.</p>
+
                         <p>To sync the kernel sources:</p>
 
                         <pre>mkdir -p android/kernel/6.6
 cd android/kernel/6.6
-repo init -u https://github.com/GrapheneOS/kernel_manifest-6.6.git -b 16-qpr1
+repo init -u https://github.com/GrapheneOS/kernel_manifest-6.6.git -b 17
 repo sync -j8</pre>
 
-                        <p>To build the arm64 kernel image for microdroid:</p>
+                        <p>To build the arm64 kernel image:</p>
 
-                        <pre>tools/bazel run //common:kernel_aarch64_microdroid_dist --config=stamp --lto=full</pre>
+                        <pre>tools/bazel run //common:kernel_aarch64_microdroid_dist --config=stamp --lto=thin</pre>
 
                         <p>Replace the prebuilt kernel image in the OS source tree at
-                        <code>packages/modules/Virtualization/microdroid/kernel/android15-6.6/arm64/kernel-6.6</code> with your image
+                        <code>packages/modules/Virtualization/guest/kernel/android15-6.6/arm64/kernel-6.6</code> with your image
                         <code>out/kernel_aarch64_microdroid/dist/Image</code>.</p>
 
-                        <p>To build the x86_64 kernel image for microdroid:</p>
+                        <p>To build the x86_64 kernel image:</p>
 
                         <pre>tools/bazel run //common:kernel_x86_64_microdroid_dist --config=stamp --lto=full</pre>
 
                         <p>Replace the prebuilt kernel image in the OS source tree at
-                        <code>packages/modules/Virtualization/microdroid/kernel/android15-6.6/x86_64/kernel-6.6</code> with your image
-                        <code>out/kernel_x86_64_microdroid/dist/bzImage</code>.</p>
+                        <code>packages/modules/Virtualization/guest/kernel/android15-6.6/x86_64/kernel-6.6</code>
+                        with your image <code>out/kernel_x86_64_microdroid/dist/bzImage</code>.</p>
                     </section>
 
                     <section id="kernel-6th-through-9th-generation-pixels">
                         <h4><a href="#kernel-6th-through-9th-generation-pixels">6th through 9th generation Pixels</a></h4>
 
+                        <p>For the Pixel 10a (stallion), the <code>17-stallion</code> branch
+                        needs to be used instead of <code>17</code>.</p>
+
                         <p>To sync the kernel sources:</p>
 
-                        <pre>git clone https://gitlab.com/grapheneos/kernel_pixel.git -b 16-qpr1 --recurse-submodules
-cd kernel_pixel</pre>
+                        <pre>git clone https://gitlab.com/grapheneos/kernel_pixel_6.1.git -b 17 --recurse-submodules
+cd kernel_pixel_6.1</pre>
 
                         <p>Select the correct kernel codename for the device model:</p>
 
                         <ul>
+                            <li>stallion: stallion</li>
                             <li>tegu: tegu</li>
                             <li>comet: comet</li>
                             <li>komodo: caimito</li>
@@ -789,8 +778,34 @@ cd kernel_pixel</pre>
                         <pre>KLEAF_REPO_MANIFEST=aosp_manifest.xml ./build_<var>codename</var>.sh --lto=full</pre>
 
                         <p>Replace the files in the OS source tree at
-                        <code>device/google/<var>codename</var>-kernels/6.1/grapheneos/</code> with your build in
-                        <code>out/<var>codename</var>/dist/</code>.</p>
+                        <code>device/google/<var>codename</var>-kernels/6.1/grapheneos/</code> with
+                        your build in <code>out/<var>codename</var>/dist/</code>.</p>
+                    </section>
+
+                    <section id="kernel-10th-generation-pixels">
+                        <h4><a href="#kernel-10th-generation-pixels">10th generation Pixels</a></h4>
+
+                        <p>To sync the kernel sources:</p>
+
+                        <pre>git clone https://gitlab.com/grapheneos/kernel_pixel_6.6.git -b 17 --recurse-submodules
+cd kernel_pixel_6.6</pre>
+
+                        <p>Select the correct kernel codename for the device model:</p>
+
+                        <ul>
+                            <li>rango: rango</li>
+                            <li>mustang: muzel</li>
+                            <li>blazer: muzel</li>
+                            <li>frankel: muzel</li>
+                        </ul>
+
+                        <p>To build the kernel and modules:</p>
+
+                        <pre>./build_<var>codename</var>.sh --lto=full --repo_manifest="$(realpath .)":"$(realpath aosp_manifest.xml)</pre>
+
+                        <p>Replace the files in the OS source tree at
+                        <code>device/google/laguna-kernels/6.6/grapheneos/<var>codename</var></code>
+                        with your build in <code>out/<var>codename</var>/dist/</code>.</p>
                     </section>
                 </section>
 
@@ -825,7 +840,7 @@ git checkout <var>CORRECT_BRANCH_OR_TAG</var></pre>
 
                     <p>Fetch the Chromium sources:</p>
 
-                    <pre>fetch --nohooks android</pre>
+                    <pre>gclient sync --nohooks</pre>
 
                     <p>Sync to the latest stable release for Android (replace <code><var>VERSION</var></code> with
                     the correct value):</p>
@@ -862,7 +877,7 @@ git checkout <var>VERSION</var></pre>
 
                     <p>Sign the apks:</p>
 
-                    <pre>../generate-release.sh out</pre>
+                    <pre>../generate-release out</pre>
 
                     <p>The apks need to be copied from <code>out/Default/apks/release/*.apk</code>
                     into the Android source tree at
@@ -1017,10 +1032,10 @@ export PATH="$HOME/android/sdk/cmdline-tools/latest/bin:$PATH"</pre>
                 copy of it. For example:</p>
 
                 <pre>cd ~/android
-curl -O https://dl.google.com/dl/android/studio/ide-zips/2025.2.1.8/android-studio-2025.2.1.8-linux.tar.gz
-echo '7aa6a2e46eb4387def1f4ea22b8b4a2b68021efa85065347c41187439fd25096  android-studio-2025.2.1.8-linux.tar.gz' | sha256sum -c
-tar xvf android-studio-2025.2.1.8-linux.tar.gz
-rm android-studio-2025.2.1.8-linux.tar.gz
+curl -O https://dl.google.com/dl/android/studio/ide-zips/2025.3.2.6/android-studio-panda2-linux.tar.gz
+echo '32942d8cd7688192cf3cd07bf282fb120035b9bd9b56e6f13c5540e6d39807e9 android-studio-panda2-linux.tar.gz' | sha256sum -c
+tar xvf android-studio-panda2-linux.tar.gz
+rm android-studio-panda2-linux.tar.gz
 mv android-studio studio</pre>
 
                 <p>Add the Android Studio executables to your <code>PATH</code>:</p>
@@ -1123,7 +1138,7 @@ rm android-cts-media-1.5.zip</pre>
                             <li>Disable SIM lock</li>
                             <li>Enable Bluetooth</li>
                             <li>Enable NFC</li>
-                            <li>Open / close Chromium to deal with initial setup</li>
+                            <li>Open or close Chromium to deal with initial setup</li>
                             <li>Prop up with a good object to focus on and good lighting for Camera tests.
                             Both the front and rear cameras will be used, so ensure this is true for both the
                             front and the rear cameras.</li>
@@ -1164,7 +1179,7 @@ rm android-cts-media-1.5.zip</pre>
                 different components. There are tags and/or branches for the OS, device kernels,
                 mainline components (APEX), the NDK, Android Studio, the platform-tools distribution
                 packages, the CTS, androidx components, etc. You should obtain the sources via
-                manifests using the repo tool, either using the manifest for a tag / branch in
+                manifests using the repo tool, either using the manifest for a tag or branch in
                 platform/manifest.git or a manifest provided elsewhere. Different projects use
                 different subsets of the repositories. Many of the repositories only exist as an
                 archive for older releases and aren't referenced in current manifests.</p>

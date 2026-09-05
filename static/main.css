@@ -253,6 +253,44 @@ footer a, footer a:visited {
     padding: 0 0.5em;
 }
 
+.sponsor-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sponsor {
+    margin: 0;
+}
+
+.sponsor a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.sponsor-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6rem;
+    width: 100%;
+}
+
+.sponsor img {
+    image-rendering: auto;
+    max-width: 100%;
+    max-height: 5rem;
+    width: auto;
+    height: auto;
+    border: none;
+}
+
 #stable-channel ul, #beta-channel ul {
     margin: 0;
     padding: 0;
@@ -380,6 +418,72 @@ details[open] summary {
     margin-bottom: 0.5em;
 }
 
+#hiring .role-summary-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#hiring .role-summary-list > li {
+    border-top: 1px solid #74777f /* outline */;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+#hiring .role-summary-list > li:first-child {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#hiring .role-summary-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+#hiring .role-summary-list p,
+#hiring .role-summary {
+    margin-block: 0.5rem;
+}
+
+#hiring .role-meta {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.25rem 1rem;
+    margin-block: 1rem;
+}
+
+#hiring .role-meta dt {
+    font-weight: bold;
+}
+
+#hiring .role-meta dd {
+    margin: 0;
+}
+
+#hiring .role-summary-meta {
+    font-size: 0.9375rem;
+    margin-block: 0.75rem 0;
+}
+
+#hiring .role {
+    border-top: 1px solid #74777f /* outline */;
+    padding-top: 2rem;
+    margin-top: 2.5rem;
+}
+
+#hiring .role h2 {
+    margin-top: 0;
+}
+
+#hiring .role > section {
+    margin-top: 1.5rem;
+}
+
+#hiring .role li {
+    margin-block: 0.375rem;
+}
+
 /* latin */
 @font-face {
     font-family: Roboto;
@@ -439,6 +543,10 @@ details[open] summary {
     .device-img {
         margin: 3.5rem 0 0;
     }
+
+    .sponsor-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -482,7 +590,7 @@ details[open] summary {
         color: #c4c6cf; /* on-surface-variant */
     }
 
-    pre, details, details[open] summary {
+    pre, details, details[open] summary, #hiring .role-summary-list > li, #hiring .role {
         border-color: #8e9099; /* outline */
     }
 
